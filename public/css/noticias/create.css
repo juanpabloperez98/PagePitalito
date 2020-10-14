@@ -1,0 +1,12 @@
+*{
+    font-family: SecularOne-Regular;
+}
+
+.container {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.panel-heading{
+    margin: 10px auto 40px auto;
+}

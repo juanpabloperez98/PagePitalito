@@ -1,0 +1,15 @@
+*{
+    font-family: SecularOne-Regular;
+}
+
+
+.container {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.panel-body img{
+    width: 300px;
+}
+
+

@@ -1,0 +1,61 @@
+*{
+    font-family: SecularOne-Regular;
+}
+
+.container {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.container h2{
+    font-size: 27px;
+    font-weight: bold;
+}
+
+
+#content-form {
+    margin-left: auto !important;
+    display: block;
+}
+
+#content-form h3 {
+    font-size: 21px;
+    text-align: right;
+    margin: 5px auto 20px auto;
+}
+
+#content-form form {
+    width: 30%;
+    margin-left: auto;
+}
+
+#content-form form input {
+    width: 100%;
+    border-radius: 25px;
+    padding: 10px;
+}
+
+#content-form form button {
+    position: absolute;
+    left: 94%;
+    border-radius: 25px;
+}
+
+#content-form form button:hover {
+    background-color: gray;
+}
+
+#content-form form button img{
+    width: 20px;
+}
+
+
+.card{
+    margin: auto;
+    width: 86%;
+}
+
+.card .card-img-top{
+    width: 100%;
+    height: 300px;
+}
