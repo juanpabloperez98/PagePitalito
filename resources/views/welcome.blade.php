@@ -6,141 +6,181 @@
 
 @section('content')
 
-    <div class="banner">
-        <h1>Instituto de Cultura Recreación y Deporte Pitalito Huila</h1>
-        <video autoplay muted loop id="myVideo">
-            <source src="{{ asset('images/videos/video.mp4') }}" type="video/mp4">
-        </video>
+    {{-- MAIN --}}
+    <div class="row mx-auto" id="main-section">
+        <div class="row mx-auto" style="max-width: 1111px" id="content">
+            <div class="col-lg-7">
+                <div id="contain-title">
+                    <h1>INSTITUTO DE CULTURA RECREACIÓN Y DEPORTE PITALITO HUILA</h1>
+                </div>
+                <div id="btn-vermas">
+                    <a href="#" class="btn">VER MÁS</a>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <section>
-        <div class="row mx-auto" id="contenido">
-            <div class="col-lg-12" id="formcontrol">
-                <h3>¿Que deseas buscar?</h3>
-                <form class="form-inline">
-                    <button class="btn" type="submit">
-                        <img src="{{ asset('images/icons/search.png') }}" alt="search">
+    {{-- DESCUBRE --}}
+    <div class="row mx-auto" id="places-section">
+        <div style="max-width: 1111px" class="mx-auto">
+            <div class="row mx-auto">
+                <div class="col-lg-12" style="margin-bottom: 60px">
+                    <h1>
+                        DESCUBRE LOS 5 LUGARES MÁS
+                        REPRESENTATIVOS DE PITALITO.
+                    </h1>
+                    <p>
+                        Pueblos que te conectan con la naturaleza y la cultura, museos de ciencia que son galerias urbanas.
+                    </p>
+                </div>
+
+                <div class="col-lg-5 imagen-pruebas" style="height: 425px;">
+                    <div style="margin-top: 339px">
+                        <h3>
+                            CENTRO ADMINISTRATIVO LA CHAPOLERA
+                        </h3>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="row mx-auto">
+                        <div class="col-lg-5 imagen-pruebasshort">
+                            <h3>
+                                CENTRO CULTURAL HÉCTOR POLANIA SÁNCHEZ
+                            </h3>
+                        </div>
+                        <div class="col-lg-5 ml-lg-4 imagen-pruebasshort">
+                            <h3>
+                                COLISEO CUBIERTO
+                                DE PITALITO.
+                            </h3>
+                        </div>
+                        <div class="col-lg-5 mt-lg-4 imagen-pruebasshort">
+                            <h3>
+                                PARQUE PRINCIPAL JOSÉ HILARIO
+                                LOPEZ
+                            </h3>
+                        </div>
+                        <div class="col-lg-5 ml-lg-4 mt-lg-4 imagen-pruebasshort">
+                            <h3>
+                                VILLA
+                                OLIMPICA
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {{-- Noticias --}}
+    <div class="row mx-auto" id="notices-section">
+        <div style="max-width: 1111px" class="mx-auto">
+            <div class="row mx-auto">
+                <div class="col-lg-12" style="padding: 0px">
+                    <h1>NOTICIAS</h1>
+                    <p>La mejor información en eventos culturales y deportivos que se desarrollan en el municipio, así como
+                        tambien
+                        eventos liderados desde el Instituto de Cultura, Recreación y Deporte de Pitalito.</p>
+                </div>
+                <div class="col-lg-12" style="padding: 0px">
+                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="row mx-auto" id="row-notices">
+                                    <div class="col-lg-4 text-center" style="padding: 10px">
+                                        <img src="{{ asset('images/main-section.jpg') }}" class="d-block w-100" alt="...">
+                                        <h3>TITULO</h3>
+                                        <p>ENCABEZADO</p>
+                                    </div>
+                                    <div class="col-lg-4 text-center" style="padding: 10px">
+                                        <img src="{{ asset('images/main-section.jpg') }}" class="d-block w-100" alt="...">
+                                        <h3>TITULO</h3>
+                                        <p>ENCABEZADO</p>
+                                    </div>
+                                    <div class="col-lg-4 text-center" style="padding: 10px">
+                                        <img src="{{ asset('images/main-section.jpg') }}" class="d-block w-100" alt="...">
+                                        <h3>TITULO</h3>
+                                        <p>ENCABEZADO</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row mx-auto" id="row-notices">
+                                    <div class="col-lg-4 text-center" style="padding: 10px">
+                                        <img src="{{ asset('images/main-section.jpg') }}" class="d-block w-100" alt="...">
+                                        <h3>TITULO</h3>
+                                        <p>ENCABEZADO</p>
+                                    </div>
+                                    <div class="col-lg-4 text-center" style="padding: 10px">
+                                        <img src="{{ asset('images/main-section.jpg') }}" class="d-block w-100" alt="...">
+                                        <h3>TITULO</h3>
+                                        <p>ENCABEZADO</p>
+                                    </div>
+                                    <div class="col-lg-4 text-center" style="padding: 10px">
+                                        <img src="{{ asset('images/main-section.jpg') }}" class="d-block w-100" alt="...">
+                                        <h3>TITULO</h3>
+                                        <p>ENCABEZADO</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row mx-auto" id="row-notices">
+                                    <div class="col-lg-4 text-center" style="padding: 10px">
+                                        <img src="{{ asset('images/main-section.jpg') }}" class="d-block w-100" alt="...">
+                                        <h3>TITULO</h3>
+                                        <p>ENCABEZADO</p>
+                                    </div>
+                                    <div class="col-lg-4 text-center" style="padding: 10px">
+                                        <img src="{{ asset('images/main-section.jpg') }}" class="d-block w-100" alt="...">
+                                        <h3>TITULO</h3>
+                                        <p>ENCABEZADO</p>
+                                    </div>
+                                    <div class="col-lg-4 text-center" style="padding: 10px">
+                                        <img src="{{ asset('images/main-section.jpg') }}" class="d-block w-100" alt="...">
+                                        <h3>TITULO</h3>
+                                        <p>ENCABEZADO</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev arrows" style="left: -60px;" href="#carouselExampleControls"
+                            role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next arrows" style="right: -60px;" href="#carouselExampleControls"
+                            role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {{-- SUSCRIBETE --}}
+    <div style="margin-top: 80px" id="suscribete-container">
+        <div class="row mx-auto" style="max-width: 1111px" id="suscribete-section">
+            <div class="col-lg-6 content-mesaje" style="border-left: 10px solid white">
+                <h1>PITALITO ESPERA POR TI SUSCRÍBETE Y
+                    RECIBE NOTICIAS, INVITACIÓN A EVENTOS
+                    DEPORTIVOS Y CULTURALES.</h1>
+            </div>
+            <div class="col-lg-6 content-mesaje" id="form-content">
+                <h3>¡SI!, QUIERO A PITALITO.</h3>
+                <form class="content-search form-inline">
+                    <input type="email" class="form-control" placeholder="CORREO ELECTRONICO" id="exampleInputEmail1"
+                        aria-describedby="emailHelp">
+                    <button type="submit" class="">
+                        <img src="{{ asset('images/icons/mail.png') }}" alt="imagen">
                     </button>
-                    <input class="form-control" id="search" type="search" placeholder="Buscar" aria-label="Search">
                 </form>
             </div>
         </div>
-
-        <div id="caroulsel1" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="{{ asset('images/imagenp1.jpg') }}" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="{{ asset('images/imagenp2.jpg') }}" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="{{ asset('images/imagenp3.jpg') }}" class="d-block w-100" alt="...">
-                </div>
-            </div>
-            <a class="carousel-control-prev arrow" href="#caroulsel1" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next arrow" href="#caroulsel1" role="button" data-slide="next">
-                <span class="carousel-control-next-icon icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
-
-        <div class="row mx-auto" id="main-part">
-            <div class="col-lg-12">
-                <h2>INICIO</h2>
-                <div class="row mx-auto">
-                    <div class="col-lg-6">
-                        <img src="{{ asset('images/imagen_prueba_1.png') }}" alt="imagen_prueba">
-                    </div>
-                    <div class="col-lg-6">
-                        <div id="caroulsel2" class="carousel slide" style="height: 100%" data-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <div class="row mx-auto contenedor">
-                                        <div class="col-lg-12">
-                                            <span>
-                                                <img src="{{ asset('images/icons/fijado.png') }}" alt="icono-fijado">
-                                                Destacado
-                                            </span>
-                                            <h3>08 Octubre Dia del Profesor de Educación Física</h3>
-                                            <span style="display: block" class="time-published">Noticia - haces 3
-                                                días</span>
-                                            <a href="#">Participa</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <div class="row mx-auto contenedor">
-                                        <div class="col-lg-12">
-                                            <span>
-                                                <img src="{{ asset('images/icons/fijado.png') }}" alt="icono-fijado">
-                                                Destacado
-                                            </span>
-                                            <h3>31 Octubre Dia de los niños pitalito</h3>
-                                            <span style="display: block" class="time-published">Noticia - haces 10
-                                                días</span>
-                                            <a href="#">Participa</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <div class="row mx-auto contenedor">
-                                        <div class="col-lg-12">
-                                            <span>
-                                                <img src="{{ asset('images/icons/fijado.png') }}" alt="icono-fijado">
-                                                Destacado
-                                            </span>
-                                            <h3>01 Noviembre Fiestas de pitalito</h3>
-                                            <span style="display: block" class="time-published">Noticia - haces 7
-                                                días</span>
-                                            <a href="#">Participa</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a class="carousel-control-prev arrow" id="seconds-arrow" href="#caroulsel2" role="button"
-                                data-slide="prev">
-                                <span class="carousel-control-prev-icon icon" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            <a class="carousel-control-next arrow" id="seconds-arrow" href="#caroulsel2" role="button"
-                                data-slide="next">
-                                <span class="carousel-control-next-icon icon" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-
-            {{-- Noticias --}}
-            {{-- <div class="col-lg-12" id="notices">
-                <div class="row mx-auto content-notices">
-                    <div class="col-lg-4" id="filter-content">
-                        <span>Filtar por: </span>
-                        <div class="dropdown">
-                            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Filtros
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
-
-        </div>
-    </section>
-
+    </div>
 
 
 @endsection

@@ -1,0 +1,74 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Montserrat-Regular';
+}
+
+
+main{
+    background-image: url('../images/main-section.jpg');
+    background-size: cover;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+main::after{
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: -1;
+}
+
+#row-form{
+    padding: 140px 0px 100px 0px;
+    max-width: 1111px;
+}
+
+#row-form form{
+    width: 50%;
+    margin: auto;
+    background-color: white;
+    padding: 25px;
+    border-radius: 20px;
+}
+
+#row-form form h2{
+    text-align: center;
+    margin-bottom: 30px;
+    font-family: 'Montserrat-Bold';
+    color: #104495;
+
+}
+
+#row-form form label{
+    color: #104495;
+    font-family: 'Montserrat-Bold';
+}
+
+#row-form form span{
+    color: red;
+}
+
+#row-form form input{
+    padding: 25px 10px 25px 10px;
+    border-radius: 20px;
+}
+
+
+#contentboton button{
+    padding: 8px 30px;
+    font-size: 20px;
+    color: white;
+    background-color: #EC681D;
+    border-radius: 10px;
+    font-family: 'Montserrat-Bold';
+}
+
+#contentboton button:hover{
+    background-color: #ce6324;
+}

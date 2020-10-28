@@ -1,6 +1,10 @@
 @font-face {
-    font-family: SecularOne-Regular;
-    src: url(../fonts/SecularOne-Regular.ttf);
+    font-family: 'Montserrat-Regular';
+    src: url(../fonts/Montserrat-Regular.ttf);
+}
+@font-face {
+    font-family: 'Montserrat-Bold';
+    src: url(../fonts/Montserrat-Bold.ttf);
 }
 
 * {
@@ -9,140 +13,77 @@
 }
 
 
-main{
-    /* height: 100vh; */
-    margin-bottom: 20px;
-
-}
-
-
-header {
-    background-color: #005dc7;
+header{
+    height: 80px;
+    background-color: #eef0ef;
     position: fixed;
     width: 100%;
-    z-index: 3;
+    z-index: 2;
 }
 
-nav {
+.navbar{
     max-width: 1111px;
     margin: auto;
 }
+
+.navbar a img{
+    width: 200px;
+}
+
+.navbar a{
+    color: #104495;
+    font-size: 18px;
+    padding-bottom: 0pc;
+}
+
+.navbar a.active{
+    border-bottom: 5px solid #EC681D;
+}
+
+.navbar a:hover{
+    color: #225fc2;
+}
+
+#content-botons-register .btn{
+    color: white;
+    background-color: #EC681D;
+    font-family: 'Montserrat-Bold';
+    border-radius: 8px;
+    padding: 7px 14px;
+}
+
+#content-botons-register .btn:hover{
+    background-color: #ce6324;
+}
+
 
 .desactivate {
     display: none;
 }
 
-#gov-logo {
-    width: 80px;
+footer{
+    background-color: #76797b;
+    margin-top: 130px;
 }
 
-.loger #register{
-    margin-left: 20px;
+#imagenlogo{
+    margin-bottom: 63px;
 }
 
-.loger .log-res{
-    padding: 5px 15px 5px 15px;
-    background-color: #97D662;
-    border-radius: 25px;
+footer h4{
     color: white;
+    font-size: 20px;
 }
 
-.loger .dropdown a.btn{
-    background-color: rgb(2, 64, 136);
-    color: white;
-    padding: 5px 15px 5px 15px;
+#imagenlogo img{
+    margin-top: -69px;
 }
 
-#content-logo, #content-logo-close {
-    /* margin-left: auto; */
-    margin-left: 46px;
+footer ul li{
+    list-style: none;
+    display: inline;
 }
 
-#menu {
-    left: 100%;
-    right: -100%;
-    width: 100%;
-    position: fixed;
-    margin-left: auto;
-    transition: 0.3s all;
-}
-
-#menu.active {
-    right: 0px;
-}
-
-#menu ul {
-    background-color: rgb(2, 64, 136);
-    /* background-color: rgb(60, 109, 165); */
-    padding: 20px;
-    height: 100vh;
-    margin-bottom: 20px;
-}
-
-#menu ul div#login{
-    margin: 10px auto 16px auto;
-}
-
-#menu ul div#login a{
-    float: right;
-    padding: 10px;
-    background-color: #97D662;
-    color: white;
-    border-radius: 25px;
-}
-
-#menu ul div#login a.iniciar{
-    margin-right: 100px;
-}
-
-#menu ul div div{
-    cursor: pointer;
-}
-
-
-#menu ul div div img{
-    border-radius: 50%;
-    height: 200px;
-    width: 200px;
-}
-
-#menu ul div div img:hover{
-    height: 195px;
-    width: 195px;
-}
-
-#menu ul div div span{
-    color: white;
-    display: block;
-}
-
-
-footer {
-    background-color: white;
-    border-top: 0.5px solid black;
-}
-
-#footer-img-content img {
-    width: 300px;
-}
-
-footer form img{
-    width: 20px;
-}
-
-footer form button{
-    position: absolute;
-    z-index: 2;
-    left: 216px;
-    border-radius: 25px !important;
-}
-
-footer form button:hover{
-    background-color: rgb(196, 196, 196);
-}
-
-footer form input{
-    position: relative;
-    width: 100% !important;
-    border-radius: 25px !important;
+footer ul li img{
+    width: 27px;
 }

@@ -127,6 +127,8 @@ class NoticiaController extends Controller
     public function edit(Noticia $noticia)
     {
         //
+        return view('noticias.edit',compact('noticia'));
+
     }
 
     /**

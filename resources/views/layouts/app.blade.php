@@ -69,7 +69,9 @@
             </div>
         </nav> --}}
 
-        <header>
+
+
+        {{-- <header>
 
             <nav class="navbar navbar-expand-lg">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -78,59 +80,35 @@
 
                 <div class="loger ml-auto">
                     @guest
-                        <a href="{{ route('login') }}" class="log-res">INICIAR SESION</a>
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="log-res" id="register">REGISTRATE</a>
-                        @endif
+                    <a href="{{ route('login') }}" class="log-res">INICIAR SESION</a>
+                    @if (Route::has('register'))
+                        <a href="{{ route('register') }}" class="log-res" id="register">REGISTRATE</a>
+                    @endif
                     @else
 
-                        
 
-                        <div class="dropdown show">
-                            <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {{ Auth::user()->name }}
-                            </a>
 
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                
-                                @if (isset($page) && $page == 'notices')
-                                    <a class="dropdown-item" href="{{ route('noticias.create') }}">Crear Noticia</a>
-                                    <a class="dropdown-item" href="#">Editar Noticia</a>
-                                    <a class="dropdown-item" href="#">Eliminar Noticia</a>
-                                @endif
-                                <a id="logout" href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
+                    <div class="dropdown show">
+                        <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ Auth::user()->name }}
+                        </a>
+
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+
+                            @if (isset($page) && $page == 'notices')
+                                <a class="dropdown-item" href="{{ route('noticias.create') }}">Crear Noticia</a>
+                                <a class="dropdown-item" href="#">Editar Noticia</a>
+                                <a class="dropdown-item" href="#">Eliminar Noticia</a>
+                            @endif
+                            <a id="logout" href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
                                                     document.getElementById('logout-form').submit();">Cerrar Sesion</a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                                {{-- <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a> --}}
-                            </div>
-                        </div>
-
-
-                        {{-- <a id="logout" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                    document.getElementById('logout-form').submit();">Cerrar Sesion</a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form> --}}
-
-                        {{-- <div class="dropdown-menu dropdown-menu-right"
-                            aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                                                                 document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>
-                        </div> --}}
-
+                        </div>
+                    </div>
                     @endguest
                 </div>
 
@@ -146,10 +124,6 @@
 
             <div id="menu">
                 <ul class="row mx-auto">
-                    {{-- <div class="col-lg-12" id="login">
-                        <a href="#" class="iniciar">INICIAR SESION</a>
-                        <a href="#">REGISTRATE</a>
-                    </div> --}}
                     <div class="col-lg-8 mx-auto mt-5">
                         <div class="row mx-auto mb-5 text-center">
                             <div class="col-lg-4">
@@ -183,14 +157,94 @@
                 </ul>
             </div>
 
+        </header> --}}
+
+        <header>
+            <nav class="navbar navbar-expand-lg">
+                <a class="navbar-brand" href="#">
+                    <img src="{{ asset('images/Logos/logo.png') }}" alt="">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-2 mr-auto">
+                        <li class="nav-item active">
+                            @if (isset($page) && $page == 'welcome')
+                                <a class="nav-link active" href="{{ route('main') }}">NOTICIAS</a>
+                            @else
+                                <a class="nav-link" href="{{ route('main') }}">NOTICIAS</a>
+                            @endif
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="culturadropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                CULTURA
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="culturadropdown">
+                                <a class="dropdown-item" href="#">Accion 1</a>
+                                <a class="dropdown-item" href="#">Accion 1</a>
+                                <a class="dropdown-item" href="#">Accion 1</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="culturadropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                RECREACIÓN Y DEPORTE
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="culturadropdown">
+                                <a class="dropdown-item" href="#">Accion 1</a>
+                                <a class="dropdown-item" href="#">Accion 1</a>
+                                <a class="dropdown-item" href="#">Accion 1</a>
+                            </div>
+                        </li>
+                    </ul>
+
+                    @guest
+                        <div id="content-botons-register">
+                            <a href="{{ route('login') }}" class="btn">INGRRESAR</a>
+                            @if (Route::has('register'))
+                                <a href="{{ route('register') }}" class="btn ml-1">REGISTRATE</a>
+                            @endif
+                        </div>
+                    @else
+
+                        <div id="content-botons-register">
+                            <a href="{{ route('login') }}" class="btn">{{ Auth::user()->name }}</a>
+
+                            <div class="dropdown d-inline-block" style="padding: 6px 0px">
+                                <button class="btn btn-secondary dropdown-toggle" style="border: none; height: 43px;" type="button" id="dropdownMenuButton"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    ACCIONES
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="{{ route('noticias.index') }}">Noticias</a>
+                                    <a class="dropdown-item" href="{{ route('noticias.create') }}">Crear Noticia</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    @endguest
+
+                    {{-- <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form> --}}
+                </div>
+            </nav>
         </header>
+
 
         <main>
             @yield('content')
         </main>
 
 
-        <footer class="page-footer font-small blue pt-5" style="">
+        {{-- <footer class="page-footer font-small blue pt-5" style="">
 
             <div class="container-fluid text-center text-md-left" style="max-width: 1111px;">
                 <div class="row">
@@ -198,8 +252,6 @@
                     <div class="col-md-4" id="footer-img-content">
                         <img src="{{ asset('images/Logos/LOGOHORIZONTAL.png') }}" alt="logovertical">
                     </div>
-                    {{--
-                    <hr class="clearfix w-100 d-md-none pb-3"> --}}
 
                     <div class="col-md-3 ml-auto">
 
@@ -239,7 +291,40 @@
                 <a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
             </div>
 
+        </footer> --}}
+
+
+        <footer>
+            <div class="row mx-auto" style="max-width: 1111px">
+                <div class="col-lg-4">
+                    <div id="imagenlogo">
+                        <img src="{{ asset('images/Logos/logo.png') }}" alt="">
+                    </div>
+                    <div>
+                        <h4>ICRDPITALITOHUILA</h4>
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <img src="{{ asset('images/icons/facebook.png') }}" alt="facebook">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="{{ asset('images/icons/instagram.png') }}" alt="instagram">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                {{-- <div class="col-lg-4">
+                    <img src="{{ asset('images/Logos/regionvive.png') }}" alt="region">
+                </div> --}}
+                <div class="col-lg-4 ml-auto">
+                    <img src="{{ asset('images/Logos/alcaldia.png') }}" alt="alcadia">
+                </div>
+            </div>
         </footer>
+
     </div>
 
 
@@ -250,7 +335,7 @@
     <script src="{{ asset('js/bootstrap/jquery-3.5.1.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap/bootstrap.min.js') }}"></script>
     <script>
-        const closeopen = () => {
+        /* const closeopen = () => {
             document.getElementById('menu').classList.toggle('active')
             $('#content-logo').toggle()
             $('#content-logo-close').toggle()
@@ -263,7 +348,7 @@
         $('#content-logo-close').on('click', function(e) {
             e.preventDefault()
             closeopen()
-        })
+        }) */
 
     </script>
 

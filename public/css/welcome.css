@@ -1,193 +1,198 @@
 * {
     padding: 0px;
     margin: 0px;
-    font-family: SecularOne-Regular;
+    font-family: 'Montserrat-Regular';
 }
 
-.banner {
+#main-section {
     width: 100%;
     height: 100vh;
-    overflow: hidden;
+    background-image: url('../images/main-section.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
 }
 
-.banner h1 {
-    position: relative;
-    top: 300px;
+#main-section #content {
+    margin-top: 246px;
+}
+
+#contain-title {
+    border-left: 8px solid white;
+    padding-left: 20px;
+}
+
+#contain-title h1 {
     color: white;
-    z-index: 3;
-    font-family: SecularOne-Regular;
-    left: 50%;
-    /* left: 10px; */
-    transform: translateX(-511px);
-    z-index: 2;
+    font-family: 'Montserrat-Bold';
 }
 
-.banner::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: black;
-    opacity: .3;
-    z-index: 1;
+#btn-vermas {
+    margin-left: 24px;
 }
 
-video {
-    width: 100%;
+#btn-vermas a {
+    background-color: #EC681D;
+    color: white;
+    font-size: 29px;
+    border-radius: 8px;
+    padding: 3px 27px;
 }
 
-.content div {
-    max-width: 1111px;
-    margin: auto;
+#btn-vermas a:hover {
+    background-color: #ce6324;
 }
 
-/* CONTENIDO */
-
-#contenido {
-    max-width: 1111px;
-    margin: auto;
+#places-section h1 {
+    color: #104495;
+    font-family: 'Montserrat-Bold';
+    width: 70%;
+    font-size: 40px;
+    margin: 50px auto 0px auto;
 }
 
-#formcontrol {
-    margin-top: 60px;
-    text-align: center;
-}
-
-#formcontrol h3 {
+#places-section p {
+    color: #104495;
     font-size: 20px;
-    margin: 0px auto 20px auto;
 }
 
-#formcontrol form {
-    margin: auto;
-    text-align: center;
-    width: 50%;
-    position: relative;
+.imagen-pruebas {
+    background-image: url('../images/main-section.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 200px;
 }
 
-#formcontrol form button {
-    position: absolute;
-    left: 91.5%;
-    border-radius: 25px;
+.imagen-pruebasshort {
+    background-image: url('../images/main-section.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 200px;
 }
 
-#formcontrol form button:hover {
-    background-color: rgb(196, 196, 196);
+.imagen-pruebas h3 {
+    background-color: rgba(238, 240, 239, 0.8);
+    font-size: 25px;
+    color: #35A037;
+    font-family: 'Montserrat-Bold';
+    border-bottom: 3px solid #104495;
+    border-right: 3px solid #104495;
+    padding: 5px;
 }
 
-#formcontrol form button img {
-    width: 20px;
+.imagen-pruebasshort h3 {
+    background-color: rgba(238, 240, 239, 0.8);
+    font-size: 20px;
+    color: #35A037;
+    font-family: 'Montserrat-Bold';
+    border-bottom: 3px solid #104495;
+    border-right: 3px solid #104495;
+    padding: 5px;
+    min-height: 85px;
+    margin-top: 102px;
 }
 
-#formcontrol form input {
-    width: 100%;
-    border-radius: 25px;
-}
+/* Noticias */
 
-/* Carrousel */
-
-.carousel#caroulsel1 {
-    margin-top: 60px;
-}
-
-.carousel#caroulsel1 .carousel-inner {
-    height: 500px;
-}
-
-.arrow span {
-    padding: 30px 20px 30px 20px;
-    background-color: gray;
-}
-
-.arrow#seconds-arrow span {
-    padding: 20px 10px 20px 10px;
-}
-
-/* Main part */
-
-#main-part {
-    max-width: 1111px;
+#notices-section {
     margin-top: 70px;
-    /* background-color: green; */
 }
 
-#main-part div h2 {
-    margin: 0px auto 20px 12px;
-}
-
-/* Carousel 2 */
-
-#content-white {
-    background-color: rgb(201, 201, 201);
-}
-
-#caroulsel2 .carousel-item .contenedor {
-    padding: 50px;
-    margin-top: 60px;
-}
-
-#caroulsel2 .carousel-item .contenedor span img {
-    width: 20px;
-}
-
-#caroulsel2 .carousel-item .contenedor span.time-published {
-    color: #97D662;
-    font-weight: bold;
-}
-
-#caroulsel2 .carousel-item .contenedor h3 {
-    font-size: 28px;
-    margin: 20px auto 20px auto;
-    color: #97D662;
-}
-
-#caroulsel2 .carousel-item .contenedor a {
-    display: inline-block;
-    margin: 50px auto auto auto;
-    background-color: #97D662;
-    padding: 10px 20px 10px 20px;
-    border-radius: 25px;
-    width: 150px;
+#notices-section h1 {
+    font-family: 'Montserrat-Bold';
+    color: #104495;
+    font-size: 45px;
     text-align: center;
+}
+
+#notices-section p {
+    font-family: 'Montserrat-Regular';
+    color: #104495;
+    font-size: 20px;
+    text-align: center;
+}
+
+.arrows {
+    background-color: #a7aaaa;
+    border-radius: 50%;
+    height: 60px;
+    width: 60px !important;
+    padding: 0px;
+    top: 70px !important;
+}
+
+#row-notices h3 {
+    color: #104495;
+    font-size: 40px;
+    font-family: 'Montserrat-Bold';
+}
+
+/* Suscripción */
+
+#suscribete-container {
+    background-color: #104495;
+    padding: 20px 0px 20px 0px;
+}
+
+.content-mesaje {
+    height: 200px;
+    margin-top: 50px;
+}
+
+#suscribete-section {
+    height: 300px;
+}
+
+#suscribete-section h1 {
+    font-size: 25px;
+    color: white;
+    margin-top: 40px;
+    text-align: left;
+}
+
+#suscribete-container #form-content h3 {
+    font-size: 35px;
     color: white;
 }
 
-.carousel-control-prev {
-    left: -30px !important;
+#suscribete-container #form-content button {
+    position: absolute;
 }
 
-.carousel-control-next {
-    right: 30px !important;
+#suscribete-container #form-content button img {
+    width: 24px;
 }
 
-/* opciones */
-
-/* Notices */
-
-#notices {
-    margin: 50px auto auto auto;
+.content-search {
+    margin-top: 50px;
 }
 
-#notices .content-notices {}
-
-#notices .content-notices #filter-content {
-    margin-left: auto !important;
-    margin-top: 20px;
+.content-search input {
+    width: 100% !important;
+    padding: 25px;
+    border-radius: 20px;
 }
 
-#notices .content-notices #filter-content span {
-    font-size: 20px;
-    margin-right: 20px;
+.content-search button {
+    left: 87%;
+    border-radius: 24px;
+    background-color: white;
+    padding: 10px;
+    border: none;
 }
 
-#notices .content-notices #filter-content .dropdown {
-    display: inline-block;
+.content-search button:hover {
+    background-color: rgb(179, 179, 179);
 }
 
-#notices .content-notices #filter-content .dropdown button {
-    border-radius: 0px;
-    background-color: rgb(212, 211, 211);
+@media(max-height: 815px) {
+    #main-section #content {
+        margin-top: 328px;
+    }
 }
 
+@media(max-height: 715px) {
+    #main-section #content {
+        margin-top: 246px;
+    }
+}
