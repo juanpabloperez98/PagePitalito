@@ -50,6 +50,7 @@ header{
     font-family: 'Montserrat-Bold';
     border-radius: 8px;
     padding: 7px 14px;
+    margin-left: 10px;
 }
 
 #content-botons-register .btn:hover{

@@ -185,27 +185,46 @@
                                 CULTURA
                             </a>
                             <div class="dropdown-menu" aria-labelledby="culturadropdown">
-                                <a class="dropdown-item" href="#">Accion 1</a>
-                                <a class="dropdown-item" href="#">Accion 1</a>
-                                <a class="dropdown-item" href="#">Accion 1</a>
+                                <a class="dropdown-item" href="#">Escuelas de formación artística</a>
+                                <a class="dropdown-item" href="#">Bibliotecas Municipales</a>
+                                <a class="dropdown-item" href="#">Infraestructura Cultural</a>
+                                <a class="dropdown-item" href="#">Patrimonio</a>
+                                <a class="dropdown-item" href="#">Agenda Cultural</a>
+                                <!--
+                                <div class="dropdown-menu" aria-labelledby="culturadropdown">
+                                    <a class="dropdown-item" href="#">Danza</a>
+                                    <a class="dropdown-item" href="#">Música</a>
+                                    <a class="dropdown-item" href="#">Teatro</a>
+                                    <a class="dropdown-item" href="#">Pintura</a>
+                                </div>
+                                -->    
                             </div>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="culturadropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                RECREACIÓN Y DEPORTE
+                                DEPORTE
                             </a>
                             <div class="dropdown-menu" aria-labelledby="culturadropdown">
-                                <a class="dropdown-item" href="#">Accion 1</a>
-                                <a class="dropdown-item" href="#">Accion 1</a>
-                                <a class="dropdown-item" href="#">Accion 1</a>
+                                <a class="dropdown-item" href="#">Escuelas de Formación Deportiva</a>
+                                <a class="dropdown-item" href="#">Actividad Física, Laboyano Activo y Saludable</a>
+                                <a class="dropdown-item" href="#">Deporte Social Comunitario</a>
+                                <a class="dropdown-item" href="#">Clubes Deportivos</a>
+                                <a class="dropdown-item" href="#">Infraestructura Deportiva</a>
+                                <a class="dropdown-item" href="#">Agenda Deportiva</a>
                             </div>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">CALENDARIO</a>
+                        </li>                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">CONVOCATORIAS</a>
+                        </li>                        
                     </ul>
-
+                    
                     @guest
                         <div id="content-botons-register">
-                            <a href="{{ route('login') }}" class="btn">INGRRESAR</a>
+                            <a href="{{ route('login') }}" class="btn">INGRESAR</a>
                             @if (Route::has('register'))
                                 <a href="{{ route('register') }}" class="btn ml-1">REGISTRATE</a>
                             @endif
@@ -227,9 +246,9 @@
                                 </div>
                             </div>
                         </div>
-
+                        
                     @endguest
-
+                    
                     {{-- <form class="form-inline my-2 my-lg-0">
                         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
