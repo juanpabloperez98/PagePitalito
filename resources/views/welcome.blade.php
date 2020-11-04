@@ -84,9 +84,112 @@
                         eventos liderados desde el Instituto de Cultura, Recreación y Deporte de Pitalito.</p>
                 </div>
                 <div class="col-lg-12" style="padding: 0px">
-                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                    <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
                         <div class="carousel-inner">
-                            <div class="carousel-item active">
+
+
+
+                            {{-- @php
+                            $con = 0;
+                            $var = sizeof($noticias);
+                            $result = $con%3;
+                            @endphp --}}
+
+
+
+                            {{-- @while ($con != $var)
+
+
+                                @php
+                                $result = $con
+                                @endphp
+
+
+
+                                <div class="carousel-item">
+                                    <div class="row mx-auto" id="row-notices">
+                                        <div class="col-lg-4 text-center" style="padding: 10px">
+                                            <img src="{{ asset('images/main-section.jpg') }}" class="d-block w-100"
+                                                alt="...">
+                                            <h3>TITULO</h3>
+                                            <p>ENCABEZADO</p>
+                                        </div>
+                                        <div class="col-lg-4 text-center" style="padding: 10px">
+                                            <img src="{{ asset('images/main-section.jpg') }}" class="d-block w-100"
+                                                alt="...">
+                                            <h3>TITULO</h3>
+                                            <p>ENCABEZADO</p>
+                                        </div>
+                                        <div class="col-lg-4 text-center" style="padding: 10px">
+                                            <img src="{{ asset('images/main-section.jpg') }}" class="d-block w-100"
+                                                alt="...">
+                                            <h3>TITULO</h3>
+                                            <p>ENCABEZADO</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                $con ++;
+
+
+
+                            @endwhile --}}
+
+                            @php
+                            $init = 0;
+                            @endphp
+
+                            @foreach ($noticias as $noticia)
+
+                                @if ($init == 0)
+                                    <div class="carousel-item active">
+                                        <div class="row mx-auto" id="row-notices">
+                                            <div class="col-lg-6 mx-auto text-center" style="padding: 10px">
+                                                @if (Storage::disk('images')->has($noticia->file))
+                                                    <img src="{{ url('/imagen/' . $noticia->file) }}" class="d-block w-100"
+                                                        alt="...">
+                                                @else
+                                                    <img src="{{ asset('images/main-section.jpg') }}" class="d-block w-100"
+                                                        alt="...">
+                                                @endif
+                                                <a href="{{ route('noticias.show', $noticia->id) }}">
+                                                    <h3>{{ $noticia->name }}</h3>
+                                                </a>
+                                                {{-- <p> {!! $noticia->excerpt !!}</p>
+                                                --}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                @else
+                                    <div class="carousel-item">
+                                        <div class="row mx-auto" id="row-notices">
+                                            <div class="col-lg-6 mx-auto text-center" style="padding: 10px">
+                                                @if (Storage::disk('images')->has($noticia->file))
+                                                    <img src="{{ url('/imagen/' . $noticia->file) }}" class="d-block w-100"
+                                                        alt="...">
+                                                @else
+                                                    <img src="{{ asset('images/main-section.jpg') }}" class="d-block w-100"
+                                                        alt="...">
+                                                @endif
+                                                <a href="{{ route('noticias.show', $noticia->id) }}">
+                                                    <h3>{{ $noticia->name }}</h3>
+                                                </a>
+                                                {{-- <div>
+                                                    {!! $noticia->excerpt !!}
+                                                </div> --}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+
+                                @php
+                                $init ++;
+                                @endphp
+
+                            @endforeach
+                            {{-- <div class="carousel-item">
                                 <div class="row mx-auto" id="row-notices">
                                     <div class="col-lg-4 text-center" style="padding: 10px">
                                         <img src="{{ asset('images/main-section.jpg') }}" class="d-block w-100" alt="...">
@@ -123,34 +226,17 @@
                                         <p>ENCABEZADO</p>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="row mx-auto" id="row-notices">
-                                    <div class="col-lg-4 text-center" style="padding: 10px">
-                                        <img src="{{ asset('images/main-section.jpg') }}" class="d-block w-100" alt="...">
-                                        <h3>TITULO</h3>
-                                        <p>ENCABEZADO</p>
-                                    </div>
-                                    <div class="col-lg-4 text-center" style="padding: 10px">
-                                        <img src="{{ asset('images/main-section.jpg') }}" class="d-block w-100" alt="...">
-                                        <h3>TITULO</h3>
-                                        <p>ENCABEZADO</p>
-                                    </div>
-                                    <div class="col-lg-4 text-center" style="padding: 10px">
-                                        <img src="{{ asset('images/main-section.jpg') }}" class="d-block w-100" alt="...">
-                                        <h3>TITULO</h3>
-                                        <p>ENCABEZADO</p>
-                                    </div>
-                                </div>
-                            </div>
+                            </div> --}}
                         </div>
-                        <a class="carousel-control-prev arrows" style="left: -60px;" href="#carouselExampleControls"
-                            role="button" data-slide="prev">
+                        <a class="carousel-control-prev arrows" {{-- style="left: -60px;"
+                            --}} href="#carouselExampleControls" role="button"
+                            data-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="sr-only">Previous</span>
                         </a>
-                        <a class="carousel-control-next arrows" style="right: -60px;" href="#carouselExampleControls"
-                            role="button" data-slide="next">
+                        <a class="carousel-control-next arrows" {{-- style="right: -60px;"
+                            --}} href="#carouselExampleControls" role="button"
+                            data-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="sr-only">Next</span>
                         </a>

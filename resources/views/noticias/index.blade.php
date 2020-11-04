@@ -32,22 +32,46 @@
                             <div class="col-lg-4 mt-5">
                                 <div class="card">
                                     @if (Storage::disk('images')->has($noticia->file))
-                                        <img class="card-img-top" src="{{ url('/imagen/' . $noticia->file) }}"
-                                            alt="Card image cap">
+                                        <img class="card-img-top" src="{{ url('/imagen/' . $noticia->file) }}" alt="Card image cap">
                                     @else
-                                        <img class="card-img-top" src="{{ asset('images/ej1.jpg') }}"
-                                            alt="Card image cap">
+                                        <img class="card-img-top" src="{{ asset('images/ej1.jpg') }}" alt="Card image cap">
                                     @endif
                                     <div class="card-body">
                                         <h5 class="card-title">{{ $noticia->name }}</h5>
-                                        <div class="card-text" style="max-height: 78px; overflow: hidden;">{!! $noticia->excerpt !!}</div>
+                                        <div class="card-text" id="content-p">{!! $noticia->excerpt !!}</div>
                                         <div class="botones">
                                             <a href="{{ route('noticias.edit', $noticia->id) }}">
-                                                <img src="https://img.icons8.com/metro/26/000000/edit.png"/>
+                                                <img src="https://img.icons8.com/metro/26/000000/edit.png" />
                                             </a>
-                                            <a class="ml-2" href="#">
-                                                <img src="https://img.icons8.com/metro/26/000000/delete-sign.png"/>
-                                            </a>
+                                            {{-- <a class="ml-2" href="#">
+                                                <img src="https://img.icons8.com/metro/26/000000/delete-sign.png" />
+                                            </a> --}}
+                                            <a href="#modalWindow" role="button" class="ml-2"
+                                                data-toggle="modal"><img src="https://img.icons8.com/metro/26/000000/delete-sign.png" /></a>
+                                            <div id="modalWindow" class="modal fade">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" style="margin-left: 0px" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                            <h4 class="modal-title">¿Estás seguro?</h4>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <p>¿Seguro que quieres borrar este elemento?</p>
+                                                            <p class="text-warning"><small>Si lo borras, nunca podrás
+                                                                    recuperarlo.</small></p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+
+                                                            <form action="{{ route('noticias.destroy', $noticia->id) }}" method="POST">
+                                                                {{ method_field('delete') }}
+                                                                @csrf
+                                                                <button type="submit" class="btn btn-danger">Eliminar</a>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -100,10 +124,10 @@
                                 </div>
                                 <div class="botones">
                                     <a href="#">
-                                        <img src="https://img.icons8.com/metro/26/000000/edit.png"/>
+                                        <img src="https://img.icons8.com/metro/26/000000/edit.png" />
                                     </a>
                                     <a class="ml-2" href="#">
-                                        <img src="https://img.icons8.com/metro/26/000000/delete-sign.png"/>
+                                        <img src="https://img.icons8.com/metro/26/000000/delete-sign.png" />
                                     </a>
                                 </div>
                             </div>
@@ -145,5 +169,3 @@
         </div>
     </div>
 @endsection
-
-

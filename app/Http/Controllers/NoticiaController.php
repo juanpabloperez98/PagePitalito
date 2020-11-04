@@ -15,11 +15,19 @@ class NoticiaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth',['only'=>['create','store','edit','update','destroy']]);
+    }
+
+
+
     public function index()
     {
         //
         // $noticias_count = Noticia::count();
-        $noticias = Noticia::orderBy('id','ASC')->get();
+        $noticias = Noticia::orderBy('id', 'ASC')->get();
 
 
         // dd(empty($noticias));
@@ -27,7 +35,7 @@ class NoticiaController extends Controller
 
 
 
-        return view('noticias.index',[
+        return view('noticias.index', [
             'page' => 'notices',
             'noticias' => $noticias
         ]);
@@ -41,11 +49,9 @@ class NoticiaController extends Controller
     public function create()
     {
         //
-        return view('noticias.create',[
+        return view('noticias.create', [
             'page' => 'notices'
         ]);
-
-        
     }
 
     /**
@@ -59,7 +65,7 @@ class NoticiaController extends Controller
         //
 
 
-        $validateData = $this->validate($request,[
+        $validateData = $this->validate($request, [
             'title' => 'required|min:5',
             'slug' => 'required',
             'resumen' => 'required',
@@ -86,8 +92,8 @@ class NoticiaController extends Controller
         $noticia->body = $body;
         $noticia->status = $status;
 
-        if($image){
-            $image_path = time().$image->getClientOriginalName();
+        if ($image) {
+            $image_path = time() . $image->getClientOriginalName();
             \Storage::disk('images')->put($image_path, \File::get($image));
             $noticia->file = $image_path;
         }
@@ -95,13 +101,12 @@ class NoticiaController extends Controller
 
 
         return redirect()->route('noticias.index')
-                ->with('info','Entrada creada con exito!!');
-
-
+            ->with('info', 'Entrada creada con exito!!');
     }
 
 
-    public function getImage($filename){
+    public function getImage($filename)
+    {
         $file = \Storage::disk('images')->get($filename);
         return new Response($file, 200);
     }
@@ -115,7 +120,7 @@ class NoticiaController extends Controller
     public function show(Noticia $noticia)
     {
         // dd($noticia);
-        return view('noticias.show',compact('noticia'));
+        return view('noticias.show', compact('noticia'));
     }
 
     /**
@@ -127,8 +132,26 @@ class NoticiaController extends Controller
     public function edit(Noticia $noticia)
     {
         //
-        return view('noticias.edit',compact('noticia'));
+        return view('noticias.edit', compact('noticia'));
+    }
 
+
+    public function main_section()
+    {
+
+
+        $noticias = Noticia::orderBy('id', 'ASC')->get();
+
+
+
+        // dd();
+
+        // dd($noticias);
+
+        return view('welcome', [
+            'page' => 'welcome',
+            'noticias' => $noticias
+        ]);
     }
 
     /**
@@ -138,9 +161,51 @@ class NoticiaController extends Controller
      * @param  \App\Noticia  $noticia
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Noticia $noticia)
+    public function update(Request $request, $id)
     {
-        //
+
+        $validateData = $this->validate($request, [
+            'title' => 'required|min:5',
+            'slug' => 'required',
+            'resumen' => 'required',
+            'noticia' => 'required',
+            'image' => 'mimes:jpeg,bmp,png',
+            'status' => 'required|in:DRAFT,PUBLISHED'
+        ]);
+
+        $name = $request->input('title');
+        $slug = $request->input('slug');
+        $excerpt = $request->input('resumen');
+        $body = $request->input('noticia');
+        $image = $request->file('image');
+        $status = $request->input('status');
+
+
+        $noticia = Noticia::where('id', '=', $id)->first();
+
+
+        // dd($noticia);
+
+        if (count((array)$noticia) >= 1) {
+            $noticia->name = $name;
+            $noticia->slug = $slug;
+            $noticia->excerpt = $excerpt;
+            $noticia->body = $body;
+            $noticia->status = $status;
+
+            if ($image) {
+                $image_path = time() . $image->getClientOriginalName();
+                \Storage::disk('images')->put($image_path, \File::get($image));
+                $noticia->file = $image_path;
+            }
+
+            $noticia->update();
+        }
+
+        // $noticia->fill($request->all())->save();
+
+        return redirect()->route('noticias.edit', $noticia)
+            ->with('info', 'Noticia editada con exito!!');
     }
 
     /**
@@ -151,6 +216,7 @@ class NoticiaController extends Controller
      */
     public function destroy(Noticia $noticia)
     {
-        //
+        $noticia->delete();
+        return back()->with('info', 'Eliminado correctamente!!');
     }
 }

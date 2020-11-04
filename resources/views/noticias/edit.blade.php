@@ -7,6 +7,7 @@
 
 @section('content')
     <div class="container">
+
         <div class="row mx-auto">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
@@ -26,7 +27,18 @@
                                 </ul>
                             </div>
                         @endif
-                        <form enctype="multipart/form-data" method="POST" action="#">
+                        @if (session('info'))
+                            <div class="alert alert-success">
+                                <ul>
+                                    <li style="list-style: none">
+                                        {{ session('info') }}
+                                    </li>
+                                </ul>
+                            </div>
+                        @endif
+                        <form enctype="multipart/form-data" method="POST"
+                            action="{{ route('noticias.update', $noticia->id) }}">
+                            {{ method_field('PATCH') }}
                             @csrf
                             <div class="form-group">
                                 <label for="title">Titulo</label>
@@ -40,20 +52,20 @@
                             <div class="form-group">
                                 <label for="resumen">Resumen</label>
                                 <textarea name="resumen" id="resumen" class="form-control" rows="3">
-                                    {!! $noticia->excerpt !!}
-                                </textarea>
+                                                    {!!  $noticia->excerpt !!}
+                                                </textarea>
                             </div>
                             <div class="form-group">
                                 <label for="noticia">Noticia</label>
                                 <textarea class="form-control" id="noticia" name="noticia" rows="5">
-                                    {!! $noticia->body !!}
-                                </textarea>
+                                                    {!!  $noticia->body !!}
+                                                </textarea>
                             </div>
                             <div class="form-group">
                                 <label for="image">Imagen</label>
                                 @if (Storage::disk('images')->has($noticia->file))
                                     <div class="mr-auto" style="width: 50%">
-                                        <img src="{{ url('/imagen/'.$noticia->file) }}" alt="imagen" style="width: 100%">
+                                        <img src="{{ url('/imagen/' . $noticia->file) }}" alt="imagen" style="width: 100%">
                                     </div>
                                 @endif
                                 <input type="file" class="form-control" id="image" name="image">

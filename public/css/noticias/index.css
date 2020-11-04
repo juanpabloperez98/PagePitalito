@@ -1,20 +1,20 @@
-*{
-    font-family: SecularOne-Regular;
+* {
+    font-family: 'Montserrat-Regular';
 }
 
-main{
+main {
     min-height: 100vh !important;
 }
+
 .container {
     padding-top: 100px;
     padding-bottom: 100px;
 }
 
-.container h2{
+.container h2 {
     font-size: 27px;
     font-weight: bold;
 }
-
 
 #content-form {
     margin-left: auto !important;
@@ -48,26 +48,28 @@ main{
     background-color: gray;
 }
 
-#content-form form button img{
+#content-form form button img {
     width: 20px;
 }
 
+#content-p p{
+    min-height: 180px;
+    overflow: hidden;
+}
 
-.card{
+.card {
     margin: auto;
 }
 
-.botones{
+.botones {
     text-align: right;
 }
 
-
-
-.botones a img{
+.botones a img {
     width: 20px;
 }
 
-.botones a img:hover{
+.botones a img:hover {
     background-color: gray;
     padding: 10px;
     border-radius: 10px;

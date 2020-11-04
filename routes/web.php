@@ -13,11 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome',[
-        'page' => 'welcome'
-    ]);
-})->name('main');
+Route::get('/','NoticiaController@main_section')->name('main');
 
 Auth::routes();
 
