@@ -161,7 +161,7 @@
 
         <header>
             <nav class="navbar navbar-expand-lg">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="{{ route('main') }}">
                     <img src="{{ asset('images/Logos/logo.png') }}" alt="">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"

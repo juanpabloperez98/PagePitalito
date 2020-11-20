@@ -27,7 +27,7 @@ class NoticiaController extends Controller
     {
         //
         // $noticias_count = Noticia::count();
-        $noticias = Noticia::orderBy('id', 'ASC')->get();
+        $noticias = Noticia::orderBy('id', 'DESC')->get();
 
 
         // dd(empty($noticias));
@@ -140,7 +140,7 @@ class NoticiaController extends Controller
     {
 
 
-        $noticias = Noticia::orderBy('id', 'ASC')->get();
+        $noticias = Noticia::orderBy('id', 'DESC')->get();
 
 
 
