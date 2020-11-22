@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNoticiasTable extends Migration
+class PhotoNoticesTableMigrations extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,16 @@ class CreateNoticiasTable extends Migration
      */
     public function up()
     {
-        Schema::create('noticias', function (Blueprint $table) {
+        //
+        Schema::create('photos_notices', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->string('name', 128);
-            $table->text('body');
-            $table->enum('status', ['PUBLISHED', 'DRAFT'])->default('DRAFT');
             $table->string('file', 128)->nullable();
-            $table->timestamps();
+            $table->unsignedBigInteger('notice_id');
 
-            $table->foreign('user_id')->references('id')->on('users')
+            $table->foreign('notice_id')->references('id')->on('noticias')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
+            
         });
     }
 
@@ -35,6 +33,6 @@ class CreateNoticiasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('noticias');
+        //
     }
 }

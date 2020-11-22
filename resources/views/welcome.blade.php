@@ -7,7 +7,7 @@
 @section('content')
 
     {{-- MAIN --}}
-    <div class="row mx-auto" id="main-section">
+    {{-- <div class="row mx-auto" id="main-section">
         <div class="row mx-auto" style="max-width: 1111px" id="content">
             <div class="col-lg-7">
                 <div id="contain-title">
@@ -18,8 +18,18 @@
                 </div>
             </div>
         </div>
+    </div> --}}
+    <div class="row mx-auto" id="video-content">
+        <video autoplay="autoplay" loop="loop" id="video_background" preload="auto" muted>
+            <source src="{{ asset('images/videos/video2.mp4') }}" type="video/mp4">
+        </video>
+        <div class="text">
+            <h1>INSTITUTO DE CULTURA RECREACIÓN Y DEPORTE PITALITO HUILA</h1>
+            <div id="btn-vermas">
+                <a href="#" class="btn">VER MÁS</a>
+            </div>
+        </div>
     </div>
-
     {{-- DESCUBRE --}}
     <div class="row mx-auto" id="places-section">
         <div style="max-width: 1111px" class="mx-auto">
@@ -72,7 +82,6 @@
         </div>
     </div>
 
-
     {{-- Noticias --}}
     <div class="row mx-auto" id="notices-section">
         <div style="max-width: 1111px" class="mx-auto">
@@ -83,169 +92,94 @@
                         tambien
                         eventos liderados desde el Instituto de Cultura, Recreación y Deporte de Pitalito.</p>
                 </div>
-                <div class="col-lg-12" style="padding: 0px">
-                    <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
-                        <div class="carousel-inner">
-
-
-
-                            {{-- @php
-                            $con = 0;
-                            $var = sizeof($noticias);
-                            $result = $con%3;
-                            @endphp --}}
-
-
-
-                            {{-- @while ($con != $var)
-
-
+                @if (sizeof($noticias) > 0)
+                    <div class="col-lg-12" style="padding: 0px">
+                        <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                            <div class="carousel-inner">
                                 @php
-                                $result = $con
+                                $init = 0;
                                 @endphp
 
+                                @foreach ($noticias as $noticia)
 
-
-                                <div class="carousel-item">
-                                    <div class="row mx-auto" id="row-notices">
-                                        <div class="col-lg-4 text-center" style="padding: 10px">
-                                            <img src="{{ asset('images/main-section.jpg') }}" class="d-block w-100"
-                                                alt="...">
-                                            <h3>TITULO</h3>
-                                            <p>ENCABEZADO</p>
-                                        </div>
-                                        <div class="col-lg-4 text-center" style="padding: 10px">
-                                            <img src="{{ asset('images/main-section.jpg') }}" class="d-block w-100"
-                                                alt="...">
-                                            <h3>TITULO</h3>
-                                            <p>ENCABEZADO</p>
-                                        </div>
-                                        <div class="col-lg-4 text-center" style="padding: 10px">
-                                            <img src="{{ asset('images/main-section.jpg') }}" class="d-block w-100"
-                                                alt="...">
-                                            <h3>TITULO</h3>
-                                            <p>ENCABEZADO</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-
-                                $con ++;
-
-
-
-                            @endwhile --}}
-
-                            @php
-                            $init = 0;
-                            @endphp
-
-                            @foreach ($noticias as $noticia)
-
-                                @if ($init == 0)
-                                    <div class="carousel-item active">
-                                        <div class="row mx-auto" id="row-notices">
-                                            <div class="col-lg-6 mx-auto text-center" style="padding: 10px">
-                                                @if (Storage::disk('images')->has($noticia->file))
-                                                    <img src="{{ url('/imagen/' . $noticia->file) }}" class="d-block w-100"
-                                                        alt="...">
-                                                @else
-                                                    <img src="{{ asset('images/main-section.jpg') }}" class="d-block w-100"
-                                                        alt="...">
-                                                @endif
-                                                <a href="{{ route('noticias.show', $noticia->id) }}">
-                                                    <h3>{{ $noticia->name }}</h3>
-                                                </a>
-                                                {{-- <p> {!! $noticia->excerpt !!}</p>
-                                                --}}
+                                    @if ($init == 0)
+                                        <div class="carousel-item active">
+                                            <div class="row mx-auto" id="row-notices">
+                                                <div class="col-lg-6 mx-auto text-center" style="padding: 10px">
+                                                    @if (Storage::disk('images')->has($noticia->file))
+                                                        <img src="{{ url('/imagen/' . $noticia->file) }}"
+                                                            class="d-block w-100" alt="...">
+                                                    @else
+                                                        <img src="{{ asset('images/main-section.jpg') }}"
+                                                            class="d-block w-100" alt="...">
+                                                    @endif
+                                                    <a href="{{ route('noticias.show', $noticia->id) }}">
+                                                        <h3>{{ $noticia->name }}</h3>
+                                                    </a>
+                                                    {{-- <p> {!! $noticia->excerpt !!}</p>
+                                                    --}}
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                @else
-                                    <div class="carousel-item">
-                                        <div class="row mx-auto" id="row-notices">
-                                            <div class="col-lg-6 mx-auto text-center" style="padding: 10px">
-                                                @if (Storage::disk('images')->has($noticia->file))
-                                                    <img src="{{ url('/imagen/' . $noticia->file) }}" class="d-block w-100"
-                                                        alt="...">
-                                                @else
-                                                    <img src="{{ asset('images/main-section.jpg') }}" class="d-block w-100"
-                                                        alt="...">
-                                                @endif
-                                                <a href="{{ route('noticias.show', $noticia->id) }}">
-                                                    <h3>{{ $noticia->name }}</h3>
-                                                </a>
-                                                {{-- <div>
-                                                    {!! $noticia->excerpt !!}
-                                                </div> --}}
+                                    @else
+                                        <div class="carousel-item">
+                                            <div class="row mx-auto" id="row-notices">
+                                                <div class="col-lg-6 mx-auto text-center" style="padding: 10px">
+                                                    @if (Storage::disk('images')->has($noticia->file))
+                                                        <img src="{{ url('/imagen/' . $noticia->file) }}"
+                                                            class="d-block w-100" alt="...">
+                                                    @else
+                                                        <img src="{{ asset('images/main-section.jpg') }}"
+                                                            class="d-block w-100" alt="...">
+                                                    @endif
+                                                    <a href="{{ route('noticias.show', $noticia->id) }}">
+                                                        <h3>{{ $noticia->name }}</h3>
+                                                    </a>
+                                                    {{-- <div>
+                                                        {!! $noticia->excerpt !!}
+                                                    </div> --}}
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                @endif
+                                    @endif
 
-                                @php
-                                $init ++;
-                                @endphp
+                                    @php
+                                    $init ++;
+                                    @endphp
 
-                            @endforeach
-                            {{-- <div class="carousel-item">
-                                <div class="row mx-auto" id="row-notices">
-                                    <div class="col-lg-4 text-center" style="padding: 10px">
-                                        <img src="{{ asset('images/main-section.jpg') }}" class="d-block w-100" alt="...">
-                                        <h3>TITULO</h3>
-                                        <p>ENCABEZADO</p>
-                                    </div>
-                                    <div class="col-lg-4 text-center" style="padding: 10px">
-                                        <img src="{{ asset('images/main-section.jpg') }}" class="d-block w-100" alt="...">
-                                        <h3>TITULO</h3>
-                                        <p>ENCABEZADO</p>
-                                    </div>
-                                    <div class="col-lg-4 text-center" style="padding: 10px">
-                                        <img src="{{ asset('images/main-section.jpg') }}" class="d-block w-100" alt="...">
-                                        <h3>TITULO</h3>
-                                        <p>ENCABEZADO</p>
-                                    </div>
-                                </div>
+                                @endforeach
+
                             </div>
-                            <div class="carousel-item">
-                                <div class="row mx-auto" id="row-notices">
-                                    <div class="col-lg-4 text-center" style="padding: 10px">
-                                        <img src="{{ asset('images/main-section.jpg') }}" class="d-block w-100" alt="...">
-                                        <h3>TITULO</h3>
-                                        <p>ENCABEZADO</p>
-                                    </div>
-                                    <div class="col-lg-4 text-center" style="padding: 10px">
-                                        <img src="{{ asset('images/main-section.jpg') }}" class="d-block w-100" alt="...">
-                                        <h3>TITULO</h3>
-                                        <p>ENCABEZADO</p>
-                                    </div>
-                                    <div class="col-lg-4 text-center" style="padding: 10px">
-                                        <img src="{{ asset('images/main-section.jpg') }}" class="d-block w-100" alt="...">
-                                        <h3>TITULO</h3>
-                                        <p>ENCABEZADO</p>
-                                    </div>
-                                </div>
-                            </div> --}}
+                            <a class="carousel-control-prev arrows" {{-- style="left: -60px;"
+                                --}} href="#carouselExampleControls" role="button"
+                                data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next arrows" {{-- style="right: -60px;"
+                                --}} href="#carouselExampleControls" role="button"
+                                data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
                         </div>
-                        <a class="carousel-control-prev arrows" {{-- style="left: -60px;"
-                            --}} href="#carouselExampleControls" role="button"
-                            data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next arrows" {{-- style="right: -60px;"
-                            --}} href="#carouselExampleControls" role="button"
-                            data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
+                        @guest
+                            <div class="boton text-center mt-3">
+                                <a href="{{ route('show-notices-user') }}" class="btn btn-primary">Ver todas las noticias</a>
+                            </div>
+                        @endguest
                     </div>
-                </div>
+                @else
+                    <div class="col-lg-12" style="padding: 0px" id="no-notices">
+                        <p>
+                            No hay noticias creadas
+                        </p>
+                    </div>
+                @endif
+
             </div>
         </div>
     </div>
-
 
     {{-- SUSCRIBETE --}}
     <div style="margin-top: 80px" id="suscribete-container">
@@ -267,8 +201,26 @@
             </div>
         </div>
     </div>
+@endsection
 
+@section('scripts')
+    <script>
+        if ($(window).scrollTop() >= 1217 && $(window).scrollTop() <= 1683) {
+            $('#notice_link').addClass('active')
+        } else {
+            $('#notice_link').removeClass('active')
+        }
 
+        $(window).scroll(() => {
+            if ($(window).scrollTop() >= 1217 && $(window).scrollTop() <= 1683) {
+                $('#notice_link').addClass('active')
+            } else {
+                $('#notice_link').removeClass('active')
+            }
+            console.log($(window).scrollTop())
+        })
+
+    </script>
 @endsection
 
 

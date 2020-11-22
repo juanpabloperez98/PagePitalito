@@ -18,7 +18,7 @@ class NoticiaController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth',['only'=>['create','store','edit','update','destroy']]);
+        $this->middleware('auth', ['only' => ['create', 'store', 'edit', 'update', 'destroy']]);
     }
 
 
@@ -67,8 +67,6 @@ class NoticiaController extends Controller
 
         $validateData = $this->validate($request, [
             'title' => 'required|min:5',
-            'slug' => 'required',
-            'resumen' => 'required',
             'noticia' => 'required',
             'image' => 'mimes:jpeg,bmp,png',
             'status' => 'required|in:DRAFT,PUBLISHED'
@@ -76,8 +74,6 @@ class NoticiaController extends Controller
 
         $user_id = \Auth::user()->id;
         $name = $request->input('title');
-        $slug = $request->input('slug');
-        $excerpt = $request->input('resumen');
         $body = $request->input('noticia');
         $image = $request->file('image');
         $status = $request->input('status');
@@ -87,8 +83,6 @@ class NoticiaController extends Controller
         $noticia = new Noticia();
         $noticia->user_id = $user_id;
         $noticia->name = $name;
-        $noticia->slug = $slug;
-        $noticia->excerpt = $excerpt;
         $noticia->body = $body;
         $noticia->status = $status;
 
@@ -146,10 +140,20 @@ class NoticiaController extends Controller
 
         // dd();
 
-        // dd($noticias);
+        // dd(sizeof($noticias));
 
         return view('welcome', [
             'page' => 'welcome',
+            'noticias' => $noticias
+        ]);
+    }
+
+
+    public function show_users_notices()
+    {
+        $noticias = Noticia::orderBy('id', 'DESC')->get();
+        return view('users.notices.show_notices', [
+            'page' => 'notices',
             'noticias' => $noticias
         ]);
     }
@@ -166,30 +170,20 @@ class NoticiaController extends Controller
 
         $validateData = $this->validate($request, [
             'title' => 'required|min:5',
-            'slug' => 'required',
-            'resumen' => 'required',
             'noticia' => 'required',
             'image' => 'mimes:jpeg,bmp,png',
             'status' => 'required|in:DRAFT,PUBLISHED'
         ]);
 
         $name = $request->input('title');
-        $slug = $request->input('slug');
-        $excerpt = $request->input('resumen');
         $body = $request->input('noticia');
         $image = $request->file('image');
         $status = $request->input('status');
 
-
         $noticia = Noticia::where('id', '=', $id)->first();
-
-
-        // dd($noticia);
 
         if (count((array)$noticia) >= 1) {
             $noticia->name = $name;
-            $noticia->slug = $slug;
-            $noticia->excerpt = $excerpt;
             $noticia->body = $body;
             $noticia->status = $status;
 
@@ -201,9 +195,6 @@ class NoticiaController extends Controller
 
             $noticia->update();
         }
-
-        // $noticia->fill($request->all())->save();
-
         return redirect()->route('noticias.edit', $noticia)
             ->with('info', 'Noticia editada con exito!!');
     }

@@ -4,6 +4,37 @@
     font-family: 'Montserrat-Regular';
 }
 
+#video-content{
+    position: relative;
+    width: 100%;
+}
+
+#video-content .text{
+    z-index: 1;
+    position: relative;
+    top: 210px;
+    max-width: 500px;
+    margin-left: 70px;
+}
+
+#video-content .text h1{
+    color: white;
+    border-left: 8px solid white;
+    padding-left: 20px;
+}
+
+#video_background{
+    position: absolute;
+    /* top: 50%; */
+    /* left: 50%; */
+    /* transform: translate(-50%,-50%); */
+    min-width: 100%;
+    min-height: 50%;
+    width: auto;
+    height: auto;
+    z-index: 1;
+}
+
 #main-section {
     width: 100%;
     height: 100vh;
@@ -41,6 +72,10 @@
 
 #btn-vermas a:hover {
     background-color: #ce6324;
+}
+
+#places-section{
+    margin-top: 460px;
 }
 
 #places-section h1 {
@@ -110,6 +145,11 @@
     color: #104495;
     font-size: 20px;
     text-align: center;
+}
+
+#notices-section #no-notices p{
+    margin-top: 50px;
+    font-size: 30px;
 }
 
 .arrows {

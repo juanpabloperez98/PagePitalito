@@ -23,8 +23,6 @@
                     <img src="{{ url('/imagen/'.$noticia->file) }}" alt="" class="img-responsive">
                     @endif
                     <hr>
-                    {!! $noticia->excerpt !!}
-                    <hr>
                     {!! $noticia->body !!}
                     <hr>
                 </div>

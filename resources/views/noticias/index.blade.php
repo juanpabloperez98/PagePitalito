@@ -38,7 +38,7 @@
                                     @endif
                                     <div class="card-body">
                                         <h5 class="card-title">{{ $noticia->name }}</h5>
-                                        <div class="card-text" id="content-p">{!! $noticia->excerpt !!}</div>
+                                        {{-- <div class="card-text" id="content-p">{!! $noticia->excerpt !!}</div> --}}
                                         <div class="botones">
                                             <a href="{{ route('noticias.edit', $noticia->id) }}">
                                                 <img src="https://img.icons8.com/metro/26/000000/edit.png" />

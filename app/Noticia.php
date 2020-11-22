@@ -8,7 +8,7 @@ class Noticia extends Model
 {
     //
     protected $fillable = [
-        'user_id','name','slug','excerpt','body','status','file'
+        'user_id','name','body','status','file'
     ];
 
     public function user(){

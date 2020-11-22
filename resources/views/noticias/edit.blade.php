@@ -46,16 +46,6 @@
                                     placeholder="Titulo de la noticia" value="{{ $noticia->name }}">
                             </div>
                             <div class="form-group">
-                                <label for="slug">Slug</label>
-                                <input type="text" class="form-control" id="slug" name="slug" value="{{ $noticia->slug }}">
-                            </div>
-                            <div class="form-group">
-                                <label for="resumen">Resumen</label>
-                                <textarea name="resumen" id="resumen" class="form-control" rows="3">
-                                                    {!!  $noticia->excerpt !!}
-                                                </textarea>
-                            </div>
-                            <div class="form-group">
                                 <label for="noticia">Noticia</label>
                                 <textarea class="form-control" id="noticia" name="noticia" rows="5">
                                                     {!!  $noticia->body !!}
@@ -89,26 +79,26 @@
     </div>
 
 
+    
+
 
 @section('scripts')
-    <script src="{{ asset('vendor/stringtoslug/jquery.stringToSlug.min.js') }}"></script>
+    {{-- <script src="{{ asset('vendor/stringtoslug/jquery.stringToSlug.min.js') }}"></script> --}}
     <script src="{{ asset('vendor/ckeditor/ckeditor.js') }}"></script>
 
     <script>
-        $(document).ready(function() {
+        /* $(document).ready(function() {
             $('#title,#slug').stringToSlug({
                 callback: function(text) {
                     $('#slug').val(text)
                 }
             })
-        })
+        }) */
 
         CKEDITOR.config.height = 400;
         CKEDITOR.config.width = 'auto';
 
         CKEDITOR.replace('noticia')
-        CKEDITOR.replace('resumen')
-
     </script>
 @endsection
 @endsection

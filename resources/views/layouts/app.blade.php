@@ -10,6 +10,7 @@
 
     <!-- Styles -->
     @yield('styles')
+    {{-- Scripts --}}
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap/bootstrap.min.css') }}">
 </head>
@@ -68,8 +69,6 @@
                 </div>
             </div>
         </nav> --}}
-
-
 
         {{-- <header>
 
@@ -173,11 +172,12 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-2 mr-auto">
                         <li class="nav-item active">
-                            @if (isset($page) && $page == 'welcome')
-                                <a class="nav-link active" href="{{ route('main') }}">NOTICIAS</a>
+                            <a class="nav-link" id="notice_link" href="{{ url('/#notices-section') }}">NOTICIAS</a>
+                            {{-- @if (isset($page) && $page == 'welcome')
+                            <a class="nav-link active" href="{{ route('main') }}">NOTICIAS</a>
                             @else
                                 <a class="nav-link" href="{{ route('main') }}">NOTICIAS</a>
-                            @endif
+                            @endif --}}
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="culturadropdown" role="button"
@@ -263,56 +263,6 @@
         </main>
 
 
-        {{-- <footer class="page-footer font-small blue pt-5" style="">
-
-            <div class="container-fluid text-center text-md-left" style="max-width: 1111px;">
-                <div class="row">
-
-                    <div class="col-md-4" id="footer-img-content">
-                        <img src="{{ asset('images/Logos/LOGOHORIZONTAL.png') }}" alt="logovertical">
-                    </div>
-
-                    <div class="col-md-3 ml-auto">
-
-                        <h5 class="text-uppercase">ENLACES UTILES</h5>
-
-                        <ul class="list-unstyled">
-                            <li>
-                                <a href="#!">Iniciar Sesión</a>
-                            </li>
-                            <li>
-                                <a href="#!">Registrate con nosotros</a>
-                            </li>
-                            <li>
-                                <a href="#!">Noticias</a>
-                            </li>
-                        </ul>
-
-                    </div>
-
-                    <div class="col-md-3">
-
-                        <h5 class="text-uppercase">BUSCAR</h5>
-
-                        <form class="form-inline">
-                            <button class="btn" type="submit">
-                                <img src="{{ asset('images/icons/search.png') }}" alt="search">
-                            </button>
-                            <input class="form-control" id="search" type="search" placeholder="Buscar"
-                                aria-label="Search">
-                        </form>
-
-                    </div>
-                </div>
-            </div>
-            <div class="footer-copyright text-center py-3 mt-5" style="background-color: #04438a; color: white">© 2020
-                Copyright:
-                <a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
-            </div>
-
-        </footer> --}}
-
-
         <footer>
             <div class="row mx-auto" style="max-width: 1111px">
                 <div class="col-lg-4">
@@ -343,34 +293,12 @@
                 </div>
             </div>
         </footer>
-
     </div>
 
 
     <!-- Footer -->
-
-
-
     <script src="{{ asset('js/bootstrap/jquery-3.5.1.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap/bootstrap.min.js') }}"></script>
-    <script>
-        /* const closeopen = () => {
-            document.getElementById('menu').classList.toggle('active')
-            $('#content-logo').toggle()
-            $('#content-logo-close').toggle()
-        }
-
-        $('#content-logo').on('click', function(e) {
-            e.preventDefault()
-            closeopen()
-        })
-        $('#content-logo-close').on('click', function(e) {
-            e.preventDefault()
-            closeopen()
-        }) */
-
-    </script>
-
     @yield('scripts')
 </body>
 

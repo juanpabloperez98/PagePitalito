@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/','NoticiaController@main_section')->name('main');
+Route::get('/ver-noticias','NoticiaController@show_users_notices')->name('show-notices-user');
 
 Auth::routes();
 
