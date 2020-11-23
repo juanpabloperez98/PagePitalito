@@ -16,7 +16,7 @@
                     </ul>
                 </div>
             @endif
-            <form method="POST" action="{{ route('register') }}">
+            <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                 <h2>REGISTRATE</h2>
                 {{ csrf_field() }}
 
@@ -51,7 +51,16 @@
                         </span>
                     @endif
                 </div>
-
+                <div class="form-group">
+                    <label for="image">FOTO DE PERFIL <span>*</span></label>
+                    <input type="file" name="image" id="image" class="form-control" style="border: none; padding: 7px 3px;">
+                    @if ($errors->has('image'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('image') }}</strong>
+                        </span>
+                    @endif
+                </div>
+                
                 <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                     <label for="password">CONTRASEÑA <span>*</span></label>
                     <input type="password" class="form-control" id="password" name="password" placeholder="***********"
@@ -62,7 +71,6 @@
                         </span>
                     @endif
                 </div>
-
                 <div class="form-group">
                     <label for="password-confirm">CONFIRMAR CONTRASEÑA <span>*</span></label>
                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation"

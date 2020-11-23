@@ -31,7 +31,7 @@
                         @foreach ($noticias as $noticia)
                             <div class="col-lg-4 mt-5">
                                 <div class="card">
-                                    @if (Storage::disk('images')->has($noticia->file))
+                                    @if (Storage::disk('notices_images')->has($noticia->file))
                                         <img class="card-img-top" src="{{ url('/imagen/' . $noticia->file) }}" alt="Card image cap">
                                     @else
                                         <img class="card-img-top" src="{{ asset('images/ej1.jpg') }}" alt="Card image cap">

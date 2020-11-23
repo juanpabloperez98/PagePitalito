@@ -106,7 +106,7 @@
                                         <div class="carousel-item active">
                                             <div class="row mx-auto" id="row-notices">
                                                 <div class="col-lg-6 mx-auto text-center" style="padding: 10px">
-                                                    @if (Storage::disk('images')->has($noticia->file))
+                                                    @if (Storage::disk('notices_images')->has($noticia->file))
                                                         <img src="{{ url('/imagen/' . $noticia->file) }}"
                                                             class="d-block w-100" alt="...">
                                                     @else
@@ -125,7 +125,7 @@
                                         <div class="carousel-item">
                                             <div class="row mx-auto" id="row-notices">
                                                 <div class="col-lg-6 mx-auto text-center" style="padding: 10px">
-                                                    @if (Storage::disk('images')->has($noticia->file))
+                                                    @if (Storage::disk('notices_images')->has($noticia->file))
                                                         <img src="{{ url('/imagen/' . $noticia->file) }}"
                                                             class="d-block w-100" alt="...">
                                                     @else
@@ -219,7 +219,6 @@
             }
             console.log($(window).scrollTop())
         })
-
     </script>
 @endsection
 

@@ -8,6 +8,8 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
+
 
 class RegisterController extends Controller
 {
@@ -49,10 +51,12 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        // dd($data['image']);
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'lastname' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'image' => ['mimes:jpeg,jpg,JPG,bmp,png'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -63,13 +67,40 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
+
+    protected function savePhoto(Request $request)
+    {
+        $image = $request->file('image');
+        $image_path = time() . $image->getClientOriginalName();
+        \Storage::disk('photos_porfile')->put($image_path, \File::get($image));
+    }
+
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'last_name' => $data['lastname'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+
+
+        if (isset($data['image']) && !empty($data['image'])) {
+            
+            $request = request();
+
+            $image = $request->file('image');
+            $image_path = time() . '-porfile-' . $image->getClientOriginalName();
+            \Storage::disk('photos_porfile')->put($image_path, \File::get($image));
+            return User::create([
+                'name' => $data['name'],
+                'last_name' => $data['lastname'],
+                'email' => $data['email'],
+                'file' => $image_path,
+                'password' => Hash::make($data['password']),
+            ]);
+        } else {
+
+            return User::create([
+                'name' => $data['name'],
+                'last_name' => $data['lastname'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+            ]);
+        }
     }
 }

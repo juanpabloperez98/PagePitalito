@@ -10,3 +10,24 @@
 .panel-heading{
     margin: 10px auto 40px auto;
 }
+
+#contentimg{
+    max-width: 320px;
+    margin: 30px 0px;
+}
+
+#contentboton{
+    margin-top: 40px;
+}
+
+#contentboton button{
+    padding: 10px 20px;
+    background-color: #EC681D;
+    color: white;
+    border: none;
+}
+
+#contentboton button:hover{
+    background-color: #ce6324;
+    color: white;
+}

@@ -88,7 +88,7 @@ class NoticiaController extends Controller
 
         if ($image) {
             $image_path = time() . $image->getClientOriginalName();
-            \Storage::disk('images')->put($image_path, \File::get($image));
+            \Storage::disk('notices_images')->put($image_path, \File::get($image));
             $noticia->file = $image_path;
         }
         $noticia->save();
@@ -101,7 +101,7 @@ class NoticiaController extends Controller
 
     public function getImage($filename)
     {
-        $file = \Storage::disk('images')->get($filename);
+        $file = \Storage::disk('notices_images')->get($filename);
         return new Response($file, 200);
     }
 
@@ -134,7 +134,9 @@ class NoticiaController extends Controller
     {
 
 
-        $noticias = Noticia::orderBy('id', 'DESC')->get();
+        // $noticias = Noticia::orderBy('id', 'DESC')->get();
+        $noticias = Noticia::orderBy('id', 'DESC')->where('status','!=','DRAFT')->get();
+
 
 
 
@@ -189,7 +191,7 @@ class NoticiaController extends Controller
 
             if ($image) {
                 $image_path = time() . $image->getClientOriginalName();
-                \Storage::disk('images')->put($image_path, \File::get($image));
+                \Storage::disk('notices_images')->put($image_path, \File::get($image));
                 $noticia->file = $image_path;
             }
 

@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\HttpFoundation\Response;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,8 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/','NoticiaController@main_section')->name('main');
-Route::get('/ver-noticias','NoticiaController@show_users_notices')->name('show-notices-user');
+Route::get('/', 'NoticiaController@main_section')->name('main');
+Route::get('/ver-noticias', 'NoticiaController@show_users_notices')->name('show-notices-user');
 
 Auth::routes();
 
@@ -22,11 +24,28 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 // Route::middleware([''])->group(function () {
-    //Rutas de noticias 
+//Rutas de noticias 
 Route::resource('noticias', 'NoticiaController');
 // Capturar la imagen de noticias
-Route::get('/imagen/{filename}',[
+Route::get('/imagen/{filename}', [
     'as' => 'imageNotice',
     'uses' => 'NoticiaController@getImage'
 ]);
-// });
+
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/porfile/{filename}', function ($filename) {
+        $file = \Storage::disk('photos_porfile')->get($filename);
+        return new Response($file, 200);
+    })->name('getPorfileImage');
+
+    Route::get('user/edit',[
+        'as' => 'UserEdit',
+        'uses' => 'UserController@edit'
+    ]);
+
+    Route::post('user/store/{user}',[
+        'as' => 'UserUpdate',
+        'uses' => 'UserController@update'
+    ]);
+});

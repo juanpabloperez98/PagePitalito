@@ -48,12 +48,12 @@
                             <div class="form-group">
                                 <label for="noticia">Noticia</label>
                                 <textarea class="form-control" id="noticia" name="noticia" rows="5">
-                                                    {!!  $noticia->body !!}
-                                                </textarea>
+                                                            {!!  $noticia->body !!}
+                                                        </textarea>
                             </div>
                             <div class="form-group">
                                 <label for="image">Imagen</label>
-                                @if (Storage::disk('images')->has($noticia->file))
+                                @if (Storage::disk('notices_images')->has($noticia->file))
                                     <div class="mr-auto" style="width: 50%">
                                         <img src="{{ url('/imagen/' . $noticia->file) }}" alt="imagen" style="width: 100%">
                                     </div>
@@ -63,8 +63,13 @@
                             <div class="form-group">
                                 <label for="status">Estado</label>
                                 <select class="form-control" id="status" name="status">
-                                    <option value="PUBLISHED">Publicado</option>
-                                    <option value="DRAFT">Borrador</option>
+                                    @if ($noticia->status == 'PUBLISHED')
+                                        <option value="PUBLISHED" selected>Publicado</option>
+                                        <option value="DRAFT">Borrador</option>
+                                    @else
+                                        <option value="PUBLISHED">Publicado</option>
+                                        <option value="DRAFT" selected>Borrador</option>
+                                    @endif
                                 </select>
                             </div>
 
@@ -79,26 +84,28 @@
     </div>
 
 
-    
+
 
 
 @section('scripts')
-    {{-- <script src="{{ asset('vendor/stringtoslug/jquery.stringToSlug.min.js') }}"></script> --}}
+    {{-- <script src="{{ asset('vendor/stringtoslug/jquery.stringToSlug.min.js') }}"></script>
+    --}}
     <script src="{{ asset('vendor/ckeditor/ckeditor.js') }}"></script>
 
     <script>
         /* $(document).ready(function() {
-            $('#title,#slug').stringToSlug({
-                callback: function(text) {
-                    $('#slug').val(text)
-                }
-            })
-        }) */
+                    $('#title,#slug').stringToSlug({
+                        callback: function(text) {
+                            $('#slug').val(text)
+                        }
+                    })
+                }) */
 
         CKEDITOR.config.height = 400;
         CKEDITOR.config.width = 'auto';
 
         CKEDITOR.replace('noticia')
+
     </script>
 @endsection
 @endsection
