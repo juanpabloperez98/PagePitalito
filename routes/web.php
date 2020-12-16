@@ -23,7 +23,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-// Route::middleware([''])->group(function () {
 //Rutas de noticias 
 Route::resource('noticias', 'NoticiaController');
 // Capturar la imagen de noticias
@@ -31,6 +30,9 @@ Route::get('/imagen/{filename}', [
     'as' => 'imageNotice',
     'uses' => 'NoticiaController@getImage'
 ]);
+
+// Rutas Deportes
+Route::resource('deportes', 'DeporteController');
 
 
 Route::middleware(['auth'])->group(function () {

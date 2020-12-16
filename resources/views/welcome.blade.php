@@ -83,7 +83,7 @@
     </div>
 
     {{-- Noticias --}}
-    <div class="row mx-auto" id="notices-section">
+    <div class="row mx-auto" style="max-width: 1111px" id="notices-section">
         <div style="max-width: 1111px" class="mx-auto">
             <div class="row mx-auto">
                 <div class="col-lg-12" style="padding: 0px">

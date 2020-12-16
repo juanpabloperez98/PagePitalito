@@ -179,6 +179,7 @@
                                 <a class="nav-link" href="{{ route('main') }}">NOTICIAS</a>
                             @endif --}}
                         </li>
+
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="culturadropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -201,12 +202,12 @@
                             </div>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="culturadropdown" role="button"
+                            <a class="nav-link dropdown-toggle" href="#" id="deportedropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 DEPORTE
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="culturadropdown">
-                                <a class="dropdown-item" href="#">Escuelas de Formación Deportiva</a>
+                            <div class="dropdown-menu" aria-labelledby="deportedropdown">
+                                <a class="dropdown-item" href="{{ route('deportes.index') }}">Escuelas de Formación Deportiva</a>
                                 <a class="dropdown-item" href="#">Actividad Física, Laboyano Activo y Saludable</a>
                                 <a class="dropdown-item" href="#">Deporte Social Comunitario</a>
                                 <a class="dropdown-item" href="#">Clubes Deportivos</a>
@@ -234,17 +235,31 @@
                         <div id="content-botons-register">
                             <a href="{{ route('login') }}" class="btn">{{ Auth::user()->name }}</a>
 
-                            <div class="dropdown d-inline-block" style="padding: 6px 0px">
+                            {{-- @if ($page == 'notices') --}}
+                                <div class="dropdown d-inline-block" style="padding: 6px 0px">
+                                    <button class="btn btn-secondary dropdown-toggle" style="border: none; height: 43px;" type="button" id="dropdownMenuButton"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        ACCIONES
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="{{ route('noticias.index') }}">Noticias</a>
+                                        <a class="dropdown-item" href="{{ route('noticias.create') }}">Crear Noticia</a>
+                                        <a class="dropdown-item" href="#">Something else here</a>
+                                    </div>
+                                </div>
+                            {{-- @elseif($page == 'deportes') --}}
+                            {{-- <div class="dropdown d-inline-block" style="padding: 6px 0px">
                                 <button class="btn btn-secondary dropdown-toggle" style="border: none; height: 43px;" type="button" id="dropdownMenuButton"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     ACCIONES
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="{{ route('noticias.index') }}">Noticias</a>
-                                    <a class="dropdown-item" href="{{ route('noticias.create') }}">Crear Noticia</a>
+                                    <a class="dropdown-item" href="{{ route('noticias.index') }}">Deportes</a>
+                                    <a class="dropdown-item" href="{{ route('noticias.create') }}">Crear Deporte</a>
                                     <a class="dropdown-item" href="#">Something else here</a>
                                 </div>
-                            </div>
+                            </div> --}}
+                            {{-- @endif --}}
                         </div>
                         
                     @endguest
