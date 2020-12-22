@@ -241,7 +241,7 @@
                                 <img class="ml-lg-2" src="{{ asset('images/icons/drop-down-arrow24.png') }}" alt="" style="width: 12px;">
                             </a>
                             <div class="dropdown-content">
-                                <a href="#">Escuelas de Formación Deportiva</a>
+                                <a href="{{ route('deportes.index') }}">Escuelas de Formación Deportiva</a>
                                 <a href="#">Actividad Física, Laboyano Activo y Saludable</a>
                                 <a href="#">Deporte Social Comunitario</a>
                                 <a href="#">Clubes Deportivos</a>
