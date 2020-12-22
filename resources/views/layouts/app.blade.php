@@ -174,13 +174,13 @@
                         <li class="nav-item active">
                             <a class="nav-link" id="notice_link" href="{{ url('/#notices-section') }}">NOTICIAS</a>
                             {{-- @if (isset($page) && $page == 'welcome')
-                            <a class="nav-link active" href="{{ route('main') }}">NOTICIAS</a>
-                            @else
+                                <a class="nav-link active" href="{{ route('main') }}">NOTICIAS</a>
+                                @else
                                 <a class="nav-link" href="{{ route('main') }}">NOTICIAS</a>
                             @endif --}}
                         </li>
 
-                        <li class="nav-item dropdown">
+                        {{-- <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="culturadropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 CULTURA
@@ -198,59 +198,125 @@
                                     <a class="dropdown-item" href="#">Teatro</a>
                                     <a class="dropdown-item" href="#">Pintura</a>
                                 </div>
-                                -->    
+                                -->
+                            </div>
+                        </li> --}}
+
+                        <li class="nav-item dropdown_self">
+                            <a href="" class="nav-link dropbtn" onclick="event.preventDefault();">
+                                CULTURA
+                                <img class="ml-lg-2" src="{{ asset('images/icons/drop-down-arrow24.png') }}" alt="" style="width: 12px;">
+                            </a>
+                            <ul class="dropdown-content">
+                                <a href="#">Escuelas de formación artística</a>
+                                <li class="subdropdown_self">
+                                    <a href="#" class="dropbtn" class="submenu" id="submenu" onclick="event.preventDefault();">Submenu
+                                        <img class="ml-lg-2" src="{{ asset('images/icons/drop-down-arrow24.png') }}" alt="" style="width: 12px;">
+                                    </a>
+                                    <ul class="subdropdown-content">
+                                        <a href="#">Menu 1</a>
+                                        <a href="#">Menu 2</a>
+                                        <a href="#">Menu 3</a>
+                                        <a href="#">Menu 4</a>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">Bibliotecas Municipales</a>
+                                </li>
+                                <li>
+                                    <a href="#">Infraestructura Cultural</a>
+                                </li>
+                                <li>
+                                    <a href="#">Patrimonio</a>
+                                </li>
+                                <li>
+                                    <a href="#">Agenda Cultural</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown_self">
+                            <a href="" class="nav-link dropbtn" onclick="event.preventDefault();">
+                                DEPORTES
+                                <img class="ml-lg-2" src="{{ asset('images/icons/drop-down-arrow24.png') }}" alt="" style="width: 12px;">
+                            </a>
+                            <div class="dropdown-content">
+                                <a href="#">Escuelas de Formación Deportiva</a>
+                                <a href="#">Actividad Física, Laboyano Activo y Saludable</a>
+                                <a href="#">Deporte Social Comunitario</a>
+                                <a href="#">Clubes Deportivos</a>
+                                <a href="#">Infraestructura Deportiva</a>
+                                <a href="#">Agenda Deportiva</a>
                             </div>
                         </li>
-                        <li class="nav-item dropdown">
+
+
+
+
+
+                        {{-- <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="deportedropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 DEPORTE
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="deportedropdown">
-                                <a class="dropdown-item" href="{{ route('deportes.index') }}">Escuelas de Formación Deportiva</a>
-                                <a class="dropdown-item" href="#">Actividad Física, Laboyano Activo y Saludable</a>
-                                <a class="dropdown-item" href="#">Deporte Social Comunitario</a>
-                                <a class="dropdown-item" href="#">Clubes Deportivos</a>
-                                <a class="dropdown-item" href="#">Infraestructura Deportiva</a>
-                                <a class="dropdown-item" href="#">Agenda Deportiva</a>
-                            </div>
-                        </li>
+                            <ul class="dropdown-menu" aria-labelledby="deportedropdown">
+                                <li><a class="dropdown-item" href="{{ route('deportes.index') }}">Escuelas de Formación Deportiva</a></li>
+
+                                <li class="dropdown-submenu">
+                                    <a class="dropdown-item dropdown-toggle" href="#">Subsubmenu</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Subsubmenu action</a></li>
+                                        <li><a class="dropdown-item" href="#">Another subsubmenu action</a></li>
+                                    </ul>
+                                </li>
+
+                                <li><a class="dropdown-item" href="#">Actividad Física, Laboyano Activo y Saludable</a></li>
+                                <li><a class="dropdown-item" href="#">Deporte Social Comunitario</a></li>
+                                <li><a class="dropdown-item" href="#">Clubes Deportivos</a></li>
+                                <li><a class="dropdown-item" href="#">Infraestructura Deportiva</a></li>
+                                <li><a class="dropdown-item" href="#">Agenda Deportiva</a></li>
+                            </ul>
+                        </li> --}}
                         <li class="nav-item">
                             <a class="nav-link" href="#">CALENDARIO</a>
-                        </li>                        
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">CONVOCATORIAS</a>
-                        </li>                        
-                    </ul>
-                    
-                    @guest
-                        <div id="content-botons-register">
-                            <a href="{{ route('login') }}" class="btn">INGRESAR</a>
-                            @if (Route::has('register'))
-                                <a href="{{ route('register') }}" class="btn ml-1">REGISTRATE</a>
-                            @endif
-                        </div>
-                    @else
+                        </li>
+                </ul>
 
-                        <div id="content-botons-register">
-                            <a href="{{ route('login') }}" class="btn">{{ Auth::user()->name }}</a>
+                @guest
+                    <div id="content-botons-register">
+                        <a href="{{ route('login') }}" class="btn">INGRESAR</a>
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}" class="btn ml-1">REGISTRATE</a>
+                        @endif
+                    </div>
+                @else
 
-                            {{-- @if ($page == 'notices') --}}
-                                <div class="dropdown d-inline-block" style="padding: 6px 0px">
-                                    <button class="btn btn-secondary dropdown-toggle" style="border: none; height: 43px;" type="button" id="dropdownMenuButton"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        ACCIONES
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="{{ route('noticias.index') }}">Noticias</a>
-                                        <a class="dropdown-item" href="{{ route('noticias.create') }}">Crear Noticia</a>
-                                        <a class="dropdown-item" href="#">Something else here</a>
-                                    </div>
+                    <div id="content-botons-register">
+                        <a href="{{ route('login') }}" class="btn">{{ Auth::user()->name }}</a>
+
+                        {{-- @if ($page == 'notices')
+                            --}}
+                            <div class="dropdown d-inline-block" style="padding: 6px 0px">
+                                <button class="btn btn-secondary dropdown-toggle" style="border: none; height: 43px;"
+                                    type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
+                                    ACCIONES
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="{{ route('noticias.index') }}">Noticias</a>
+                                    <a class="dropdown-item" href="{{ route('noticias.create') }}">Crear Noticia</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
                                 </div>
+                            </div>
                             {{-- @elseif($page == 'deportes') --}}
-                            {{-- <div class="dropdown d-inline-block" style="padding: 6px 0px">
-                                <button class="btn btn-secondary dropdown-toggle" style="border: none; height: 43px;" type="button" id="dropdownMenuButton"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{-- <div class="dropdown d-inline-block"
+                                style="padding: 6px 0px">
+                                <button class="btn btn-secondary dropdown-toggle" style="border: none; height: 43px;"
+                                    type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
                                     ACCIONES
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -259,61 +325,70 @@
                                     <a class="dropdown-item" href="#">Something else here</a>
                                 </div>
                             </div> --}}
-                            {{-- @endif --}}
-                        </div>
-                        
-                    @endguest
-                    
-                    {{-- <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                    </form> --}}
-                </div>
-            </nav>
-        </header>
-
-
-        <main>
-            @yield('content')
-        </main>
-
-
-        <footer>
-            <div class="row mx-auto" style="max-width: 1111px">
-                <div class="col-lg-4">
-                    <div id="imagenlogo">
-                        <img src="{{ asset('images/Logos/logo.png') }}" alt="">
+                            {{--
+                        @endif --}}
                     </div>
-                    <div>
-                        <h4>ICRDPITALITOHUILA</h4>
-                        <ul>
-                            <li>
-                                <a href="#">
-                                    <img src="{{ asset('images/icons/facebook.png') }}" alt="facebook">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <img src="{{ asset('images/icons/instagram.png') }}" alt="instagram">
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+
+                @endguest
+
+                {{-- <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form> --}}
+    </div>
+    </nav>
+    </header>
+
+
+    <main>
+        @yield('content')
+    </main>
+
+
+    <footer>
+        <div class="row mx-auto" style="max-width: 1111px">
+            <div class="col-lg-4">
+                <div id="imagenlogo">
+                    <img src="{{ asset('images/Logos/logo.png') }}" alt="">
                 </div>
-                {{-- <div class="col-lg-4">
-                    <img src="{{ asset('images/Logos/regionvive.png') }}" alt="region">
-                </div> --}}
-                <div class="col-lg-4 ml-auto">
-                    <img src="{{ asset('images/Logos/alcaldia.png') }}" alt="alcadia">
+                <div>
+                    <h4>ICRDPITALITOHUILA</h4>
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <img src="{{ asset('images/icons/facebook.png') }}" alt="facebook">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="{{ asset('images/icons/instagram.png') }}" alt="instagram">
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </footer>
+            {{-- <div class="col-lg-4">
+                <img src="{{ asset('images/Logos/regionvive.png') }}" alt="region">
+            </div> --}}
+            <div class="col-lg-4 ml-auto">
+                <img src="{{ asset('images/Logos/alcaldia.png') }}" alt="alcadia">
+            </div>
+        </div>
+    </footer>
     </div>
 
+    
 
     <!-- Footer -->
     <script src="{{ asset('js/bootstrap/jquery-3.5.1.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap/bootstrap.min.js') }}"></script>
+    {{-- Submenu img --}}
+    <script>
+        /* console.log($('.submenu')['prevObject'])
+        console.log($('#submenu')) */
+        
+
+    </script>
     @yield('scripts')
 </body>
 
