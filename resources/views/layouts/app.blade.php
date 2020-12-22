@@ -171,119 +171,125 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-2 mr-auto">
+                        {{-- NOTICIAS --}}
                         <li class="nav-item active">
                             <a class="nav-link" id="notice_link" href="{{ url('/#notices-section') }}">NOTICIAS</a>
-                            {{-- @if (isset($page) && $page == 'welcome')
-                                <a class="nav-link active" href="{{ route('main') }}">NOTICIAS</a>
-                                @else
-                                <a class="nav-link" href="{{ route('main') }}">NOTICIAS</a>
-                            @endif --}}
                         </li>
-
-                        {{-- <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="culturadropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                CULTURA
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="culturadropdown">
-                                <a class="dropdown-item" href="#">Escuelas de formación artística</a>
-                                <a class="dropdown-item" href="#">Bibliotecas Municipales</a>
-                                <a class="dropdown-item" href="#">Infraestructura Cultural</a>
-                                <a class="dropdown-item" href="#">Patrimonio</a>
-                                <a class="dropdown-item" href="#">Agenda Cultural</a>
-                                <!--
-                                <div class="dropdown-menu" aria-labelledby="culturadropdown">
-                                    <a class="dropdown-item" href="#">Danza</a>
-                                    <a class="dropdown-item" href="#">Música</a>
-                                    <a class="dropdown-item" href="#">Teatro</a>
-                                    <a class="dropdown-item" href="#">Pintura</a>
-                                </div>
-                                -->
-                            </div>
-                        </li> --}}
-
+                        {{-- CULTURA --}}
                         <li class="nav-item dropdown_self">
                             <a href="" class="nav-link dropbtn" onclick="event.preventDefault();">
                                 CULTURA
                                 <img class="ml-lg-2" src="{{ asset('images/icons/drop-down-arrow24.png') }}" alt="" style="width: 12px;">
                             </a>
                             <ul class="dropdown-content">
-                                <a href="#">Escuelas de formación artística</a>
+                                {{-- Formación Artistica --}}
                                 <li class="subdropdown_self">
-                                    <a href="#" class="dropbtn" class="submenu" id="submenu" onclick="event.preventDefault();">Submenu
+                                    <a href="#" class="dropbtn" class="submenu" id="submenu" onclick="event.preventDefault();">Escuelas Formación Artística
                                         <img class="ml-lg-2" src="{{ asset('images/icons/drop-down-arrow24.png') }}" alt="" style="width: 12px;">
                                     </a>
                                     <ul class="subdropdown-content">
-                                        <a href="#">Menu 1</a>
-                                        <a href="#">Menu 2</a>
-                                        <a href="#">Menu 3</a>
-                                        <a href="#">Menu 4</a>
+                                        <a href="#">Música</a>
+                                        <a href="#">Teatro</a>
+                                        <a href="#">Danza</a>
+                                        <a href="#">Artes Plásticas</a>
                                     </ul>
                                 </li>
-                                <li>
-                                    <a href="#">Bibliotecas Municipales</a>
-                                </li>
+                                {{-- Infraestructura Cultural --}}
                                 <li>
                                     <a href="#">Infraestructura Cultural</a>
                                 </li>
-                                <li>
-                                    <a href="#">Patrimonio</a>
+                                {{-- Patrimonio Cultural --}}
+                                <li class="subdropdown_self">
+                                    <a href="#" class="dropbtn" class="submenu" id="submenu" onclick="event.preventDefault();">Patrimonio Cultural
+                                        <img class="ml-lg-2" src="{{ asset('images/icons/drop-down-arrow24.png') }}" alt="" style="width: 12px;">
+                                    </a>
+                                    <ul class="subdropdown-content">
+                                        <a href="#">Material</a>
+                                        <a href="#">Inmaterial</a>
+                                    </ul>
                                 </li>
+                                {{-- Agenda Cultural --}}
                                 <li>
                                     <a href="#">Agenda Cultural</a>
                                 </li>
                             </ul>
                         </li>
-
+                        {{-- DEPORTE --}}
                         <li class="nav-item dropdown_self">
-                            <a href="" class="nav-link dropbtn" onclick="event.preventDefault();">
-                                DEPORTES
+                            <a href="#" class="nav-link dropbtn" onclick="event.preventDefault();">
+                                DEPORTE
                                 <img class="ml-lg-2" src="{{ asset('images/icons/drop-down-arrow24.png') }}" alt="" style="width: 12px;">
                             </a>
-                            <div class="dropdown-content">
-                                <a href="{{ route('deportes.index') }}">Escuelas de Formación Deportiva</a>
-                                <a href="#">Actividad Física, Laboyano Activo y Saludable</a>
-                                <a href="#">Deporte Social Comunitario</a>
-                                <a href="#">Clubes Deportivos</a>
-                                <a href="#">Infraestructura Deportiva</a>
-                                <a href="#">Agenda Deportiva</a>
-                            </div>
-                        </li>
-
-
-
-
-
-                        {{-- <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="deportedropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                DEPORTE
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="deportedropdown">
-                                <li><a class="dropdown-item" href="{{ route('deportes.index') }}">Escuelas de Formación Deportiva</a></li>
-
-                                <li class="dropdown-submenu">
-                                    <a class="dropdown-item dropdown-toggle" href="#">Subsubmenu</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">Subsubmenu action</a></li>
-                                        <li><a class="dropdown-item" href="#">Another subsubmenu action</a></li>
+                            <ul class="dropdown-content">
+                                {{-- Formación Deportiva --}}
+                                <li class="subdropdown_self">
+                                    <a href="{{ url('/deportes')}}" class="dropbtn" class="submenu" id="submenu" >Escuelas Formación Deportiva
+                                        <img class="ml-lg-2" src="{{asset('images/icons/drop-down-arrow24.png') }}" alt="" style="width: 12px;">
+                                    </a>
+                                    <ul class="subdropdown-content">
+                                        {{--  Ejemplo de Ruta: url('/FormacionDeportiva/ajedrez') --}}
+                                        <a href="#">Ajedrez</a>
+                                        <a href="#">Atletismo</a>
+                                        <a href="#">Baloncesto</a>
+                                        <a href="#">Ciclismo</a>
+                                        <a href="#">Discapacidad</a>
+                                        <a href="#">Fútbol</a>
+                                        <a href="#">Fútbol de Salón</a>
+                                        <a href="#">Gimnasia y Porrismo</a>
+                                        <a href="#">Lucha</a>
+                                        <a href="#">Natación</a>
+                                        <a href="#">Patinaje</a>
+                                        <a href="#">Taekwondo</a>
+                                        <a href="#">Tenis de Campo</a>
+                                        <a href="#">Tenis de Mesa</a>
+                                        <a href="#">Voleibol</a>
                                     </ul>
                                 </li>
-
-                                <li><a class="dropdown-item" href="#">Actividad Física, Laboyano Activo y Saludable</a></li>
-                                <li><a class="dropdown-item" href="#">Deporte Social Comunitario</a></li>
-                                <li><a class="dropdown-item" href="#">Clubes Deportivos</a></li>
-                                <li><a class="dropdown-item" href="#">Infraestructura Deportiva</a></li>
-                                <li><a class="dropdown-item" href="#">Agenda Deportiva</a></li>
+                                {{-- Actividad Física, Laboyano Activo y Saludable --}}
+                                <li class="subdropdown_self">
+                                    <a href="#" class="dropbtn" class="submenu" id="submenu" onclick="event.preventDefault();">Actividad Física, Laboyano Activo y Saludable
+                                        <img class="ml-lg-2" src="{{ asset('images/icons/drop-down-arrow24.png') }}" alt="" style="width: 12px;">
+                                    </a>
+                                    <ul class="subdropdown-content">
+                                        <a href="#">Actividad Física Musicalizada</a>
+                                        <a href="#">Vías Activas y Saludables</a>
+                                    </ul>
+                                </li>
+                                {{-- Deporte Social Comunitario --}}
+                                <li>
+                                    <a href="#">Deporte Social Comunitario</a>
+                                </li>
+                                {{-- Clubes Deportivos --}}
+                                <li>
+                                    <a href="#">Clubes Deportivos</a>
+                                </li>
+                                {{-- Infraestructura Deportiva --}}
+                                <li class="subdropdown_self">
+                                    <a href="#" class="dropbtn" class="submenu" id="submenu" onclick="event.preventDefault();">Infraestructura Deportiva
+                                        <img class="ml-lg-2" src="{{ asset('images/icons/drop-down-arrow24.png') }}" alt="" style="width: 12px;">
+                                    </a>
+                                    <ul class="subdropdown-content">
+                                        <a href="#">Comuna 1</a>
+                                        <a href="#">Comuna 2</a>
+                                        <a href="#">Comuna 3</a>
+                                        <a href="#">Comuna 4</a>
+                                    </ul>
+                                </li>
+                                {{-- Agenda Deportiva --}}
+                                <li>
+                                    <a href="#">Agenda Deportiva</a>
+                                </li>
                             </ul>
-                        </li> --}}
+                        </li>
+                        {{-- CALENDARIO --}}
                         <li class="nav-item">
                             <a class="nav-link" href="#">CALENDARIO</a>
                         </li>
+                        {{-- CONVOCATORIAS --}}
                         <li class="nav-item">
                             <a class="nav-link" href="#">CONVOCATORIAS</a>
                         </li>
-                </ul>
+                    </ul>
 
                 @guest
                     <div id="content-botons-register">
@@ -293,7 +299,6 @@
                         @endif
                     </div>
                 @else
-
                     <div id="content-botons-register">
                         <a href="{{ route('login') }}" class="btn">{{ Auth::user()->name }}</a>
 
@@ -328,22 +333,15 @@
                             {{--
                         @endif --}}
                     </div>
-
                 @endguest
 
-                {{-- <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form> --}}
     </div>
     </nav>
     </header>
 
-
     <main>
         @yield('content')
     </main>
-
 
     <footer>
         <div class="row mx-auto" style="max-width: 1111px">
