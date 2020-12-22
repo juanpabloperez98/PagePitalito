@@ -65,3 +65,21 @@ main {
     padding: 0px;
     top: 130px !important;
 }
+
+.info-sport span{
+    font-weight: bold;
+    color: black;   
+}
+
+.info-sport span{
+    font-weight: bold;
+    color: #104495;   
+}
+
+.imagen-content{
+    content: "";
+    width: 400px;
+    background-color: blue;
+    height: 300px;
+    margin-left: -15px;
+}

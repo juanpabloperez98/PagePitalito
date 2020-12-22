@@ -18,7 +18,7 @@
                   <div class="carousel-item active text-center">
                     <div class="box-example mx-3">
                         <div class="imagen"></div>
-                        <a href=""><h3>Titulo1</h3></a>
+                        <a href="{{ route('deportes.show',1) }}"><h3>Titulo1</h3></a>
                     </div>
                     <div class="box-example mx-3">
                         <div class="imagen"></div>
@@ -82,8 +82,4 @@
 @endsection
 
 @section('scripts')
-<script>
-
-    $('#deportedropdown').addClass('active')
-</script>
 @endsection

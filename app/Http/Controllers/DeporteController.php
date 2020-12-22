@@ -54,9 +54,12 @@ class DeporteController extends Controller
      * @param  \App\Deporte  $deporte
      * @return \Illuminate\Http\Response
      */
-    public function show(Deporte $deporte)
+    public function show()
     {
         //
+        return view('deportes.show', [
+            'page' => 'deportes'
+        ]);
     }
 
     /**
