@@ -32,8 +32,8 @@
     </div>
     {{-- DESCUBRE --}}
     <div class="row mx-auto" id="places-section">
-        <div style="max-width: 1111px" class="mx-auto">
-            <div class="row mx-auto">
+        <div style="max-width: 1111px" class="mx-auto mt-5">
+            <div class="row mx-auto mt-5">
                 <div class="col-lg-12" style="margin-bottom: 60px">
                     <h1>
                         DESCUBRE LOS 5 LUGARES MÁS
@@ -44,8 +44,9 @@
                     </p>
                 </div>
 
-                <div class="col-lg-5 imagen-pruebas" style="height: 425px;">
-                    <div style="margin-top: 339px">
+                <div class="col-lg-5 mb-5 imagen-pruebas" style="height: 425px;">
+                    <img class="" src="{{ asset('images/Lugares/Chapolera.png') }}" style="height:100%; width:100%">
+                    <div style="margin-top: 0px">
                         <h3>
                             CENTRO ADMINISTRATIVO LA CHAPOLERA
                         </h3>
@@ -54,25 +55,29 @@
                 <div class="col-lg-7">
                     <div class="row mx-auto">
                         <div class="col-lg-5 imagen-pruebasshort">
+                            <img class="" src="{{ asset('images/Lugares/CentroCultural.jpg') }}" style="height:80%; width:100%">
                             <h3>
                                 CENTRO CULTURAL HÉCTOR POLANIA SÁNCHEZ
                             </h3>
                         </div>
                         <div class="col-lg-5 ml-lg-4 imagen-pruebasshort">
+                            <img class="" src="{{ asset('images/Lugares/ColiseoPitalito.jpg') }}" style="height:80%; width:100%">
                             <h3>
                                 COLISEO CUBIERTO
                                 DE PITALITO.
                             </h3>
                         </div>
-                        <div class="col-lg-5 mt-lg-4 imagen-pruebasshort">
+                        <div class="col-lg-5 mt-lg-5 imagen-pruebasshort">
+                            <img class="" src="{{ asset('images/Lugares/ParquePrincipal.jpg') }}" style="height:80%; width:100%">
                             <h3>
                                 PARQUE PRINCIPAL JOSÉ HILARIO
                                 LOPEZ
                             </h3>
                         </div>
-                        <div class="col-lg-5 ml-lg-4 mt-lg-4 imagen-pruebasshort">
+                        <div class="col-lg-5 ml-lg-4 mt-lg-5 imagen-pruebasshort">
+                            <img class="" src="{{ asset('images/Lugares/VillaOlimpica.jpg') }}" style="height:80%; width:100%">
                             <h3>
-                                VILLA
+                                VILLA<br>
                                 OLIMPICA
                             </h3>
                         </div>

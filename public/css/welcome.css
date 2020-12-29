@@ -92,14 +92,14 @@
 }
 
 .imagen-pruebas {
-    background-image: url('../images/main-section.jpg');
+    /*background-image: url('../images/main-section.jpg');*/
     background-size: cover;
     background-position: center;
     height: 200px;
 }
 
 .imagen-pruebasshort {
-    background-image: url('../images/main-section.jpg');
+    /*background-image: url('../images/main-section.jpg');*/
     background-size: cover;
     background-position: center;
     height: 200px;
@@ -110,9 +110,10 @@
     font-size: 25px;
     color: #35A037;
     font-family: 'Montserrat-Bold';
-    border-bottom: 3px solid #104495;
-    border-right: 3px solid #104495;
+    border-bottom: 1px solid #104495;
+    border-right: 1px solid #104495;
     padding: 5px;
+    text-align: center;
 }
 
 .imagen-pruebasshort h3 {
@@ -120,11 +121,11 @@
     font-size: 20px;
     color: #35A037;
     font-family: 'Montserrat-Bold';
-    border-bottom: 3px solid #104495;
-    border-right: 3px solid #104495;
+    border-bottom: 1px solid #104495;
+    border-right: 1px solid #104495;
     padding: 5px;
     min-height: 85px;
-    margin-top: 102px;
+    text-align: center;
 }
 
 /* Noticias */

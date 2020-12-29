@@ -69,7 +69,6 @@
                 </div>
             </div>
         </nav> --}}
-
         {{-- <header>
 
             <nav class="navbar navbar-expand-lg">
@@ -168,7 +167,7 @@
                     aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
+                {{-- Barra de Navegación --}}
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-2 mr-auto">
                         {{-- NOTICIAS --}}
@@ -184,7 +183,7 @@
                             <ul class="dropdown-content">
                                 {{-- Formación Artistica --}}
                                 <li class="subdropdown_self">
-                                    <a href="#" class="dropbtn" class="submenu" id="submenu" onclick="event.preventDefault();">Escuelas Formación Artística
+                                    <a href="#" class="dropbtn" class="submenu" id="submenu">Escuelas Formación Artística
                                         <img class="ml-lg-2" src="{{ asset('images/icons/drop-down-arrow24.png') }}" alt="" style="width: 12px;">
                                     </a>
                                     <ul class="subdropdown-content">
@@ -343,6 +342,7 @@
         @yield('content')
     </main>
 
+    <!-- Footer -->
     <footer>
         <div class="row mx-auto" style="max-width: 1111px">
             <div class="col-lg-4">
@@ -353,39 +353,36 @@
                     <h4>ICRDPITALITOHUILA</h4>
                     <ul>
                         <li>
-                            <a href="#">
-                                <img src="{{ asset('images/icons/facebook.png') }}" alt="facebook">
+                            <a href="https://www.facebook.com/icrdpitalitohuila">
+                                <img src="{{ asset('images/icons/facebook.png') }}" alt="Facebook ICRD" class="mr-3">
                             </a>
                         </li>
                         <li>
-                            <a href="#">
-                                <img src="{{ asset('images/icons/instagram.png') }}" alt="instagram">
+                            <a href="https://www.instagram.com/icrdpitalito/">
+                                <img src="{{ asset('images/icons/instagram.png') }}" alt="Instagram ICRD" class="mr-3">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.youtube.com/channel/UCW2Wa3V93NgQpUSjT9mcyOg?view_as=subscriber">
+                                <img src="{{ asset('images/icons/youtube.png') }}" alt="Youtube ICRD" class="mr-3">
                             </a>
                         </li>
                     </ul>
                 </div>
             </div>
-            {{-- <div class="col-lg-4">
-                <img src="{{ asset('images/Logos/regionvive.png') }}" alt="region">
-            </div> --}}
+            <!-- Logos Footer -->
             <div class="col-lg-4 ml-auto">
-                <img src="{{ asset('images/Logos/alcaldia.png') }}" alt="alcadia">
+                <img src="{{ asset('images/Logos/alcaldia.png') }}" alt="Alcadía Municipal">
             </div>
         </div>
     </footer>
     </div>
 
-    
-
     <!-- Footer -->
     <script src="{{ asset('js/bootstrap/jquery-3.5.1.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap/bootstrap.min.js') }}"></script>
     {{-- Submenu img --}}
-    <script>
-        /* console.log($('.submenu')['prevObject'])
-        console.log($('#submenu')) */
-        
-
+    <script>    
     </script>
     @yield('scripts')
 </body>
