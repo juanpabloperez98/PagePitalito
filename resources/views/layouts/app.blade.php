@@ -215,7 +215,7 @@
                         </li>
                         {{-- DEPORTE --}}
                         <li class="nav-item dropdown_self">
-                            @if ($page == "deportes")
+                            @if (isset($page)  && $page == "deportes")
                                 <a href="#" class="nav-link dropbtn active" onclick="event.preventDefault();">
                                     DEPORTE
                                     <img class="ml-lg-2" src="{{ asset('images/icons/drop-down-arrow24.png') }}" alt="" style="width: 12px;">
@@ -235,21 +235,21 @@
                                     </a>
                                     <ul class="subdropdown-content" style="height: 80vh">
                                         {{--  Ejemplo de Ruta: url('/FormacionDeportiva/ajedrez') --}}
-                                        <a href="#">Ajedrez</a>
-                                        <a href="#">Atletismo</a>
-                                        <a href="#">Baloncesto</a>
-                                        <a href="#">Ciclismo</a>
-                                        <a href="#">Discapacidad</a>
-                                        <a href="#">Fútbol</a>
-                                        <a href="#">Fútbol de Salón</a>
-                                        <a href="#">Gimnasia y Porrismo</a>
-                                        <a href="#">Lucha</a>
-                                        <a href="#">Natación</a>
-                                        <a href="#">Patinaje</a>
-                                        <a href="#">Taekwondo</a>
-                                        <a href="#">Tenis de Campo</a>
-                                        <a href="#">Tenis de Mesa</a>
-                                        <a href="#">Voleibol</a>
+                                        <a href="{{ route('deportes.show',1) }}">Ajedrez</a>
+                                        <a href="{{ route('deportes.show',2) }}">Atletismo</a>
+                                        <a href="{{ route('deportes.show',3) }}">Baloncesto</a>
+                                        <a href="{{ route('deportes.show',4) }}">Ciclismo</a>
+                                        <a href="{{ route('deportes.show',5) }}">Discapacidad</a>
+                                        <a href="{{ route('deportes.show',6) }}">Fútbol</a>
+                                        <a href="{{ route('deportes.show',7) }}">Fútbol de Salón</a>
+                                        <a href="{{ route('deportes.show',8) }}">Gimnasia y Porrismo</a>
+                                        <a href="{{ route('deportes.show',9) }}">Lucha</a>
+                                        <a href="{{ route('deportes.show',10) }}">Natación</a>
+                                        <a href="{{ route('deportes.show',11) }}">Patinaje</a>
+                                        <a href="{{ route('deportes.show',12) }}">Taekwondo</a>
+                                        <a href="{{ route('deportes.show',13) }}">Tenis de Campo</a>
+                                        <a href="{{ route('deportes.show',14) }}">Tenis de Mesa</a>
+                                        <a href="{{ route('deportes.show',15) }}">Voleibol</a>
                                     </ul>
                                 </li>
                                 {{-- Actividad Física, Laboyano Activo y Saludable --}}
