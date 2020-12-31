@@ -34,5 +34,6 @@ class PhotoNoticesTableMigrations extends Migration
     public function down()
     {
         //
+        Schema::dropIfExists('photos_notices');
     }
 }

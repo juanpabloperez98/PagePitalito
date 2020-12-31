@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNoticiasTable extends Migration
+class HorariosDeportesMigrations extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,18 @@ class CreateNoticiasTable extends Migration
      */
     public function up()
     {
-        Schema::create('noticias', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
+        //
+        Schema::create('horariosdeportes', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->string('name', 128);
-            $table->text('body');
-            $table->enum('status', ['PUBLISHED', 'DRAFT'])->default('DRAFT');
-            $table->string('file', 128)->nullable();
+            $table->unsignedBigInteger('horario_id');
+            $table->unsignedBigInteger('deporte_id');
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')
+            $table->foreign('horario_id')->references('id')->on('horarios')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+
+            $table->foreign('deporte_id')->references('id')->on('deportes')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });
@@ -36,7 +37,8 @@ class CreateNoticiasTable extends Migration
      */
     public function down()
     {
+        //
         Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('noticias');
+        Schema::dropIfExists('horariosdeportes');
     }
 }

@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Deporte;
 use Illuminate\Http\Request;
 
+use Symfony\Component\HttpFoundation\Response;
+
+
 class DeporteController extends Controller
 {
     /**
@@ -22,8 +25,12 @@ class DeporteController extends Controller
     public function index()
     {
         //
+
+        $deportes = Deporte::orderBy('id', 'asc')->get();
+
         return view('deportes.index', [
-            'page' => 'deportes'
+            'page' => 'deportes',
+            'deportes' => $deportes
         ]);
     }
 
@@ -35,6 +42,9 @@ class DeporteController extends Controller
     public function create()
     {
         //
+        return view('deportes.create', [
+            'page' => 'deportes'
+        ]);
     }
 
     /**
@@ -46,6 +56,32 @@ class DeporteController extends Controller
     public function store(Request $request)
     {
         //
+        $validateData = $this->validate($request, [
+            'name' => 'required|min:5',
+            'image' => 'mimes:jpeg,bmp,png',
+            'in_charge' => 'required|min:5',
+            'profile' => 'required|min:5',
+        ]);
+
+        $name = $request->input('name');
+        $in_charge = $request->input('in_charge');
+        $profile = $request->input('profile');
+        $image = $request->file('image');
+
+        $deporte = new Deporte();
+        $deporte->name = $name;
+        $deporte->in_charge = $in_charge;
+        $deporte->profile = $profile;
+
+        if ($image) {
+            $image_path = time() . $image->getClientOriginalName();
+            \Storage::disk('deportes_images')->put($image_path, \File::get($image));
+            $deporte->file = $image_path;
+        }
+        $deporte->save();
+        return redirect()->route('deportes.index')
+            ->with('info', 'Deporte creada con exito!!');
+
     }
 
     /**
@@ -54,12 +90,21 @@ class DeporteController extends Controller
      * @param  \App\Deporte  $deporte
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show(Deporte $deporte)
     {
         //
+
+
         return view('deportes.show', [
-            'page' => 'deportes'
+            'page' => 'deportes',
+            'deporte' => $deporte
         ]);
+    }
+
+    public function getImage($filename)
+    {
+        $file = \Storage::disk('deportes_images')->get($filename);
+        return new Response($file, 200);
     }
 
     /**

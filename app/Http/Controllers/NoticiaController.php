@@ -32,9 +32,6 @@ class NoticiaController extends Controller
 
         // dd(empty($noticias));
         // dd($noticias);
-
-
-
         return view('noticias.index', [
             'page' => 'notices',
             'noticias' => $noticias

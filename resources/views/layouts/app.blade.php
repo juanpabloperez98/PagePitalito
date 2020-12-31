@@ -176,7 +176,7 @@
                         </li>
                         {{-- CULTURA --}}
                         <li class="nav-item dropdown_self">
-                            <a href="" class="nav-link dropbtn" onclick="event.preventDefault();">
+                            <a href="" class="nav-link dropbtn" id="" onclick="event.preventDefault();">
                                 CULTURA
                                 <img class="ml-lg-2" src="{{ asset('images/icons/drop-down-arrow24.png') }}" alt="" style="width: 12px;">
                             </a>
@@ -215,17 +215,25 @@
                         </li>
                         {{-- DEPORTE --}}
                         <li class="nav-item dropdown_self">
-                            <a href="#" class="nav-link dropbtn" onclick="event.preventDefault();">
-                                DEPORTE
-                                <img class="ml-lg-2" src="{{ asset('images/icons/drop-down-arrow24.png') }}" alt="" style="width: 12px;">
-                            </a>
+                            @if ($page == "deportes")
+                                <a href="#" class="nav-link dropbtn active" onclick="event.preventDefault();">
+                                    DEPORTE
+                                    <img class="ml-lg-2" src="{{ asset('images/icons/drop-down-arrow24.png') }}" alt="" style="width: 12px;">
+                                </a>    
+                            @else
+                                <a href="#" class="nav-link dropbtn" onclick="event.preventDefault();">
+                                    DEPORTE
+                                    <img class="ml-lg-2" src="{{ asset('images/icons/drop-down-arrow24.png') }}" alt="" style="width: 12px;">
+                                </a> 
+                            @endif
+                            
                             <ul class="dropdown-content">
                                 {{-- Formación Deportiva --}}
                                 <li class="subdropdown_self">
                                     <a href="{{ url('/deportes')}}" class="dropbtn" class="submenu" id="submenu" >Escuelas Formación Deportiva
                                         <img class="ml-lg-2" src="{{asset('images/icons/drop-down-arrow24.png') }}" alt="" style="width: 12px;">
                                     </a>
-                                    <ul class="subdropdown-content">
+                                    <ul class="subdropdown-content" style="height: 80vh">
                                         {{--  Ejemplo de Ruta: url('/FormacionDeportiva/ajedrez') --}}
                                         <a href="#">Ajedrez</a>
                                         <a href="#">Atletismo</a>
@@ -309,10 +317,15 @@
                                     aria-expanded="false">
                                     ACCIONES
                                 </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                {{-- <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <a class="dropdown-item" href="{{ route('noticias.index') }}">Noticias</a>
                                     <a class="dropdown-item" href="{{ route('noticias.create') }}">Crear Noticia</a>
                                     <a class="dropdown-item" href="#">Something else here</a>
+                                </div> --}}
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="{{ route('deportes.index') }}">Deportes</a>
+                                    <a class="dropdown-item" href="{{ route('deportes.create') }}">Crear deportes</a>
+                                    {{-- <a class="dropdown-item" href="#">Something else here</a> --}}
                                 </div>
                             </div>
                             {{-- @elseif($page == 'deportes') --}}
@@ -382,7 +395,7 @@
     <script src="{{ asset('js/bootstrap/jquery-3.5.1.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap/bootstrap.min.js') }}"></script>
     {{-- Submenu img --}}
-    <script>    
+    <script>
     </script>
     @yield('scripts')
 </body>

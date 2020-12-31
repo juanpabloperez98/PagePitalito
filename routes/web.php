@@ -34,6 +34,12 @@ Route::get('/imagen/{filename}', [
 // Rutas Deportes
 Route::resource('deportes', 'DeporteController');
 
+// Capturar la imagen de deportes
+Route::get('/imagen_deportes/{filename}', [
+    'as' => 'imageDeporte',
+    'uses' => 'DeporteController@getImage'
+]);
+
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/porfile/{filename}', function ($filename) {

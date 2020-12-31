@@ -112,7 +112,7 @@ header {
     left: 290px;
     top: 36px;
     text-align: center;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 .subdropdown-content a{

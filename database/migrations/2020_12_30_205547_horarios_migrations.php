@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDeportesTable extends Migration
+class HorariosMigrations extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateDeportesTable extends Migration
      */
     public function up()
     {
-        Schema::create('deportes', function (Blueprint $table) {
+        //
+        Schema::create('horarios', function (Blueprint $table) {
             $table->id();
-            $table->string('name',128);
-            $table->string('file',128)->nullable();
-            $table->string('in_charge',128)->nullable();
-            $table->string('profile',100)->nullable();
+            $table->string('day',128);
+            $table->string('start',50);
+            $table->string('finish',50);
             $table->timestamps();
         });
     }
@@ -30,6 +30,8 @@ class CreateDeportesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('deportes');
+        //
+        Schema::disableForeignKeyConstraints();
+        Schema::dropIfExists('horarios');
     }
 }

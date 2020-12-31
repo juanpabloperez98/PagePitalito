@@ -13,81 +13,92 @@
     </div>
     <div class="row mx-auto p-lg-4">
         <div class="col-lg-12 col-12">
+            @if (session('info'))
+                <div class="alert alert-success">
+                    {{ session('info') }}
+                </div>
+            @endif
+
+            @php
+                $longitud = sizeof($deportes);
+                // var_dump(ceil($longitud/3));    
+            @endphp
+            
             <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
                 <div class="carousel-inner">
                   {{-- 3 items --}}
                   <div class="carousel-item active text-center">
                     <div class="box-example mx-3">
-                        <div class="imagen"><img class="" src="{{ asset('images/deportes/Ajedrez.jpg') }}" style="max-width: 100%; height:250px"></div>
-                        <a href="{{ route('deportes.show',1) }}"><h3>Ajedrez</h3></a>
+                        <div class="imagen"><img class="" src="{{ route('imageDeporte', ['filename'=>$deportes[0]->file]) }}" style="max-width: 100%; height:250px"></div>
+                        <a href="{{ route('deportes.show',1) }}"><h3>{{ $deportes[0]->name }}</h3></a>
                     </div>
                     <div class="box-example mx-3">
-                        <div class="imagen"><img class="" src="{{ asset('images/deportes/Atletismo.jpg') }}" style="max-width: 100%; height:250px"></div>
-                        <a href=""><h3>Atletismo</h3></a>
+                        <div class="imagen"><img class="" src="{{ route('imageDeporte', ['filename'=>$deportes[1]->file]) }}" style="max-width: 100%; height:250px"></div>
+                        <a href="{{ route('deportes.show',2) }}"><h3>{{$deportes[1]->name}}</h3></a>
                     </div>
                     <div class="box-example mx-3">
-                        <div class="imagen"><img class="" src="{{ asset('images/deportes/Baloncesto.jpg') }}" style="max-width: 100%; height:250px"></div>
-                        <a href=""><h3>Baloncesto</h3></a>
-                    </div>
-                  </div>
-                  {{-- 3 items --}}
-                  <div class="carousel-item text-center">
-                    <div class="box-example mx-3">
-                        <div class="imagen"><img class="" src="{{ asset('images/deportes/Ciclismo.jpg') }}" style="max-width: 100%; height:250px"></div>
-                        <a href=""><h3>Ciclismo</h3></a>
-                    </div>
-                    <div class="box-example mx-3">
-                        <div class="imagen"><img class="" src="{{ asset('images/deportes/Discapacidad.jpg') }}" style="max-width: 100%; height:250px"></div>
-                        <a href=""><h3>Discapacidad</h3></a>
-                    </div>
-                    <div class="box-example mx-3">
-                        <div class="imagen"><img class="" src="{{ asset('images/deportes/Futbol.jpg') }}" style="max-width: 100%; height:250px"></div>
-                        <a href=""><h3>Fútbol</h3></a>
+                        <div class="imagen"><img class="" src="{{ route('imageDeporte', ['filename'=>$deportes[2]->file]) }}" style="max-width: 100%; height:250px"></div>
+                        <a href="{{ route('deportes.show',3) }}"><h3>{{$deportes[2]->name}}</h3></a>
                     </div>
                   </div>
                   {{-- 3 items --}}
                   <div class="carousel-item text-center">
                     <div class="box-example mx-3">
-                        <div class="imagen"><img class="" src="{{ asset('images/deportes/FutbolDeSalon.png') }}" style="max-width: 100%; height:250px"></div>
-                        <a href=""><h3>Fútbol de Salón</h3></a>
+                        <div class="imagen"><img class="" src="{{ route('imageDeporte', ['filename'=>$deportes[3]->file]) }}" style="max-width: 100%; height:250px"></div>
+                        <a href="{{ route('deportes.show',4) }}"><h3>{{$deportes[3]->name}}</h3></a>
                     </div>
                     <div class="box-example mx-3">
-                        <div class="imagen"><img class="" src="{{ asset('images/deportes/Gimnasia.jpg') }}" style="max-width: 100%; height:250px"></div>
-                        <a href=""><h3>Gimnasia y Porrismo</h3></a>
+                        <div class="imagen"><img class="" src="{{ route('imageDeporte', ['filename'=>$deportes[4]->file]) }}" style="max-width: 100%; height:250px"></div>
+                        <a href="{{ route('deportes.show',5) }}"><h3>{{$deportes[4]->name}}</h3></a>
                     </div>
                     <div class="box-example mx-3">
-                        <div class="imagen"><img class="" src="{{ asset('images/deportes/Lucha.jpg') }}" style="max-width:100%; height:250px"></div>
-                        <a href=""><h3>Lucha</h3></a>
-                    </div>
-                  </div>
-                  {{-- 3 items --}}
-                  <div class="carousel-item text-center">
-                    <div class="box-example mx-3">
-                        <div class="imagen"><img class="" src="{{ asset('images/deportes/Natacion.jpg') }}" style="max-width: 100%; height:250px"></div>
-                        <a href=""><h3>Natación</h3></a>
-                    </div>
-                    <div class="box-example mx-3">
-                        <div class="imagen"><img class="" src="{{ asset('images/deportes/Patinaje.jpg') }}" style="max-width: 100%; height:250px"></div>
-                        <a href=""><h3>Patinaje</h3></a>
-                    </div>
-                    <div class="box-example mx-3">
-                        <div class="imagen"><img class="" src="{{ asset('images/deportes/Taekwondo.jpg') }}" style="max-width: 100%; height:250px"></div>
-                        <a href=""><h3>Taekwondo</h3></a>
+                        <div class="imagen"><img class="" src="{{ route('imageDeporte', ['filename'=>$deportes[5]->file]) }}" style="max-width: 100%; height:250px"></div>
+                        <a href="{{ route('deportes.show',6) }}"><h3>{{$deportes[5]->name}}</h3></a>
                     </div>
                   </div>
                   {{-- 3 items --}}
                   <div class="carousel-item text-center">
                     <div class="box-example mx-3">
-                        <div class="imagen"><img class="" src="{{ asset('images/deportes/TenisDeCampo.jpg') }}" style="max-width: 100%; height:250px"></div>
-                        <a href=""><h3>Tenis de Campo</h3></a>
+                        <div class="imagen"><img class="" src="{{ route('imageDeporte', ['filename'=>$deportes[6]->file]) }}" style="max-width: 100%; height:250px"></div>
+                        <a href="{{ route('deportes.show',7) }}"><h3>{{$deportes[6]->name}}</h3></a>
                     </div>
                     <div class="box-example mx-3">
-                        <div class="imagen"><img class="" src="{{ asset('images/deportes/TenisDeMesa.jpg') }}" style="max-width: 100%; height:250px"></div>
-                        <a href=""><h3>Tenis de Mesa</h3></a>
+                        <div class="imagen"><img class="" src="{{ route('imageDeporte', ['filename'=>$deportes[7]->file]) }}" style="max-width: 100%; height:250px"></div>
+                        <a href="{{ route('deportes.show',8) }}"><h3>{{$deportes[7]->name}}</h3></a>
                     </div>
                     <div class="box-example mx-3">
-                        <div class="imagen"><img class="" src="{{ asset('images/deportes/Voleibol.jpg') }}" style="max-width: 100%; height:250px"></div>
-                        <a href=""><h3>Voleibol</h3></a>
+                        <div class="imagen"><img class="" src="{{ route('imageDeporte', ['filename'=>$deportes[8]->file]) }}" style="max-width:100%; height:250px"></div>
+                        <a href="{{ route('deportes.show',9) }}"><h3>{{$deportes[8]->name}}</h3></a>
+                    </div>
+                  </div>
+                  {{-- 3 items --}}
+                  <div class="carousel-item text-center">
+                    <div class="box-example mx-3">
+                        <div class="imagen"><img class="" src="{{ route('imageDeporte', ['filename'=>$deportes[9]->file]) }}" style="max-width: 100%; height:250px"></div>
+                        <a href="{{ route('deportes.show',10) }}"><h3>{{$deportes[9]->name}}</h3></a>
+                    </div>
+                    <div class="box-example mx-3">
+                        <div class="imagen"><img class="" src="{{ route('imageDeporte', ['filename'=>$deportes[10]->file]) }}" style="max-width: 100%; height:250px"></div>
+                        <a href="{{ route('deportes.show',11) }}"><h3>{{$deportes[10]->name}}</h3></a>
+                    </div>
+                    <div class="box-example mx-3">
+                        <div class="imagen"><img class="" src="{{ route('imageDeporte', ['filename'=>$deportes[11]->file]) }}" style="max-width: 100%; height:250px"></div>
+                        <a href="{{ route('deportes.show',12) }}"><h3>{{$deportes[11]->name}}</h3></a>
+                    </div>
+                  </div>
+                  {{-- 3 items --}}
+                  <div class="carousel-item text-center">
+                    <div class="box-example mx-3">
+                        <div class="imagen"><img class="" src="{{ route('imageDeporte', ['filename'=>$deportes[12]->file]) }}" style="max-width: 100%; height:250px"></div>
+                        <a href="{{ route('deportes.show',13) }}"><h3>{{$deportes[12]->name}}</h3></a>
+                    </div>
+                    <div class="box-example mx-3">
+                        <div class="imagen"><img class="" src="{{ route('imageDeporte', ['filename'=>$deportes[13]->file]) }}" style="max-width: 100%; height:250px"></div>
+                        <a href="{{ route('deportes.show',14) }}"><h3>{{$deportes[13]->name}}</h3></a>
+                    </div>
+                    <div class="box-example mx-3">
+                        <div class="imagen"><img class="" src="{{ route('imageDeporte', ['filename'=>$deportes[14]->file]) }}" style="max-width: 100%; height:250px"></div>
+                        <a href="{{ route('deportes.show',15) }}"><h3>{{$deportes[14]->name}}</h3></a>
                     </div>
                   </div>
                 </div>

@@ -60,6 +60,12 @@ return [
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
+        'deportes_images' => [
+            'driver' => 'local',
+            'root' => storage_path('app/deportes_images'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+        ],
         'photos_porfile' => [
             'driver' => 'local',
             'root' => storage_path('app/photos_porfile'),
