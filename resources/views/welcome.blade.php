@@ -26,7 +26,7 @@
         <div class="text">
             <h1>INSTITUTO DE CULTURA RECREACIÓN Y DEPORTE PITALITO HUILA</h1>
             <div id="btn-vermas">
-                <a href="#" class="btn">VER MÁS</a>
+                <a href="{{ route('vermas') }}" class="btn">VER MÁS</a>
             </div>
         </div>
     </div>

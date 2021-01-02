@@ -83,3 +83,7 @@ main {
     height: 300px;
     margin-left: -15px;
 }
+
+.botones a:hover > img{
+    width: 22px;
+}

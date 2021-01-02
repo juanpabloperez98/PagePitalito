@@ -15,14 +15,19 @@ use Symfony\Component\HttpFoundation\Response;
 |
 */
 
+// Others routes
 Route::get('/', 'NoticiaController@main_section')->name('main');
 Route::get('/ver-noticias', 'NoticiaController@show_users_notices')->name('show-notices-user');
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/ver mas', function(){
+    return view('others.vermas');
+})->name('vermas');
+Route::get('/acciones',function () {
+    return view('acciones.acciones');
+})->name('acciones')->middleware(['auth']);
+
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-
 //Rutas de noticias 
 Route::resource('noticias', 'NoticiaController');
 // Capturar la imagen de noticias
@@ -33,14 +38,13 @@ Route::get('/imagen/{filename}', [
 
 // Rutas Deportes
 Route::resource('deportes', 'DeporteController');
-
 // Capturar la imagen de deportes
 Route::get('/imagen_deportes/{filename}', [
     'as' => 'imageDeporte',
     'uses' => 'DeporteController@getImage'
 ]);
 
-
+// UsersRoutes
 Route::middleware(['auth'])->group(function () {
     Route::get('/porfile/{filename}', function ($filename) {
         $file = \Storage::disk('photos_porfile')->get($filename);

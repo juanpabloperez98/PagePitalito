@@ -25,9 +25,37 @@
             @endphp
             
             <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
-                <div class="carousel-inner">
-                  {{-- 3 items --}}
-                  <div class="carousel-item active text-center">
+                <div class="carousel-inner"> 
+                    @for ($i = 0; $i < $longitud; $i++)
+                        @if ($i == 0)
+                            <div class="carousel-item active text-center">
+                                <div class="box-example mx-3">
+                                    <div class="imagen"><img class="" src="{{ route('imageDeporte', ['filename'=>$deportes[$i]->file]) }}" style="max-width: 100%; height:250px"></div>
+                                    <a href="{{ route('deportes.show',$deportes[$i]->id) }}"><h3>{{ $deportes[$i]->name }}</h3></a>
+                                </div>
+                                @if(!Auth::guest())
+                                    <div class="botones mt-3">
+                                        <a href="{{ route('deportes.edit',$deportes[$i]->id) }}" class="ml-2"><img src="{{ asset('images/icons/edit.png') }}" alt="edit"></a>
+                                        <a href="#" class="ml-2"><img src="{{ asset('images/icons/delete.png') }}" alt="delete"></a>
+                                    </div>
+                                @endif
+                            </div>
+                        @else 
+                            <div class="carousel-item text-center">
+                                <div class="box-example mx-3">
+                                    <div class="imagen"><img class="" src="{{ route('imageDeporte', ['filename'=>$deportes[$i]->file]) }}" style="max-width: 100%; height:250px"></div>
+                                    <a href="{{ route('deportes.show',$deportes[$i]->id) }}"><h3>{{ $deportes[$i]->name }}</h3></a>
+                                </div>
+                                @if(!Auth::guest())
+                                    <div class="botones mt-3">
+                                        <a href="{{ route('deportes.edit',$deportes[$i]->id) }}" class="ml-2"><img src="{{ asset('images/icons/edit.png') }}" alt="edit"></a>
+                                        <a href="#" class="ml-2"><img src="{{ asset('images/icons/delete.png') }}" alt="delete"></a>
+                                    </div>
+                                @endif
+                            </div>
+                        @endif      
+                    @endfor
+                  {{-- <div class="carousel-item active text-center">
                     <div class="box-example mx-3">
                         <div class="imagen"><img class="" src="{{ route('imageDeporte', ['filename'=>$deportes[0]->file]) }}" style="max-width: 100%; height:250px"></div>
                         <a href="{{ route('deportes.show',1) }}"><h3>{{ $deportes[0]->name }}</h3></a>
@@ -41,7 +69,6 @@
                         <a href="{{ route('deportes.show',3) }}"><h3>{{$deportes[2]->name}}</h3></a>
                     </div>
                   </div>
-                  {{-- 3 items --}}
                   <div class="carousel-item text-center">
                     <div class="box-example mx-3">
                         <div class="imagen"><img class="" src="{{ route('imageDeporte', ['filename'=>$deportes[3]->file]) }}" style="max-width: 100%; height:250px"></div>
@@ -56,7 +83,6 @@
                         <a href="{{ route('deportes.show',6) }}"><h3>{{$deportes[5]->name}}</h3></a>
                     </div>
                   </div>
-                  {{-- 3 items --}}
                   <div class="carousel-item text-center">
                     <div class="box-example mx-3">
                         <div class="imagen"><img class="" src="{{ route('imageDeporte', ['filename'=>$deportes[6]->file]) }}" style="max-width: 100%; height:250px"></div>
@@ -71,7 +97,6 @@
                         <a href="{{ route('deportes.show',9) }}"><h3>{{$deportes[8]->name}}</h3></a>
                     </div>
                   </div>
-                  {{-- 3 items --}}
                   <div class="carousel-item text-center">
                     <div class="box-example mx-3">
                         <div class="imagen"><img class="" src="{{ route('imageDeporte', ['filename'=>$deportes[9]->file]) }}" style="max-width: 100%; height:250px"></div>
@@ -86,7 +111,6 @@
                         <a href="{{ route('deportes.show',12) }}"><h3>{{$deportes[11]->name}}</h3></a>
                     </div>
                   </div>
-                  {{-- 3 items --}}
                   <div class="carousel-item text-center">
                     <div class="box-example mx-3">
                         <div class="imagen"><img class="" src="{{ route('imageDeporte', ['filename'=>$deportes[12]->file]) }}" style="max-width: 100%; height:250px"></div>
@@ -100,7 +124,7 @@
                         <div class="imagen"><img class="" src="{{ route('imageDeporte', ['filename'=>$deportes[14]->file]) }}" style="max-width: 100%; height:250px"></div>
                         <a href="{{ route('deportes.show',15) }}"><h3>{{$deportes[14]->name}}</h3></a>
                     </div>
-                  </div>
+                  </div> --}}
                 </div>
 
                 <a class="carousel-control-prev arrows" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -111,7 +135,7 @@
                   <span class="carousel-control-next-icon" aria-hidden="true"></span>
                   <span class="sr-only">Next</span>
                 </a>
-              </div>
+            </div>
         </div>
     </div>
 @endsection

@@ -226,7 +226,6 @@
                                     <img class="ml-lg-2" src="{{ asset('images/icons/drop-down-arrow24.png') }}" alt="" style="width: 12px;">
                                 </a> 
                             @endif
-                            
                             <ul class="dropdown-content">
                                 {{-- Formación Deportiva --}}
                                 <li class="subdropdown_self">
@@ -235,8 +234,16 @@
                                     </a>
                                     <ul class="subdropdown-content" style="height: 80vh">
                                         {{--  Ejemplo de Ruta: url('/FormacionDeportiva/ajedrez') --}}
-                                        <a href="{{ route('deportes.show',1) }}">Ajedrez</a>
-                                        <a href="{{ route('deportes.show',2) }}">Atletismo</a>
+                                        @php
+                                            $deportes = App\Deporte::orderBy('id', 'asc')->get();
+                                            // var_dump($deporte)
+                                        @endphp
+
+                                        @foreach ($deportes as $deporte)
+                                            <a href="{{ route('deportes.show',$deporte->id) }}">{{ $deporte->name }}</a>
+                                        @endforeach
+
+                                        {{-- <a href="{{ route('deportes.show',2) }}">Atletismo</a>
                                         <a href="{{ route('deportes.show',3) }}">Baloncesto</a>
                                         <a href="{{ route('deportes.show',4) }}">Ciclismo</a>
                                         <a href="{{ route('deportes.show',5) }}">Discapacidad</a>
@@ -249,7 +256,7 @@
                                         <a href="{{ route('deportes.show',12) }}">Taekwondo</a>
                                         <a href="{{ route('deportes.show',13) }}">Tenis de Campo</a>
                                         <a href="{{ route('deportes.show',14) }}">Tenis de Mesa</a>
-                                        <a href="{{ route('deportes.show',15) }}">Voleibol</a>
+                                        <a href="{{ route('deportes.show',15) }}">Voleibol</a> --}}
                                     </ul>
                                 </li>
                                 {{-- Actividad Física, Laboyano Activo y Saludable --}}
@@ -308,42 +315,7 @@
                 @else
                     <div id="content-botons-register">
                         <a href="{{ route('login') }}" class="btn">{{ Auth::user()->name }}</a>
-
-                        {{-- @if ($page == 'notices')
-                            --}}
-                            <div class="dropdown d-inline-block" style="padding: 6px 0px">
-                                <button class="btn btn-secondary dropdown-toggle" style="border: none; height: 43px;"
-                                    type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
-                                    ACCIONES
-                                </button>
-                                {{-- <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="{{ route('noticias.index') }}">Noticias</a>
-                                    <a class="dropdown-item" href="{{ route('noticias.create') }}">Crear Noticia</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                </div> --}}
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="{{ route('deportes.index') }}">Deportes</a>
-                                    <a class="dropdown-item" href="{{ route('deportes.create') }}">Crear deportes</a>
-                                    {{-- <a class="dropdown-item" href="#">Something else here</a> --}}
-                                </div>
-                            </div>
-                            {{-- @elseif($page == 'deportes') --}}
-                            {{-- <div class="dropdown d-inline-block"
-                                style="padding: 6px 0px">
-                                <button class="btn btn-secondary dropdown-toggle" style="border: none; height: 43px;"
-                                    type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
-                                    ACCIONES
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="{{ route('noticias.index') }}">Deportes</a>
-                                    <a class="dropdown-item" href="{{ route('noticias.create') }}">Crear Deporte</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                </div>
-                            </div> --}}
-                            {{--
-                        @endif --}}
+                        <a href="{{ route('acciones') }}" class="btn">ACCIONES</a>
                     </div>
                 @endguest
 

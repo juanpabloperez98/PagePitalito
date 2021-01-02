@@ -1,0 +1,32 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Montserrat-Regular';
+}
+
+main {
+    margin-bottom: 40px;
+    min-height: 100vh !important;
+}
+
+/* .container {
+    position: relative;
+    top: 0px;
+    padding-top: 140px;
+} */
+
+.imagen img{
+    width: 100%;
+}
+
+.botones a:hover > img{
+    width: 22px;
+}
+
+.col-lg-4 h4{
+    min-height: 57px;
+}
+
+.space-between{
+    margin-top: 80px;
+}
