@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class HorariosMigrations extends Migration
+class CreateHorarios extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class HorariosMigrations extends Migration
      */
     public function up()
     {
-        //
         Schema::create('horarios', function (Blueprint $table) {
             $table->id();
-            $table->string('day',128);
-            $table->string('start',50);
-            $table->string('finish',50);
+            $table->enum('day', ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'])->nullable();
+            $table->string('start',128);
+            $table->string('finish',128);
             $table->timestamps();
         });
     }
@@ -30,8 +29,6 @@ class HorariosMigrations extends Migration
      */
     public function down()
     {
-        //
-        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('horarios');
     }
 }
