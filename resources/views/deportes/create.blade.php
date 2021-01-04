@@ -65,9 +65,9 @@
                                     <div class="modal-body">
                                         <div class="form-group">
                                             <select id="horarios" class="form-control">
-                                                <option>Lunes 7:00 - 10:00</option>
-                                                <option>Miercoles 7:00 - 10:00</option>
-                                                <option>Viernes 7:00 - 10:00</option>
+                                                @foreach ($horarios as $horario)
+                                                    <option>{{$horario->day}} {{$horario->start}} - {{$horario->finish}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
@@ -95,11 +95,12 @@
 
         var addElements = () => {
             var contenedor = document.getElementById('form'),
-                input = document.createElement('input')
-                input.setAttribute('id','input'+numero_horarios)
-                input.setAttribute('type','hidden')
-                input.setAttribute('name','input'+numero_horarios)
-                contenedor.appendChild(input)
+            input = document.createElement('input')
+            
+            input.setAttribute('id','input'+numero_horarios)
+            input.setAttribute('type','hidden')
+            input.setAttribute('name','input'+numero_horarios)
+            contenedor.appendChild(input)
             var p = document.createElement('p'),
                 contenedor2 = document.getElementById('content')
             p.innerHTML = lista_horarios[numero_horarios]
@@ -110,7 +111,11 @@
         $('#save').on('click',(e)=>{
             var horario = $('#horarios option:selected').val()
             if(lista_horarios.includes(horario)){
-                alert("Error !!")
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error!',
+                    text: 'Este horario ya ha sido agregado',
+                })
             }else{
                 lista_horarios.push(horario)
                 $('#Mymodal').modal('hide')

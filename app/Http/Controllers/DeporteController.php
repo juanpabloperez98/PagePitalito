@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Deporte;
+use App\Horario;
 use Illuminate\Http\Request;
 
 use Symfony\Component\HttpFoundation\Response;
@@ -42,8 +43,10 @@ class DeporteController extends Controller
     public function create()
     {
         //
+        $horarios = Horario::all();
         return view('deportes.create', [
-            'page' => 'deportes'
+            'page' => 'deportes',
+            'horarios' => $horarios
         ]);
     }
 
