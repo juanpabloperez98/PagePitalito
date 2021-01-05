@@ -110,6 +110,46 @@ class DeporteController extends Controller
         return new Response($file, 200);
     }
 
+    public function createHorario(Request $request){
+        if($request->ajax()) {
+            $day = $request->input('day');
+            $start = $request->input('start').':00';
+            $fin = $request->input('finish').':00';
+
+            $h_ = Horario::where([
+                ['day',$day],
+                ['start',$start],
+                ['finish',$fin]
+            ])->first();
+
+
+            if(isset($h_) && !empty($h_)){
+                return response()->json(['message' => 'Este horario ya ha sido creado!!','status'=>'400']);
+            }else{
+                $horario = new Horario();
+                $horario->day = $day;
+                $horario->start = $start;
+                $horario->finish = $fin;
+                $horario->save();
+                return response()->json(['message' => 'Horario creado con exito!!','status'=>'200']);
+            }
+        }
+    }
+
+    public function ShowHorarios(Request $request){
+        if($request->ajax()) {
+            $horarios = Horario::all();
+            $html = "";
+            foreach ($horarios as $horario) {
+                $html = $html.'<option>'.$horario->day.' '.$horario->start.' - '.$horario->finish.'</option>';
+            }
+            // $html_entities = htmlentities($html);
+            $html_entities = $html;
+            // return response()->json(['html' => 'Este horario ya ha sido creado!!','status'=>'400']); 
+            return $html_entities;          
+        }
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

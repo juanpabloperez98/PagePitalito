@@ -25,7 +25,8 @@ Route::get('/ver mas', function(){
 Route::get('/acciones',function () {
     return view('acciones.acciones');
 })->name('acciones')->middleware(['auth']);
-
+Route::post('/create-schedule', 'DeporteController@createHorario')->name('create-schedule')->middleware(['auth']);
+Route::get('/show-schedule', 'DeporteController@ShowHorarios')->name('show-schedule');
 
 Auth::routes();
 //Rutas de noticias 
