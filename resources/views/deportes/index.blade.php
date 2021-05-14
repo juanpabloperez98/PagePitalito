@@ -33,12 +33,12 @@
                                     <div class="imagen"><img class="" src="{{ route('imageDeporte', ['filename'=>$deportes[$i]->file]) }}" style="max-width: 100%; height:250px"></div>
                                     <a href="{{ route('deportes.show',$deportes[$i]->id) }}"><h3>{{ $deportes[$i]->name }}</h3></a>
                                 </div>
-                                @if(!Auth::guest())
+                                @can('deportes.all')
                                     <div class="botones mt-3">
                                         <a href="{{ route('deportes.edit',$deportes[$i]->id) }}" class="ml-2"><img src="{{ asset('images/icons/edit.png') }}" alt="edit"></a>
                                         <a href="#" class="ml-2"><img src="{{ asset('images/icons/delete.png') }}" alt="delete"></a>
                                     </div>
-                                @endif
+                                @endcan
                             </div>
                         @else 
                             <div class="carousel-item text-center">
@@ -46,12 +46,12 @@
                                     <div class="imagen"><img class="" src="{{ route('imageDeporte', ['filename'=>$deportes[$i]->file]) }}" style="max-width: 100%; height:250px"></div>
                                     <a href="{{ route('deportes.show',$deportes[$i]->id) }}"><h3>{{ $deportes[$i]->name }}</h3></a>
                                 </div>
-                                @if(!Auth::guest())
+                                @can('deportes.all')
                                     <div class="botones mt-3">
                                         <a href="{{ route('deportes.edit',$deportes[$i]->id) }}" class="ml-2"><img src="{{ asset('images/icons/edit.png') }}" alt="edit"></a>
                                         <a href="#" class="ml-2"><img src="{{ asset('images/icons/delete.png') }}" alt="delete"></a>
                                     </div>
-                                @endif
+                                @endcan
                             </div>
                         @endif      
                     @endfor

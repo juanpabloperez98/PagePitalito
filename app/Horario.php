@@ -11,7 +11,7 @@ class Horario extends Model
         'day','start','finish'
     ];
 
-    public function deportes(){
+    public function deporte(){
         // relacion muchos a muchos
         return $this->belongsToMany(Deporte::class);
     }

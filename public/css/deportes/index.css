@@ -79,7 +79,6 @@ main {
 .imagen-content{
     content: "";
     width: 400px;
-    background-color: blue;
     height: 300px;
     margin-left: -15px;
 }

@@ -40,12 +40,12 @@
 
                         <form enctype="multipart/form-data" method="POST" action="{{ route('UserUpdate', $user->id) }}">
                             @csrf
-                            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                            <div class="form-group{{ $errors->has('first_name') ? ' has-error' : '' }}">
                                 <label for="name">NOMBRES COMPLETOS</label>
-                                <input type="text" class="form-control" id="name" name="name" value="{{ $user->name }}" placeholder="e.g Andres Felipe" required>
-                                @if ($errors->has('nombre'))
+                                <input type="text" class="form-control" id="first_name" name="first_name" value="{{ $user->first_name }}" placeholder="e.g Andres Felipe" required>
+                                @if ($errors->has('first_name'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
+                                        <strong>{{ $errors->first('first_name') }}</strong>
                                     </span>
                                 @endif
                             </div>

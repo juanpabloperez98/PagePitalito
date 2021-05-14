@@ -40,8 +40,8 @@
                         <div class="row mx-auto">
                             <div class="col-lg-6 col-6">
                                 <div>
-                                    @if (Storage::disk('photos_porfile')->has(Auth::user()->file))
-                                        <img src=" {{ route('getPorfileImage', Auth::user()->file) }}" alt="imagen-perfil"
+                                    @if (Storage::disk('photos_porfile')->has(Auth::user()->profile_photo))
+                                        <img src=" {{ route('getPorfileImage', Auth::user()->profile_photo) }}" alt="imagen-perfil"
                                             style="width: 100%;">
                                     @else
                                         <img src="{{ asset('images/default.jpg') }}" alt="imagen-perfil"
@@ -51,7 +51,7 @@
                             </div>
                             <div class="col-lg-6 col-6">
                                 <div class="mt-3">
-                                    <h4 class="d-inline">Nombre:</h4> <span>{{ Auth::user()->name }}</span>
+                                    <h4 class="d-inline">Nombre:</h4> <span>{{ Auth::user()->first_name }}</span>
                                 </div>
                                 <div class="mt-3">
                                     <h4 class="d-inline">Apellidos:</h4> <span>{{ Auth::user()->last_name }}</span>

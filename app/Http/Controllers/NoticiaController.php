@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Noticia;
+use App\Notice;
 use Symfony\Component\HttpFoundation\Response;
 
 use Illuminate\Http\Request;
-use PHPUnit\Framework\Error\Notice;
 
 class NoticiaController extends Controller
 {
@@ -28,7 +27,6 @@ class NoticiaController extends Controller
         //
         // $noticias_count = Noticia::count();
         $noticias = Noticia::orderBy('id', 'DESC')->get();
-
 
         // dd(empty($noticias));
         // dd($noticias);
@@ -132,11 +130,7 @@ class NoticiaController extends Controller
 
 
         // $noticias = Noticia::orderBy('id', 'DESC')->get();
-        $noticias = Noticia::orderBy('id', 'DESC')->where('status','!=','DRAFT')->get();
-
-
-
-
+        $noticias = Notice::orderBy('id', 'DESC')->get();
         // dd();
 
         // dd(sizeof($noticias));

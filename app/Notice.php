@@ -4,11 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Noticia extends Model
+class Notice extends Model
 {
     //
     protected $fillable = [
-        'user_id','name','body','status','file'
+        'name','body','status','file'
     ];
 
     public function user(){

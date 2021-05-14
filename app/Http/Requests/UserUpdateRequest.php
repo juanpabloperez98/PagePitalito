@@ -24,7 +24,7 @@ class UserUpdateRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'name' => ['required', 'string', 'max:255'],
+            'first_name' => ['required', 'string', 'max:255'],
             'lastname' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,'.$this->user],
             'image' => ['mimes:jpeg,jpg,JPG,bmp,png']

@@ -29,6 +29,7 @@ class DeporteController extends Controller
 
         $deportes = Deporte::orderBy('id', 'asc')->get();
 
+
         return view('deportes.index', [
             'page' => 'deportes',
             'deportes' => $deportes
@@ -65,6 +66,13 @@ class DeporteController extends Controller
             'in_charge' => 'required|min:5',
             'profile' => 'required|min:5',
         ]);
+
+        $num_total = $request->input('totalhorarios');
+
+        var_dump($num_total);
+        die();
+
+
 
         $name = $request->input('name');
         $in_charge = $request->input('in_charge');

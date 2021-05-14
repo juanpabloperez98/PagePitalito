@@ -24,7 +24,7 @@ class UserController extends Controller
     {
         
         $usuario = User::where('id', '=', $user)->first();
-        $usuario->name = $request->input('name');
+        $usuario->first_name = $request->input('first_name');
         $usuario->last_name = $request->input('lastname');
         $usuario->email = $request->input('email');
         
@@ -32,8 +32,8 @@ class UserController extends Controller
         if($image){
             $image_path = time() . '-porfile-' . $image->getClientOriginalName();
             \Storage::disk('photos_porfile')->put($image_path, \File::get($image));
-            \Storage::disk('photos_porfile')->delete($usuario->file);
-            $usuario->file = $image_path;
+            \Storage::disk('photos_porfile')->delete($usuario->profile_photo);
+            $usuario->profile_photo = $image_path;
         }
         $usuario->update();
 

@@ -17,145 +17,6 @@
 
 <body>
     <div id="app">
-        {{-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        </li>
-                        @if (Route::has('register'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                            </li>
-                        @endif
-                        @else
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }}
-                            </a>
-
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav> --}}
-        {{-- <header>
-
-            <nav class="navbar navbar-expand-lg">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src="{{ asset('images/gov-logo.png') }}" alt="gov-logo" id="gov-logo">
-                </a>
-
-                <div class="loger ml-auto">
-                    @guest
-                    <a href="{{ route('login') }}" class="log-res">INICIAR SESION</a>
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="log-res" id="register">REGISTRATE</a>
-                    @endif
-                    @else
-
-
-
-                    <div class="dropdown show">
-                        <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{ Auth::user()->name }}
-                        </a>
-
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-
-                            @if (isset($page) && $page == 'notices')
-                                <a class="dropdown-item" href="{{ route('noticias.create') }}">Crear Noticia</a>
-                                <a class="dropdown-item" href="#">Editar Noticia</a>
-                                <a class="dropdown-item" href="#">Eliminar Noticia</a>
-                            @endif
-                            <a id="logout" href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
-                                                    document.getElementById('logout-form').submit();">Cerrar Sesion</a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-                        </div>
-                    </div>
-                    @endguest
-                </div>
-
-                <a href="#" id="content-logo">
-                    <img src="{{ asset('images/menu.png') }}" alt="logo-menu">
-                </a>
-
-                <a href="#" id="content-logo-close" class="desactivate">
-                    <img src="{{ asset('images/close.png') }}" alt="logo-close">
-                </a>
-
-            </nav>
-
-            <div id="menu">
-                <ul class="row mx-auto">
-                    <div class="col-lg-8 mx-auto mt-5">
-                        <div class="row mx-auto mb-5 text-center">
-                            <div class="col-lg-4">
-                                <a href="{{ route('noticias.index') }}">
-                                    <img src="{{ asset('images/imgp.jpg') }}" alt="imagen">
-                                    <span>NOTICIAS</span>
-                                </a>
-                            </div>
-                            <div class="col-lg-4">
-                                <img src="{{ asset('images/imgp.jpg') }}" alt="imagen">
-                                <span>CALENDARIO</span>
-                            </div>
-                            <div class="col-lg-4">
-                                <img src="{{ asset('images/imgp.jpg') }}" alt="imagen">
-                                <span>CULTURA</span>
-                            </div>
-                            <div class="col-lg-4">
-                                <img src="{{ asset('images/imgp.jpg') }}" alt="imagen">
-                                <span>DEPORTE</span>
-                            </div>
-                            <div class="col-lg-4">
-                                <img src="{{ asset('images/imgp.jpg') }}" alt="imagen">
-                                <span>OTRO</span>
-                            </div>
-                            <div class="col-lg-4">
-                                <img src="{{ asset('images/imgp.jpg') }}" alt="imagen">
-                                <span>OTRO</span>
-                            </div>
-                        </div>
-                    </div>
-                </ul>
-            </div>
-
-        </header> --}}
 
         <header>
             <nav class="navbar navbar-expand-lg">
@@ -207,10 +68,6 @@
                                         <a href="#">Inmaterial</a>
                                     </ul>
                                 </li>
-                                {{-- Agenda Cultural --}}
-                                <li>
-                                    <a href="#">Agenda Cultural</a>
-                                </li>
                             </ul>
                         </li>
                         {{-- DEPORTE --}}
@@ -234,29 +91,13 @@
                                     </a>
                                     <ul class="subdropdown-content" style="height: 80vh">
                                         {{--  Ejemplo de Ruta: url('/FormacionDeportiva/ajedrez') --}}
-                                        @php
+                                        {{-- @php
                                             $deportes = App\Deporte::orderBy('id', 'asc')->get();
-                                            // var_dump($deporte)
                                         @endphp
 
                                         @foreach ($deportes as $deporte)
                                             <a href="{{ route('deportes.show',$deporte->id) }}">{{ $deporte->name }}</a>
-                                        @endforeach
-
-                                        {{-- <a href="{{ route('deportes.show',2) }}">Atletismo</a>
-                                        <a href="{{ route('deportes.show',3) }}">Baloncesto</a>
-                                        <a href="{{ route('deportes.show',4) }}">Ciclismo</a>
-                                        <a href="{{ route('deportes.show',5) }}">Discapacidad</a>
-                                        <a href="{{ route('deportes.show',6) }}">Fútbol</a>
-                                        <a href="{{ route('deportes.show',7) }}">Fútbol de Salón</a>
-                                        <a href="{{ route('deportes.show',8) }}">Gimnasia y Porrismo</a>
-                                        <a href="{{ route('deportes.show',9) }}">Lucha</a>
-                                        <a href="{{ route('deportes.show',10) }}">Natación</a>
-                                        <a href="{{ route('deportes.show',11) }}">Patinaje</a>
-                                        <a href="{{ route('deportes.show',12) }}">Taekwondo</a>
-                                        <a href="{{ route('deportes.show',13) }}">Tenis de Campo</a>
-                                        <a href="{{ route('deportes.show',14) }}">Tenis de Mesa</a>
-                                        <a href="{{ route('deportes.show',15) }}">Voleibol</a> --}}
+                                        @endforeach --}}
                                     </ul>
                                 </li>
                                 {{-- Actividad Física, Laboyano Activo y Saludable --}}
@@ -268,14 +109,6 @@
                                         <a href="#">Actividad Física Musicalizada</a>
                                         <a href="#">Vías Activas y Saludables</a>
                                     </ul>
-                                </li>
-                                {{-- Deporte Social Comunitario --}}
-                                <li>
-                                    <a href="#">Deporte Social Comunitario</a>
-                                </li>
-                                {{-- Clubes Deportivos --}}
-                                <li>
-                                    <a href="#">Clubes Deportivos</a>
                                 </li>
                                 {{-- Infraestructura Deportiva --}}
                                 <li class="subdropdown_self">
@@ -289,20 +122,16 @@
                                         <a href="#">Comuna 4</a>
                                     </ul>
                                 </li>
-                                {{-- Agenda Deportiva --}}
-                                <li>
-                                    <a href="#">Agenda Deportiva</a>
-                                </li>
                             </ul>
                         </li>
                         {{-- CALENDARIO --}}
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link" href="#">CALENDARIO</a>
-                        </li>
+                        </li> --}}
                         {{-- CONVOCATORIAS --}}
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link" href="#">CONVOCATORIAS</a>
-                        </li>
+                        </li> --}}
                     </ul>
 
                 @guest
@@ -314,8 +143,10 @@
                     </div>
                 @else
                     <div id="content-botons-register">
-                        <a href="{{ route('login') }}" class="btn">{{ Auth::user()->name }}</a>
-                        <a href="{{ route('acciones') }}" class="btn">ACCIONES</a>
+                        <a href="{{ route('login') }}" class="btn">{{ Auth::user()->first_name }}</a>
+                        @role('admin')
+                            <a href="{{ route('acciones') }}" class="btn">ACCIONES</a>
+                        @endrole
                     </div>
                 @endguest
 

@@ -20,13 +20,13 @@
                 <h2>REGISTRATE</h2>
                 {{ csrf_field() }}
 
-                <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                    <label for="name">NOMBRES COMPLETOS <span>*</span></label>
-                    <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}"
+                <div class="form-group{{ $errors->has('first_name') ? ' has-error' : '' }}">
+                    <label for="first_name">NOMBRES COMPLETOS <span>*</span></label>
+                    <input type="text" class="form-control" id="first_name" name="first_name" value="{{ old('first_name') }}"
                         placeholder="e.g Andres Felipe" required>
                     @if ($errors->has('nombre'))
                         <span class="help-block">
-                            <strong>{{ $errors->first('name') }}</strong>
+                            <strong>{{ $errors->first('first_name') }}</strong>
                         </span>
                     @endif
                 </div>

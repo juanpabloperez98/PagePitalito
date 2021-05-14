@@ -58,6 +58,7 @@
                             <button type="submit" class="btn btn-success">
                                 Crear Deporte
                             </button>
+                            <input type="hidden" name="totalhorarios" id="totalhorarios">
                         </form>
                         <div class="modal fade" id="Mymodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                             aria-hidden="true">
@@ -177,11 +178,12 @@
         showHorarios()
 
         // Adding elements when is selected a schedule
-        var addElements = () => {
+        var addElements = (horario) => {
             var contenedor = document.getElementById('form'),
                 input = document.createElement('input')
-
+            $('#totalhorarios').val(numero_horarios+1)
             input.setAttribute('id', 'input' + numero_horarios)
+            input.setAttribute('value', horario)
             input.setAttribute('type', 'hidden')
             input.setAttribute('name', 'input' + numero_horarios)
             contenedor.appendChild(input)
@@ -221,6 +223,9 @@
         // Save a schedule
         $('#save').on('click', (e) => {
             var horario = $('#horarios option:selected').val()
+            /* console.log(horario)
+            let sort = horario.split(' ')
+            console.log(sort) */
             if (lista_horarios.includes(horario)) {
                 Swal.fire({
                     icon: 'error',
@@ -230,7 +235,7 @@
             } else {
                 lista_horarios.push(horario)
                 $('#Mymodal').modal('hide')
-                addElements()
+                addElements(horario)
                 numero_horarios++
             }
 
@@ -297,6 +302,38 @@
             });
 
         })
+
+
+        // AJax petition
+        /* $('#form').submit(function(e) {
+            e.preventDefault();
+            const $this = $(this);
+            const data = $this.serializeArray()
+            var formId = '#form';
+            console.log(data)
+            $.ajax({
+                url: $(formId).attr('action'),
+                type: $(formId).attr('method'),
+                data: {
+                    "name": data[1].value,
+                    "in_charge": data[2].value,
+                    "profile": data[3].value,
+                    "horarios": lista_horarios,
+                    "_token": '{{ csrf_token() }}'
+                },
+                dataType: 'text',
+                cache: false,
+                success: function(r) {
+                    //var dataJSON = JSON.parse(r)
+                    console.log(r)
+                },
+                error: function(r) {
+                    console.log(r);
+                }
+            });
+        }) */
+
+
 
     </script>
 @endsection
