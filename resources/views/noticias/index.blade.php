@@ -31,13 +31,13 @@
                         @foreach ($noticias as $noticia)
                             <div class="col-lg-4 mt-5">
                                 <div class="card">
-                                    @if (Storage::disk('notices_images')->has($noticia->file))
-                                        <img class="card-img-top" src="{{ url('/imagen/' . $noticia->file) }}" alt="Card image cap">
+                                    @if (Storage::disk('notices_images')->has($noticia->path))
+                                        <img class="card-img-top" src="{{ url('/imagen/' . $noticia->path) }}" alt="Card image cap">
                                     @else
-                                        <img class="card-img-top" src="{{ asset('images/ej1.jpg') }}" alt="Card image cap">
+                                        <img class="card-img-top" src="{{ asset('images/ej.jpg') }}" alt="Card image cap">
                                     @endif
                                     <div class="card-body">
-                                        <h5 class="card-title">{{ $noticia->name }}</h5>
+                                        <h5 class="card-title">{{ $noticia->title }}</h5>
                                         {{-- <div class="card-text" id="content-p">{!! $noticia->excerpt !!}</div> --}}
                                         <div class="botones">
                                             <a href="{{ route('noticias.edit', $noticia->id) }}">

@@ -8,7 +8,7 @@
     <div class="mx-auto" style="max-width: 1111px;padding-top: 100px">
         {{-- Noticias --}}
         @can('noticias.all')
-            <div class="row mx-auto">
+            {{-- <div class="row mx-auto">
                 <div class="col-lg-12 mx-auto text-center mb-5">
                     <h3 style="font-weight: bold">Administración de Noticias</h3>
                 </div>
@@ -22,17 +22,104 @@
                                 alt="show"></a>
                         <a href="{{ route('noticias.create') }}" class="ml-2"><img
                                 src="{{ asset('images/icons/create.png') }}" alt="create"></a>
-                        {{-- <a href="{{ route('noticias.edit') }}" class="ml-2"><img src="{{ asset('images/icons/edit.png') }}" alt="edit"></a>
-                    <a href="{{ route('') }}" class="ml-2"><img src="{{ asset('images/icons/delete.png') }}" alt="delete"></a> --}}
+                        <a href="{{ route('noticias.edit') }}" class="ml-2"><img src="{{ asset('images/icons/edit.png') }}" alt="edit"></a>
+                        <a href="{{ route('') }}" class="ml-2"><img src="{{ asset('images/icons/delete.png') }}" alt="delete"></a>
+                    </div>
+                </div>
+            </div> --}}
+            <div class="row mx-auto">
+                <div class="col-lg-12 mx-auto text-left mb-5">
+                    <div class="accordion" id="accordionExample">
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                                        data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        Administración de Noticias
+                                    </button>
+                                </h2>
+                            </div>
+
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                                data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">1</th>
+                                                <td>Noticia</td>
+                                                <td class="row">
+                                                    <div class="col-lg-3 ml-auto">
+                                                        <a href="{{ route('noticias.index') }}" class=""><img
+                                                                src="{{ asset('images/icons/show.png') }}" alt="show"></a>
+                                                        <a href="{{ route('noticias.create') }}" class="ml-2"><img
+                                                                src="{{ asset('images/icons/create.png') }}" alt="create"></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingTwo">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                        data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                                        aria-controls="collapseTwo">
+                                        Directorio Artístico y Cultural
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">1</th>
+                                                <td>DAC</td>
+                                                <td class="row">
+                                                    <div class="col-lg-3 ml-auto">
+                                                        <a href="{{ route('DAC.index') }}" class=""><img
+                                                                src="{{ asset('images/icons/show.png') }}" alt="show"></a>
+                                                        <a href="{{ route('DAC.create') }}" class="ml-2"><img
+                                                                src="{{ asset('images/icons/create.png') }}" alt="create"></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingThree">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                        data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
+                                        aria-controls="collapseThree">
+                                        Collapsible Group Item #3
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                                data-parent="#accordionExample">
+                                <div class="card-body">
+                                    And lastly, the placeholder content for the third and final accordion panel. This panel is
+                                    hidden by default.
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         @endcan
 
         <hr style="width: 100%">
-        
+
         {{-- Deportes --}}
-        @can('deportes.all')
+        {{-- @can('deportes.all')
             <div class="row mx-auto space-between">
                 <div class="col-lg-12 mx-auto text-center mb-5">
                     <h3 style="font-weight: bold">Administración de Deportes</h3>
@@ -47,8 +134,8 @@
                                 alt="show"></a>
                         <a href="{{ route('deportes.create') }}" class="ml-2"><img
                                 src="{{ asset('images/icons/create.png') }}" alt="create"></a>
-                        {{-- <a href="#" class="ml-2"><img src="{{ asset('images/icons/edit.png') }}" alt="edit"></a>
-                        <a href="#" class="ml-2"><img src="{{ asset('images/icons/delete.png') }}" alt="delete"></a> --}}
+                        <a href="#" class="ml-2"><img src="{{ asset('images/icons/edit.png') }}" alt="edit"></a>
+                        <a href="#" class="ml-2"><img src="{{ asset('images/icons/delete.png') }}" alt="delete"></a>
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -59,8 +146,8 @@
                     <div class="botones text-right">
                         <a href="#" class=""><img src="{{ asset('images/icons/show.png') }}" alt="show"></a>
                         <a href="#" class="ml-2"><img src="{{ asset('images/icons/create.png') }}" alt="create"></a>
-                        {{-- <a href="#" class="ml-2"><img src="{{ asset('images/icons/edit.png') }}" alt="edit"></a>
-                        <a href="#" class="ml-2"><img src="{{ asset('images/icons/delete.png') }}" alt="delete"></a> --}}
+                        <a href="#" class="ml-2"><img src="{{ asset('images/icons/edit.png') }}" alt="edit"></a>
+                        <a href="#" class="ml-2"><img src="{{ asset('images/icons/delete.png') }}" alt="delete"></a>
                     </div>
                 </div>
 
@@ -72,11 +159,11 @@
                     <div class="botones text-right">
                         <a href="#" class=""><img src="{{ asset('images/icons/show.png') }}" alt="show"></a>
                         <a href="#" class="ml-2"><img src="{{ asset('images/icons/create.png') }}" alt="create"></a>
-                        {{-- <a href="#" class="ml-2"><img src="{{ asset('images/icons/edit.png') }}" alt="edit"></a>
-                        <a href="#" class="ml-2"><img src="{{ asset('images/icons/delete.png') }}" alt="delete"></a> --}}
+                        <a href="#" class="ml-2"><img src="{{ asset('images/icons/edit.png') }}" alt="edit"></a>
+                        <a href="#" class="ml-2"><img src="{{ asset('images/icons/delete.png') }}" alt="delete"></a>
                     </div>
                 </div>
             </div>
-        @endcan
+        @endcan --}}
     </div>
 @endsection

@@ -27,7 +27,6 @@ Route::get('/acciones',function () {
 })->name('acciones')->middleware(['auth','permission:noticias.all','permission:deportes.all']);
 Route::post('/create-schedule', 'DeporteController@createHorario')->name('create-schedule')->middleware(['auth']);
 Route::get('/show-schedule', 'DeporteController@ShowHorarios')->name('show-schedule');
-
 Auth::routes();
 //Rutas de noticias 
 Route::resource('noticias', 'NoticiaController');
@@ -36,7 +35,6 @@ Route::get('/imagen/{filename}', [
     'as' => 'imageNotice',
     'uses' => 'NoticiaController@getImage'
 ]);
-
 // Rutas Deportes
 Route::resource('deportes', 'DeporteController');
 // Capturar la imagen de deportes
@@ -44,7 +42,16 @@ Route::get('/imagen_deportes/{filename}', [
     'as' => 'imageDeporte',
     'uses' => 'DeporteController@getImage'
 ]);
-
+// Ruta DAC
+Route::resource('DAC', 'DacController');
+Route::get('/DAC_/index_user', [
+    'as' => 'dac_user',
+    'uses' => 'DacController@show_alls'  
+]);
+Route::get('/imagen_dacs/{filename}', [
+    'as' => 'imageDac',
+    'uses' => 'DacController@getImage'
+]);
 // UsersRoutes
 Route::middleware(['auth'])->group(function () {
     Route::get('/porfile/{filename}', function ($filename) {

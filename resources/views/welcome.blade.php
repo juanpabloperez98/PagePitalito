@@ -106,20 +106,19 @@
                                 @endphp
 
                                 @foreach ($noticias as $noticia)
-
                                     @if ($init == 0)
                                         <div class="carousel-item active">
                                             <div class="row mx-auto" id="row-notices">
                                                 <div class="col-lg-6 mx-auto text-center" style="padding: 10px">
-                                                    @if (Storage::disk('notices_images')->has($noticia->file))
-                                                        <img src="{{ url('/imagen/' . $noticia->file) }}"
+                                                    @if (Storage::disk('notices_images')->has($noticia->path))
+                                                        <img src="{{ url('/imagen/' . $noticia->path) }}"
                                                             class="d-block w-100" alt="...">
                                                     @else
                                                         <img src="{{ asset('images/main-section.jpg') }}"
                                                             class="d-block w-100" alt="...">
                                                     @endif
                                                     <a href="{{ route('noticias.show', $noticia->id) }}">
-                                                        <h3>{{ $noticia->name }}</h3>
+                                                        <h3>{{ $noticia->title }}</h3>
                                                     </a>
                                                     {{-- <p> {!! $noticia->excerpt !!}</p>
                                                     --}}
@@ -130,15 +129,15 @@
                                         <div class="carousel-item">
                                             <div class="row mx-auto" id="row-notices">
                                                 <div class="col-lg-6 mx-auto text-center" style="padding: 10px">
-                                                    @if (Storage::disk('notices_images')->has($noticia->file))
-                                                        <img src="{{ url('/imagen/' . $noticia->file) }}"
+                                                    @if (Storage::disk('notices_images')->has($noticia->path))
+                                                        <img src="{{ url('/imagen/' . $noticia->path) }}"
                                                             class="d-block w-100" alt="...">
                                                     @else
                                                         <img src="{{ asset('images/main-section.jpg') }}"
                                                             class="d-block w-100" alt="...">
                                                     @endif
                                                     <a href="{{ route('noticias.show', $noticia->id) }}">
-                                                        <h3>{{ $noticia->name }}</h3>
+                                                        <h3>{{ $noticia->title }}</h3>
                                                     </a>
                                                     {{-- <div>
                                                         {!! $noticia->excerpt !!}

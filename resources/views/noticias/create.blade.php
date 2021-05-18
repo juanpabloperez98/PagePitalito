@@ -43,13 +43,13 @@
                                 <label for="image">Imagen</label>
                                 <input type="file" class="form-control" id="image" name="image">
                             </div>
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label for="status">Estado</label>
                                 <select class="form-control" id="status" name="status">
                                     <option value="PUBLISHED">Publicado</option>
                                     <option value="DRAFT">Borrador</option>
                                 </select>
-                            </div>
+                            </div> --}}
 
                             <button type="submit" class="btn btn-success">
                                 Crear noticia
@@ -60,9 +60,6 @@
             </div>
         </div>
     </div>
-
-
-
 @section('scripts')
     {{-- <script src="{{ asset('vendor/stringtoslug/jquery.stringToSlug.min.js') }}"></script> --}}
     <script src="{{ asset('vendor/ckeditor/ckeditor.js') }}"></script>

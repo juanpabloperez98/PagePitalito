@@ -10,5 +10,10 @@
 .panel-body img{
     width: 300px;
 }
+.body-notice {
+    background-color: aqua;
+}
 
-
+.body-notice p{
+    max-width: 100px;
+}

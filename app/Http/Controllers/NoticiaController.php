@@ -26,7 +26,7 @@ class NoticiaController extends Controller
     {
         //
         // $noticias_count = Noticia::count();
-        $noticias = Noticia::orderBy('id', 'DESC')->get();
+        $noticias = Notice::orderBy('id', 'DESC')->get();
 
         // dd(empty($noticias));
         // dd($noticias);
@@ -58,36 +58,28 @@ class NoticiaController extends Controller
     public function store(Request $request)
     {
         //
-
-
         $validateData = $this->validate($request, [
             'title' => 'required|min:5',
             'noticia' => 'required',
-            'image' => 'mimes:jpeg,bmp,png',
-            'status' => 'required|in:DRAFT,PUBLISHED'
+            'image' => 'mimes:jpeg,bmp,png'
         ]);
 
-        $user_id = \Auth::user()->id;
         $name = $request->input('title');
         $body = $request->input('noticia');
         $image = $request->file('image');
-        $status = $request->input('status');
 
-
-
-        $noticia = new Noticia();
-        $noticia->user_id = $user_id;
-        $noticia->name = $name;
+        $noticia = new Notice();
+        $noticia->title = $name;
         $noticia->body = $body;
-        $noticia->status = $status;
 
         if ($image) {
             $image_path = time() . $image->getClientOriginalName();
             \Storage::disk('notices_images')->put($image_path, \File::get($image));
-            $noticia->file = $image_path;
+            $noticia->path = $image_path;
         }
         $noticia->save();
 
+        
 
         return redirect()->route('noticias.index')
             ->with('info', 'Entrada creada con exito!!');
@@ -99,6 +91,7 @@ class NoticiaController extends Controller
         $file = \Storage::disk('notices_images')->get($filename);
         return new Response($file, 200);
     }
+    
 
     /**
      * Display the specified resource.
@@ -106,7 +99,7 @@ class NoticiaController extends Controller
      * @param  \App\Noticia  $noticia
      * @return \Illuminate\Http\Response
      */
-    public function show(Noticia $noticia)
+    public function show(Notice $noticia)
     {
         // dd($noticia);
         return view('noticias.show', compact('noticia'));
@@ -118,7 +111,7 @@ class NoticiaController extends Controller
      * @param  \App\Noticia  $noticia
      * @return \Illuminate\Http\Response
      */
-    public function edit(Noticia $noticia)
+    public function edit(Notice $noticia)
     {
         //
         return view('noticias.edit', compact('noticia'));
@@ -141,7 +134,7 @@ class NoticiaController extends Controller
         ]);
     }
 
-
+    
     public function show_users_notices()
     {
         $noticias = Noticia::orderBy('id', 'DESC')->get();
@@ -164,28 +157,27 @@ class NoticiaController extends Controller
         $validateData = $this->validate($request, [
             'title' => 'required|min:5',
             'noticia' => 'required',
-            'image' => 'mimes:jpeg,bmp,png',
-            'status' => 'required|in:DRAFT,PUBLISHED'
+            'image' => 'mimes:jpeg,bmp,png'
         ]);
 
         $name = $request->input('title');
         $body = $request->input('noticia');
         $image = $request->file('image');
-        $status = $request->input('status');
 
-        $noticia = Noticia::where('id', '=', $id)->first();
+        $noticia = Notice::where('id', '=', $id)->first();
 
         if (count((array)$noticia) >= 1) {
-            $noticia->name = $name;
+            $noticia->title = $name;
             $noticia->body = $body;
-            $noticia->status = $status;
 
             if ($image) {
                 $image_path = time() . $image->getClientOriginalName();
+                if(\Storage::disk('notices_images')->has($noticia->path)){
+                    \Storage::disk('notices_images')->delete($noticia->path);
+                }
                 \Storage::disk('notices_images')->put($image_path, \File::get($image));
-                $noticia->file = $image_path;
+                $noticia->path = $image_path;
             }
-
             $noticia->update();
         }
         return redirect()->route('noticias.edit', $noticia)

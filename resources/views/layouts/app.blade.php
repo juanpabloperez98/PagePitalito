@@ -56,7 +56,7 @@
                                 </li>
                                 {{-- Infraestructura Cultural --}}
                                 <li>
-                                    <a href="#">Infraestructura Cultural</a>
+                                    <a href="{{ route('dac_user') }}">Directorio Artístico y Cultural</a>
                                 </li>
                                 {{-- Patrimonio Cultural --}}
                                 <li class="subdropdown_self">
