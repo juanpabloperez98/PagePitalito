@@ -48,6 +48,14 @@ Route::get('/DAC_/index_user', [
     'as' => 'dac_user',
     'uses' => 'DacController@show_alls'  
 ]);
+Route::post('/DAC_/index_user', [
+    'as' => 'dac_user_filter',
+    'uses' => 'DacController@filter'  
+]);
+Route::post('/DAC_/get_subcategories/',[
+    'as' => 'getSubcategories',
+    'uses' => 'DacController@get_subcategories'  
+]);
 Route::get('/imagen_dacs/{filename}', [
     'as' => 'imageDac',
     'uses' => 'DacController@getImage'

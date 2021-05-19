@@ -102,7 +102,7 @@
                         <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
                             <div class="carousel-inner">
                                 @php
-                                $init = 0;
+                                    $init = 0;
                                 @endphp
 
                                 @foreach ($noticias as $noticia)
@@ -120,8 +120,6 @@
                                                     <a href="{{ route('noticias.show', $noticia->id) }}">
                                                         <h3>{{ $noticia->title }}</h3>
                                                     </a>
-                                                    {{-- <p> {!! $noticia->excerpt !!}</p>
-                                                    --}}
                                                 </div>
                                             </div>
                                         </div>
@@ -139,20 +137,14 @@
                                                     <a href="{{ route('noticias.show', $noticia->id) }}">
                                                         <h3>{{ $noticia->title }}</h3>
                                                     </a>
-                                                    {{-- <div>
-                                                        {!! $noticia->excerpt !!}
-                                                    </div> --}}
                                                 </div>
                                             </div>
                                         </div>
                                     @endif
-
                                     @php
-                                    $init ++;
+                                        $init ++;
                                     @endphp
-
                                 @endforeach
-
                             </div>
                             <a class="carousel-control-prev arrows" {{-- style="left: -60px;"
                                 --}} href="#carouselExampleControls" role="button"

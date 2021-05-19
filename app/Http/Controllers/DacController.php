@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Dac;
+use App\Subcategory;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -11,7 +13,7 @@ class DacController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['only' => ['create']]);
+        $this->middleware('auth', ['only' => ['index','create']]);
     }
 
     public function index()
@@ -30,6 +32,26 @@ class DacController extends Controller
         ]);
     }
 
+    public function get_subcategories(Request $request){
+        if($request->ajax()) {
+            $subcategories = Subcategory::where('category_id',$request->category)->get();
+            return response()->json($subcategories);
+        }
+    }
+
+    public function filter(Request $request){
+        // Recibimos parametros
+        // die();
+        if(isset($request->name)){
+            $name_filter = $request->name;
+        }
+        if(isset($request->category)){
+            $category_filter = $request->name;
+        }
+        if(isset($request->subcategory)){
+            $subcategory_filter = $request->name;
+        }
+    }
     
 
     /**
@@ -61,8 +83,8 @@ class DacController extends Controller
             "image" => 'required|mimes:jpeg,bmp,png'
         ]);
         $dac = new Dac();
-        $dac->category = $request->category;
-        $dac->subcategory = $request->subcategory;
+        // $dac->category = $request->category;
+        // $dac->subcategory = $request->subcategory;
         $dac->name = $request->name;
         $dac->cell_phone = $request->cell_phone;
         $dac->address = $request->address;
@@ -73,11 +95,10 @@ class DacController extends Controller
             \Storage::disk('dac_images')->put($image_path, \File::get($request->image));
             $dac->path = $image_path;
         }
+        $dac->category_id = $request->category;
         $dac->save();
-        return redirect()->route('DAC.create')
+        return redirect()->route('DAC.index')
             ->with('info', 'Registro creado con exito!!');
-
-
 
     }
 

@@ -17,13 +17,6 @@
                                 {{ session('info') }}
                             </div>
                         @endif
-                        {{-- <h3>¿Que buscas?</h3>
-                        <form class="form-inline">
-                            <button class="btn" type="submit">
-                                <img src="{{ asset('images/icons/search.png') }}" alt="search">
-                            </button>
-                            <input class="form-control" id="search" type="search" placeholder="Buscar" aria-label="Search">
-                        </form> --}}
                     </div>
 
                     @if ($dacs->first())
