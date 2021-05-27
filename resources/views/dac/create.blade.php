@@ -26,7 +26,7 @@
                                 </ul>
                             </div>
                         @endif
-                        <form enctype="multipart/form-data" method="POST" action="{{ route('DAC.store') }}">
+                        <form enctype="multipart/form-data" method="POST" action="{{ route('dac.store') }}">
                             @csrf
                             <div class="form-group">
                                 <label for="category">Categoría</label>
@@ -96,7 +96,7 @@
             var init_selects = () => {
                 childnodes = document.getElementById('category').childNodes;
                 attr = childnodes[1].value
-                url = '{{ route("getSubcategories") }}'
+                url = '{{ route("dac.getsubcategories") }}'
                 $.ajax({
                     url: url,
                     method: 'post',
@@ -109,8 +109,7 @@
                         var count = Object.keys(res).length;
                         for (let i = 0; i < count; i++) {
                             var element = res[i];
-                            console.log(element)
-                            create_selects(element.name)
+                            create_selects(element)
                         }
                     },
                     error: function(e) {
@@ -120,19 +119,19 @@
             }
             init_selects()
 
-            var create_selects = (name) => {
+            var create_selects = (select_) => {
+                // console.log(select_)
                 subcategory = document.getElementById('subcategory');
                 select = document.createElement('option');
-                textNodo = document.createTextNode(name)
+                textNodo = document.createTextNode(select_.name)
                 select.appendChild(textNodo)
-                select.setAttribute("value",name)
-                select.value = name
+                select.setAttribute("value",select_.id)
+                // select.value = name
                 subcategory.appendChild(select)
             }
 
             $('#category').on('change', function(e) {
-                console.log(this.value)
-                url = '{{ route("getSubcategories") }}'
+                url = '{{ route("dac.getsubcategories") }}'
                 $.ajax({
                     url: url,
                     method: 'post',
@@ -146,8 +145,8 @@
                         delete_childs('subcategory')
                         for (let i = 0; i < count; i++) {
                             var element = res[i];
-                            // console.log()
-                            create_selects(element.name)
+                            // console.log(element)
+                            create_selects(element)
                         }
                     },
                     error: function(e) {

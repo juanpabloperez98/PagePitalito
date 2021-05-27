@@ -17,7 +17,7 @@
                                 {{ session('info') }}
                             </div>
                         @endif
-                        <form class="needs-validation mt-2" novalidate action="{{ route('dac_user_filter') }}" method="POST">
+                        <form class="needs-validation mt-2" novalidate action="{{ route('filter_dac') }}" method="GET">
                             @csrf
                             <div class="form-row">
                                 <div class="col-md-8 mb-3">
@@ -35,6 +35,7 @@
                                         @php
                                             $categories = App\Category::orderBy('id', 'asc')->get();
                                         @endphp
+                                            <option value="default">Escoge una opción</option>
                                         @foreach ($categories as $category)
                                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                                         @endforeach
@@ -61,7 +62,7 @@
                                     @foreach ($dacs as $dac)
                                         @if ($init == 0)
                                             <div class="carousel-item active">
-                                                <div class="card">
+                                                <div class="card" style="">
                                                     @if (Storage::disk('dac_images')->has($dac->path))
                                                         <img class="card-img-top"
                                                             src="{{ url('/imagen_dacs/' . $dac->path) }}"
@@ -72,57 +73,16 @@
                                                     @endif
                                                     <div class="card-body">
                                                         <h5 class="card-title">{{ $dac->name }}</h5>
+                                                        <h5 class="card-title">{{ $dac->subcategory->category->name }}</h5>
                                                         <h6 class="card-subtitle mb-2 text-muted">
-                                                            {{ $dac->subcategory }}</h6>
-                                                        <div class="botones">
-                                                            <a href="{{ route('noticias.edit', $dac->id) }}">
-                                                                <img
-                                                                    src="https://img.icons8.com/metro/26/000000/edit.png" />
-                                                            </a>
-                                                            <a href="#modalWindow" role="button" class="ml-2"
-                                                                data-toggle="modal"><img
-                                                                    src="https://img.icons8.com/metro/26/000000/delete-sign.png" /></a>
-                                                            <div id="modalWindow" class="modal fade">
-                                                                <div class="modal-dialog">
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-header">
-                                                                            <button type="button" class="close"
-                                                                                style="margin-left: 0px"
-                                                                                data-dismiss="modal"
-                                                                                aria-hidden="true">&times;</button>
-                                                                            <h4 class="modal-title">¿Estás seguro?</h4>
-                                                                        </div>
-                                                                        <div class="modal-body">
-                                                                            <p>¿Seguro que quieres borrar este elemento?
-                                                                            </p>
-                                                                            <p class="text-warning"><small>Si lo borras,
-                                                                                    nunca podrás
-                                                                                    recuperarlo.</small></p>
-                                                                        </div>
-                                                                        <div class="modal-footer">
-                                                                            <button type="button"
-                                                                                class="btn btn-default"
-                                                                                data-dismiss="modal">Cerrar</button>
-
-                                                                            <form
-                                                                                action="{{ route('noticias.destroy', $dac->id) }}"
-                                                                                method="POST">
-                                                                                {{ method_field('delete') }}
-                                                                                @csrf
-                                                                                <button type="submit"
-                                                                                    class="btn btn-danger">Eliminar</a>
-                                                                            </form>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                            {{ $dac->subcategory->name }}
+                                                        </h6>
                                                     </div>
                                                 </div>
                                             </div>
                                         @else
                                             <div class="carousel-item">
-                                                <div class="card">
+                                                <div class="card" style="">
                                                     @if (Storage::disk('dac_images')->has($dac->path))
                                                         <img class="card-img-top"
                                                             src="{{ url('/imagen_dacs/' . $dac->path) }}"
@@ -133,51 +93,10 @@
                                                     @endif
                                                     <div class="card-body">
                                                         <h5 class="card-title">{{ $dac->name }}</h5>
+                                                        <h5 class="card-title">{{ $dac->subcategory->category->name }}</h5>
                                                         <h6 class="card-subtitle mb-2 text-muted">
-                                                            {{ $dac->subcategory }}</h6>
-                                                        <div class="botones">
-                                                            <a href="{{ route('noticias.edit', $dac->id) }}">
-                                                                <img
-                                                                    src="https://img.icons8.com/metro/26/000000/edit.png" />
-                                                            </a>
-                                                            <a href="#modalWindow" role="button" class="ml-2"
-                                                                data-toggle="modal"><img
-                                                                    src="https://img.icons8.com/metro/26/000000/delete-sign.png" /></a>
-                                                            <div id="modalWindow" class="modal fade">
-                                                                <div class="modal-dialog">
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-header">
-                                                                            <button type="button" class="close"
-                                                                                style="margin-left: 0px"
-                                                                                data-dismiss="modal"
-                                                                                aria-hidden="true">&times;</button>
-                                                                            <h4 class="modal-title">¿Estás seguro?</h4>
-                                                                        </div>
-                                                                        <div class="modal-body">
-                                                                            <p>¿Seguro que quieres borrar este elemento?
-                                                                            </p>
-                                                                            <p class="text-warning"><small>Si lo borras,
-                                                                                    nunca podrás
-                                                                                    recuperarlo.</small></p>
-                                                                        </div>
-                                                                        <div class="modal-footer">
-                                                                            <button type="button"
-                                                                                class="btn btn-default"
-                                                                                data-dismiss="modal">Cerrar</button>
-
-                                                                            <form
-                                                                                action="{{ route('noticias.destroy', $dac->id) }}"
-                                                                                method="POST">
-                                                                                {{ method_field('delete') }}
-                                                                                @csrf
-                                                                                <button type="submit"
-                                                                                    class="btn btn-danger">Eliminar</a>
-                                                                            </form>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                            {{ $dac->subcategory->name }}
+                                                        </h6>
                                                     </div>
                                                 </div>
                                             </div>
@@ -224,7 +143,7 @@
             var init_selects = () => {
                 childnodes = document.getElementById('category').childNodes;
                 attr = childnodes[1].value
-                url = '{{ route("getSubcategories") }}'
+                url = '{{ route("dac.getsubcategories") }}'
                 $.ajax({
                     url: url,
                     method: 'post',
@@ -248,19 +167,19 @@
             }
             init_selects()
 
-            var create_selects = (name) => {
+            var create_selects = (select_) => {
                 subcategory = document.getElementById('subcategory');
                 select = document.createElement('option');
-                textNodo = document.createTextNode(name)
+                textNodo = document.createTextNode(select_.name)
                 select.appendChild(textNodo)
-                select.setAttribute("value",name)
-                select.value = name
+                select.setAttribute("value",select_.id)
+                // select.value = name
                 subcategory.appendChild(select)
             }
 
             $('#category').on('change', function(e) {
                 console.log(this.value)
-                url = '{{ route("getSubcategories") }}'
+                url = '{{ route("dac.getsubcategories") }}'
                 $.ajax({
                     url: url,
                     method: 'post',
@@ -274,8 +193,7 @@
                         delete_childs('subcategory')
                         for (let i = 0; i < count; i++) {
                             var element = res[i];
-                            // console.log()
-                            create_selects(element.name)
+                            create_selects(element)
                         }
                     },
                     error: function(e) {

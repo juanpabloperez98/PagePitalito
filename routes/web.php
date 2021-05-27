@@ -43,23 +43,26 @@ Route::get('/imagen_deportes/{filename}', [
     'uses' => 'DeporteController@getImage'
 ]);
 // Ruta DAC
-Route::resource('DAC', 'DacController');
-Route::get('/DAC_/index_user', [
-    'as' => 'dac_user',
-    'uses' => 'DacController@show_alls'  
-]);
-Route::post('/DAC_/index_user', [
-    'as' => 'dac_user_filter',
-    'uses' => 'DacController@filter'  
-]);
-Route::post('/DAC_/get_subcategories/',[
-    'as' => 'getSubcategories',
-    'uses' => 'DacController@get_subcategories'  
-]);
-Route::get('/imagen_dacs/{filename}', [
-    'as' => 'imageDac',
-    'uses' => 'DacController@getImage'
-]);
+Route::get('dac/','DacController@index')->name('dac.index');
+Route::get('dac/create','DacController@create')->name('dac.create');
+Route::post('dac/store','DacController@store')->name('dac.store');
+Route::get('dac/user_index','DacController@index_users')->name('dac.users');
+Route::get('dac/{id}','DacController@show')->name('dac.show');
+Route::post('dac/subcategories','DacController@get_subcategories')->name('dac.getsubcategories');
+Route::get('/imagen_dacs/{filename}','DacController@getImage')->name('get_image_dac');
+Route::get('/filter','DacController@search')->name('filter_dac');
+// Route::get('/DAC_/index_user', [
+//     'as' => 'dac_user',
+//     'uses' => 'DacController@show_alls'  
+// ]);
+// Route::post('/DAC_/index_user', [
+//     'as' => 'dac_user_filter',
+//     'uses' => 'DacController@filter'  
+// ]);
+// Route::post('/DAC_/get_subcategories/',[
+//     'as' => 'getSubcategories',
+//     'uses' => 'DacController@get_subcategories'  
+// ]);
 // UsersRoutes
 Route::middleware(['auth'])->group(function () {
     Route::get('/porfile/{filename}', function ($filename) {

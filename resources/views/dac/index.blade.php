@@ -23,21 +23,22 @@
                         @foreach ($dacs as $dac)
                             <div class="col-lg-4 mt-5">
                                 <div class="card">
-                                    @if (Storage::disk('dac_images')->has($dac->path))
-                                        <img class="card-img-top" src="{{ url('/imagen_dacs/' . $dac->path) }}" alt="Card image cap">
-                                    @else
-                                        <img class="card-img-top" src="{{ asset('images/ej.jpg') }}" alt="Card image cap">
-                                    @endif
-                                    <div class="card-body">
+                                        @if (Storage::disk('dac_images')->has($dac->path))
+                                            <img class="card-img-top" class="w-100" src="{{ url('/imagen_dacs/' . $dac->path) }}" alt="Card image cap">
+                                        @else
+                                            <img class="card-img-top" class="w-100" src="{{ asset('images/ej.jpg') }}" alt="Card image cap">
+                                        @endif
+                                    <div class="card-body" style="z-index: 1;">
+                                        <h5 class="card-title">{{ $dac->subcategory->category->name }}</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">{{ $dac->subcategory->name }}</h6>
                                         <h5 class="card-title">{{ $dac->name }}</h5>
-                                        <h6 class="card-subtitle mb-2 text-muted">{{ $dac->subcategory }}</h6>
-                                        <div class="botones">
-                                            <a href="{{ route('noticias.edit', $dac->id) }}">
+                                        {{-- <h6 class="card-subtitle mb-2 text-muted">{{ $dac->subcategory }}</h6> --}}
+                                        {{-- <div class="botones">
+                                            <a href="#">
                                                 <img src="https://img.icons8.com/metro/26/000000/edit.png" />
                                             </a>
-                                            <a href="#modalWindow" role="button" class="ml-2"
-                                                data-toggle="modal"><img src="https://img.icons8.com/metro/26/000000/delete-sign.png" /></a>
-                                            <div id="modalWindow" class="modal fade">
+                                            <a href="#modalWindow2" role="button" class="ml-2"data-toggle="modal"><img src="https://img.icons8.com/metro/26/000000/delete-sign.png" /></a>
+                                            <div id="modalWindow2" class="modal fade">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
@@ -61,7 +62,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>

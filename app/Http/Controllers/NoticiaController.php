@@ -190,7 +190,7 @@ class NoticiaController extends Controller
      * @param  \App\Noticia  $noticia
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Noticia $noticia)
+    public function destroy(Notice $noticia)
     {
         $noticia->delete();
         return back()->with('info', 'Eliminado correctamente!!');

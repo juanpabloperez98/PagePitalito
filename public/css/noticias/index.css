@@ -59,6 +59,9 @@ main {
 .card {
     margin: auto;
 }
+.card img{
+    height: 210px;
+}
 
 .botones {
     text-align: right;

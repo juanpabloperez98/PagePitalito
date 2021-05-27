@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDacTable extends Migration
+class CreateCategoryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,9 @@ class CreateDacTable extends Migration
      */
     public function up()
     {
-        Schema::create('dac', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->string('category');
-            $table->string('subcategory');
             $table->string('name');
-            $table->string('cell_phone');
-            $table->string('address');
-            $table->string('email');
-            $table->string('link_socialnetwork');
-            $table->string('path',150);
             $table->timestamps();
         });
     }
@@ -34,6 +27,6 @@ class CreateDacTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dac');
+        Schema::dropIfExists('category');
     }
 }

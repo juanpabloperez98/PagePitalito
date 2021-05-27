@@ -11,7 +11,7 @@ class Category extends Model
         'id','name'
     ];
 
-    public function dacs(){
-        return $this->hasMany(Dac::class);
+    public function subcategories(){
+        return $this->hasMany(Subcategory::class);
     }
 }

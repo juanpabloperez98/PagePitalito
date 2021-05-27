@@ -81,9 +81,9 @@
                                                 <td>DAC</td>
                                                 <td class="row">
                                                     <div class="col-lg-3 ml-auto">
-                                                        <a href="{{ route('DAC.index') }}" class=""><img
+                                                        <a href="{{ route('dac.index') }}" class=""><img
                                                                 src="{{ asset('images/icons/show.png') }}" alt="show"></a>
-                                                        <a href="{{ route('DAC.create') }}" class="ml-2"><img
+                                                        <a href="{{ route('dac.create') }}" class="ml-2"><img
                                                                 src="{{ asset('images/icons/create.png') }}" alt="create"></a>
                                                     </div>
                                                 </td>

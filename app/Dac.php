@@ -7,11 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Dac extends Model
 {
     //
+    protected $table = 'dacs';
     protected $fillable = [
-        'category','subcategory','name','cell_phone','address','email','link_socialnetwork','path'
+        'subcategory','name','cell_phone','address','email','link_socialnetwork','path'
     ];
-
-    public function category(){
-        return $this->belongsTo(Category::class);
+    public function subcategory(){
+        return $this->belongsTo(Subcategory::class);
     }
+
 }
