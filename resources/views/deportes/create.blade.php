@@ -27,12 +27,12 @@
                             </div>
                         @endif
 
-                        <form enctype="multipart/form-data" method="POST" id="form" action="{{ route('deportes.store') }}">
+                        <form enctype="multipart/form-data" method="POST" id="form" action="#">
                             @csrf
                             <div class="form-group">
-                                <label for="name">Nombre Deporte</label>
-                                <input type="text" class="form-control" id="name" name="name"
-                                    placeholder="Nombre del deporte" value="{{ old('name') }}">
+                                <label for="modality">Nombre Deporte</label>
+                                <input type="text" class="form-control" id="modality" name="modality"
+                                    placeholder="Nombre del deporte" value="{{ old('modality') }}">
                             </div>
                             <div class="form-group">
                                 <label for="image">Imagen</label>
@@ -40,14 +40,16 @@
                             </div>
                             <div class="form-group">
                                 <label for="in_charge">Persona a cargo</label>
-                                <input type="in_charge" class="form-control" id="in_charge" name="in_charge"
-                                    placeholder="Persona a cargo">
+                                <select class="form-control" id="instructor" name="instructor">
+                                    @php
+                                        $instructors = App\Instructor::orderBy('id', 'asc')->get();
+                                    @endphp
+                                    @foreach ($instructors as $instructor)
+                                        <option value="{{ $instructor->id }}">{{ $instructor->first_name }} {{ $instructor->last_name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
-                            <div class="form-group">
-                                <label for="profile">Pefil a cargo</label>
-                                <input type="profile" class="form-control" id="profile" name="profile"
-                                    placeholder="Pefil a cargo">
-                            </div>
+                            
                             <div id="content">
                             </div>
                             <div class="form-group">
@@ -60,8 +62,7 @@
                             </button>
                             <input type="hidden" name="totalhorarios" id="totalhorarios">
                         </form>
-                        <div class="modal fade" id="Mymodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
+                        <div class="modal fade" id="Mymodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -73,11 +74,7 @@
                                     <div class="modal-body">
                                         <div class="form-group">
                                             <select id="horarios" class="form-control">
-                                                {{-- @foreach ($horarios as $horario)
-                                                    <option>{{ $horario->day }} {{ $horario->start }} -
-                                                        {{ $horario->finish }}
-                                                    </option>
-                                                @endforeach --}}
+                                                <option value="default">Escoga un horario</option>
                                             </select>
                                         </div>
                                     </div>
@@ -100,7 +97,7 @@
                                         </button>
                                     </div>
                                     <form enctype="multipart/form-data" method="POST" id="form-schedule"
-                                        action="{{ route('create-schedule') }}">
+                                        action="{{ route('save_schudele') }}">
                                         <div class="modal-body">
                                             <div class="form-group">
                                                 <label for="day">Dia</label>
@@ -119,17 +116,23 @@
                                                 <select class="form-control" id="start" name="start">
                                                     @for ($i = 6; $i < 23; $i++)
                                                         <option data-id={{ $i }} value={{ $i }}>{{ $i }}:00</option>
+                                                        <option data-id={{ $i + 0.5 }} value={{ $i+0.5 }}>{{ $i }}:30</option>
                                                     @endfor
                                                 </select>
                                             </div>
                                             <div class="form-group d-inline-block" style="width: 45%; margin-left: 41px">
-                                                <div class="desactivate" id="fin_d">
+                                                <div class="" id="fin_d">
                                                     <label for="fin">Fin</label>
-                                                    <select class="form-control" id="fin" name="fin"></select>
+                                                    <select class="form-control" id="fin" name="fin">
+                                                    @for ($i = 6; $i < 23; $i++)
+                                                        <option data-id={{ $i }} value={{ $i }}>{{ $i }}:00</option>
+                                                        <option data-id={{ $i + 0.5 }} value={{ $i + 0.5 }}>{{ $i }}:30</option>
+                                                    @endfor
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="desactivate" id="modal-footer">
+                                        <div class="" id="modal-footer">
                                             <div class="modal-footer">
                                                 <button type="submit" id="save-schedule" class="btn btn-primary">&#43; Crear
                                                     horario</button>
@@ -149,116 +152,40 @@
 
 @section('scripts')
     <script>
-        var numero_horarios = 0,
-            start_ = false
+        $(document).ready(function() {
 
-        var showHorarios= () => {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            $.ajax({
-                url: "{{ route('show-schedule') }}",
-                type: 'get',
-                dataType: 'text',
-                cache: false,
-                // data: {"_token": '{{ csrf_token() }}'},
-                success: function(r) {
-                    // console.log(r)
-                    $('#horarios').html(r)
-                },
-                error: function(r) {
-                    console.log(r);
-                }
-            });
 
-        }
-
-        showHorarios()
-
-        // Adding elements when is selected a schedule
-        var addElements = (horario) => {
-            var contenedor = document.getElementById('form'),
-                input = document.createElement('input')
-            $('#totalhorarios').val(numero_horarios+1)
-            input.setAttribute('id', 'input' + numero_horarios)
-            input.setAttribute('value', horario)
-            input.setAttribute('type', 'hidden')
-            input.setAttribute('name', 'input' + numero_horarios)
-            contenedor.appendChild(input)
-            var p = document.createElement('p'),
-                contenedor2 = document.getElementById('content')
-            p.innerHTML = lista_horarios[numero_horarios]
-            contenedor2.appendChild(p)
-        }
-
-        // Creating elements when start select element change
-        var createElementsForm = (start) => {
-            var select_ = document.getElementById('fin')
-            while (select_.firstChild) {
-                select_.removeChild(select_.firstChild);
+            var showHorarios= () => {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    url: "{{ route('show_schudele') }}",
+                    type: 'get',
+                    dataType: 'text',
+                    cache: false,
+                    success: function(r) {
+                        // console.log(r)
+                        $('#horarios').html(r)
+                    },
+                    error: function(r) {
+                        console.log(r);
+                    }
+                });
             }
-            start = parseInt(start)
-            for (let i = start + 1; i < 23; i++) {
-                var option = document.createElement('option'),
-                    value = document.createTextNode(i + ":00")
-                option.appendChild(value)
-                option.setAttribute('value', i)
-                select_.appendChild(option)
-            }
-        }
 
-        // Add elements to finish select
-        var start = $('#start option:selected').attr('data-id')
-        createElementsForm(start)
-        if (!start_) {
-            $('#fin_d').toggle('fold')
-            $('#modal-footer').toggle('fold')
-            start_ = true
-        }
+            showHorarios()
 
-        var lista_horarios = []
-
-        // Save a schedule
-        $('#save').on('click', (e) => {
-            var horario = $('#horarios option:selected').val()
-            /* console.log(horario)
-            let sort = horario.split(' ')
-            console.log(sort) */
-            if (lista_horarios.includes(horario)) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error!',
-                    text: 'Este horario ya ha sido agregado',
-                })
-            } else {
-                lista_horarios.push(horario)
+            // Show modal create schedule
+            $('#create').on('click', (e) => {
                 $('#Mymodal').modal('hide')
-                addElements(horario)
-                numero_horarios++
-            }
+                $('#ModalHorario').modal('show')
+            })
 
-        })
 
-        // Show modal create schedule
-        $('#create').on('click', (e) => {
-            $('#Mymodal').modal('hide')
-            $('#ModalHorario').modal('show')
-        })
-
-        // Value when the element #start change
-        $('#start').on('change', (e) => {
-            var start = $('#start option:selected').attr('data-id')
-            createElementsForm(start)
-            if (!start_) {
-                $('#fin_d').toggle('fold')
-                $('#modal-footer').toggle('fold')
-                start_ = true
-            }
-        })
-
-        // AJax petition
+            // AJax petition
         $('#form-schedule').submit(function(e) {
             e.preventDefault();
             const $this = $(this);
@@ -275,20 +202,21 @@
                 }
                 /* data: $this.serialize() */
                 ,
-                dataType: 'text',
+                dataType: 'json',
                 cache: false,
                 success: function(r) {
-                    var dataJSON = JSON.parse(r)
-                    if (dataJSON.status == 400) {
+                    // var dataJSON = JSON.parse(r)
+                    console.log(r)
+                    if (r.status == 400) {
                         Swal.fire({
                             icon: 'error',
                             title: 'Error!',
-                            text: dataJSON.message,
+                            text: r.message
                         })
                     } else {
                         Swal.fire({
                             icon: 'success',
-                            title: dataJSON.message,
+                            title: r.message,
                             showConfirmButton: false,
                             timer: 1500
                         })
@@ -300,40 +228,42 @@
                     console.log(r);
                 }
             });
-
         })
 
 
-        // AJax petition
-        /* $('#form').submit(function(e) {
-            e.preventDefault();
-            const $this = $(this);
-            const data = $this.serializeArray()
-            var formId = '#form';
-            console.log(data)
-            $.ajax({
-                url: $(formId).attr('action'),
-                type: $(formId).attr('method'),
-                data: {
-                    "name": data[1].value,
-                    "in_charge": data[2].value,
-                    "profile": data[3].value,
-                    "horarios": lista_horarios,
-                    "_token": '{{ csrf_token() }}'
-                },
-                dataType: 'text',
-                cache: false,
-                success: function(r) {
-                    //var dataJSON = JSON.parse(r)
-                    console.log(r)
-                },
-                error: function(r) {
-                    console.log(r);
-                }
-            });
-        }) */
+            // var init_profile = () => {
+            //     childnodes = document.getElementById('instructor').childNodes;
+            //     attr = childnodes[1].value
 
+            //     $.ajax({
+            //         url: url,
+            //         method: 'post',
+            //         data: {
+            //             "id":attr,
+            //             "_token": '{{ csrf_token() }}'
+            //         },
+            //         dataType: 'json',
+            //         success: function(res) {
+            //             console.log(res.profile)
+            //             create_selects(res.profile)
+            //         },
+            //         error: function(e) {
+            //             console.log(e);
+            //         }
+            //     })
+            
 
+            // init_profile()
+
+            // var create_selects = (select_) => {
+            //     // console.log(select_)
+            //     profile = document.getElementById('profile');
+            //     textNodo = document.createTextNode(select_)
+            //     profile.appendChild(textNodo)
+            //     profile.setAttribute("name",select_)
+            // }
+
+        })
 
     </script>
 @endsection

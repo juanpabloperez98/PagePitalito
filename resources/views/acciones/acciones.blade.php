@@ -99,15 +99,29 @@
                                     <button class="btn btn-link btn-block text-left collapsed" type="button"
                                         data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
                                         aria-controls="collapseThree">
-                                        Collapsible Group Item #3
+                                        Escuelas de Formación Deportivas
                                     </button>
                                 </h2>
                             </div>
                             <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
                                 data-parent="#accordionExample">
                                 <div class="card-body">
-                                    And lastly, the placeholder content for the third and final accordion panel. This panel is
-                                    hidden by default.
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">1</th>
+                                                <td>EFD</td>
+                                                <td class="row">
+                                                    <div class="col-lg-3 ml-auto">
+                                                        <a href="{{ route('deportes.index') }}" class=""><img
+                                                                src="{{ asset('images/icons/show.png') }}" alt="show"></a>
+                                                        <a href="{{ route('deportes.create') }}" class="ml-2"><img
+                                                                src="{{ asset('images/icons/create.png') }}" alt="create"></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>

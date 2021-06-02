@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Deporte;
-use App\Horario;
+use App\Efd;
+use App\Instructor;
+use App\Schedule;
 use Illuminate\Http\Request;
 
 use Symfony\Component\HttpFoundation\Response;
@@ -27,7 +28,7 @@ class DeporteController extends Controller
     {
         //
 
-        $deportes = Deporte::orderBy('id', 'asc')->get();
+        $deportes = Efd::orderBy('id', 'asc')->get();
 
 
         return view('deportes.index', [
@@ -44,10 +45,14 @@ class DeporteController extends Controller
     public function create()
     {
         //
-        $horarios = Horario::all();
+        // $horarios = Horario::all();
+        // $instructors = Instructor::orderBy('id', 'asc')->get();
+
+        // var_dump($instructors);
+        // die();
+
         return view('deportes.create', [
-            'page' => 'deportes',
-            'horarios' => $horarios
+            'page' => 'deportes'
         ]);
     }
 
@@ -118,38 +123,39 @@ class DeporteController extends Controller
         return new Response($file, 200);
     }
 
-    public function createHorario(Request $request){
+    public function save_schudele(Request $request){
         if($request->ajax()) {
             $day = $request->input('day');
-            $start = $request->input('start').':00';
-            $fin = $request->input('finish').':00';
-
-            $h_ = Horario::where([
+            
+            strlen($request->input('start')) == 1 ?  $start = $request->input('start').':00' : $start = $request->input('start')[0].':30';
+            strlen($request->input('finish')) == 1 ?  $fin = $request->input('finish').':00' : $fin = $request->input('finish')[0].':30';
+            
+            $h_ = Schedule::where([
                 ['day',$day],
                 ['start',$start],
-                ['finish',$fin]
+                ['end',$fin]
             ])->first();
 
 
             if(isset($h_) && !empty($h_)){
                 return response()->json(['message' => 'Este horario ya ha sido creado!!','status'=>'400']);
             }else{
-                $horario = new Horario();
+                $horario = new Schedule();
                 $horario->day = $day;
                 $horario->start = $start;
-                $horario->finish = $fin;
+                $horario->end = $fin;
                 $horario->save();
                 return response()->json(['message' => 'Horario creado con exito!!','status'=>'200']);
             }
         }
     }
 
-    public function ShowHorarios(Request $request){
+    public function show_schudele(Request $request){
         if($request->ajax()) {
-            $horarios = Horario::all();
+            $horarios = Schedule::all();
             $html = "";
             foreach ($horarios as $horario) {
-                $html = $html.'<option>'.$horario->day.' '.$horario->start.' - '.$horario->finish.'</option>';
+                $html = $html.'<option>'.$horario->day.' '.$horario->start.' - '.$horario->end.'</option>';
             }
             // $html_entities = htmlentities($html);
             $html_entities = $html;

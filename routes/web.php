@@ -36,7 +36,9 @@ Route::get('/imagen/{filename}', [
     'uses' => 'NoticiaController@getImage'
 ]);
 // Rutas Deportes
+Route::get('deportes/show_schudele', 'DeporteController@show_schudele')->name('show_schudele');
 Route::resource('deportes', 'DeporteController');
+Route::post('deportes/save_schudele', 'DeporteController@save_schudele')->name('save_schudele');
 // Capturar la imagen de deportes
 Route::get('/imagen_deportes/{filename}', [
     'as' => 'imageDeporte',
@@ -51,6 +53,8 @@ Route::get('dac/{id}','DacController@show')->name('dac.show');
 Route::post('dac/subcategories','DacController@get_subcategories')->name('dac.getsubcategories');
 Route::get('/imagen_dacs/{filename}','DacController@getImage')->name('get_image_dac');
 Route::get('/filter','DacController@search')->name('filter_dac');
+
+
 // Route::get('/DAC_/index_user', [
 //     'as' => 'dac_user',
 //     'uses' => 'DacController@show_alls'  
