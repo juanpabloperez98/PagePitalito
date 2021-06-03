@@ -48,10 +48,14 @@
                                         <img class="ml-lg-2" src="{{ asset('images/icons/drop-down-arrow24.png') }}" alt="" style="width: 12px;">
                                     </a>
                                     <ul class="subdropdown-content">
-                                        <a href="#">Música</a>
-                                        <a href="#">Teatro</a>
-                                        <a href="#">Danza</a>
-                                        <a href="#">Artes Plásticas</a>
+                                        <a href="#">Artes Visuales</a>
+                                        <a href="#">Banda de Vientos</a>
+                                        <a href="#">Danza Infantil</a>
+                                        <a href="#">Danza Juvenil</a>
+                                        <a href="#">Música Andina</a>
+                                        <a href="#">Música Tradicional</a>
+                                        <a href="#">Enfoque Sinfónico</a>
+                                        <a href="#">Teatro y Zancos</a>
                                     </ul>
                                 </li>
                                 {{-- Infraestructura Cultural --}}
