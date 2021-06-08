@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Efd;
 use App\Instructor;
 use App\Schedule;
+use App\Efd_Schedule;
 use Illuminate\Http\Request;
 
 use Symfony\Component\HttpFoundation\Response;
@@ -64,37 +65,54 @@ class DeporteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        // var_dump($request->prueba);
+        // die();
         $validateData = $this->validate($request, [
-            'name' => 'required|min:5',
+            'modality' => 'required|min:5',
             'image' => 'mimes:jpeg,bmp,png',
-            'in_charge' => 'required|min:5',
-            'profile' => 'required|min:5',
+            'instructor' => 'required',
+            'schedule1' => 'required',
         ]);
 
-        $num_total = $request->input('totalhorarios');
+        $array_schedules = [];
 
-        var_dump($num_total);
-        die();
+        $total_schedules = intval($request->input('totalhorarios'));
+
+        for ($i = 1; $i <= $total_schedules; $i++){
+            $index = "schedule".$i;
+            $schedule = intval($request->input($index));
+            array_push($array_schedules,$schedule);
+        }
 
 
+        $name = $request->input('modality');
 
-        $name = $request->input('name');
-        $in_charge = $request->input('in_charge');
-        $profile = $request->input('profile');
+        
+        $instructor = $request->input('instructor');
         $image = $request->file('image');
 
-        $deporte = new Deporte();
-        $deporte->name = $name;
-        $deporte->in_charge = $in_charge;
-        $deporte->profile = $profile;
+        $deporte = new Efd();
+        $deporte->modality = $name;
+        $deporte->instructor_id = intval($instructor);
 
         if ($image) {
             $image_path = time() . $image->getClientOriginalName();
             \Storage::disk('deportes_images')->put($image_path, \File::get($image));
-            $deporte->file = $image_path;
+            $deporte->path = $image_path;
         }
+
         $deporte->save();
+
+        $new_deporte = Efd::orderBy("id","desc")->first();
+
+        foreach($array_schedules as $schedule){
+            $efd_schedule = new Efd_Schedule();
+            $efd_schedule->efd_id = $new_deporte->id;
+            $efd_schedule->schedule_id = $schedule;
+            $efd_schedule->save();
+        }
+
         return redirect()->route('deportes.index')
             ->with('info', 'Deporte creada con exito!!');
 
@@ -106,10 +124,10 @@ class DeporteController extends Controller
      * @param  \App\Deporte  $deporte
      * @return \Illuminate\Http\Response
      */
-    public function show(Deporte $deporte)
+    public function show($id)
     {
         //
-
+        $deporte =  Efd::where('id',$id)->first();
 
         return view('deportes.show', [
             'page' => 'deportes',
@@ -127,9 +145,11 @@ class DeporteController extends Controller
         if($request->ajax()) {
             $day = $request->input('day');
             
-            strlen($request->input('start')) == 1 ?  $start = $request->input('start').':00' : $start = $request->input('start')[0].':30';
-            strlen($request->input('finish')) == 1 ?  $fin = $request->input('finish').':00' : $fin = $request->input('finish')[0].':30';
             
+            $start = explode(".",$request->input('start'));
+            count($start) == 1 ?  $start = $start[0].':00' : $start = $start[0].':30';
+            $fin = explode(".",$request->input('finish'));
+            count($fin) == 1 ?  $fin = $fin[0].':00' : $fin = $fin[0].':30';            
             $h_ = Schedule::where([
                 ['day',$day],
                 ['start',$start],
@@ -155,7 +175,7 @@ class DeporteController extends Controller
             $horarios = Schedule::all();
             $html = "";
             foreach ($horarios as $horario) {
-                $html = $html.'<option>'.$horario->day.' '.$horario->start.' - '.$horario->end.'</option>';
+                $html = $html.'<option id = '. $horario->id .'>'.$horario->day.' '.$horario->start.' - '.$horario->end.'</option>';
             }
             // $html_entities = htmlentities($html);
             $html_entities = $html;

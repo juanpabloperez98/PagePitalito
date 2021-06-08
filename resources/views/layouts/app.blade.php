@@ -91,13 +91,13 @@
                                     </a>
                                     <ul class="subdropdown-content" style="height: 80vh">
                                         {{--  Ejemplo de Ruta: url('/FormacionDeportiva/ajedrez') --}}
-                                        {{-- @php
-                                            $deportes = App\Deporte::orderBy('id', 'asc')->get();
+                                        @php
+                                            $deportes = App\Efd::orderBy('id', 'asc')->get();
                                         @endphp
 
                                         @foreach ($deportes as $deporte)
-                                            <a href="{{ route('deportes.show',$deporte->id) }}">{{ $deporte->name }}</a>
-                                        @endforeach --}}
+                                            <a href="{{ route('deportes.show',$deporte->id) }}">{{ $deporte->modality }}</a>
+                                        @endforeach
                                     </ul>
                                 </li>
                                 {{-- Actividad Física, Laboyano Activo y Saludable --}}

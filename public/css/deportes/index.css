@@ -27,13 +27,12 @@ main {
     margin-left: auto;
     margin-right: auto;
     font-family: 'Montserrat-Bold';
-    color: #104495;
     font-size: 35px;
 }
 
 .box-example {
     height: 250px;
-    width: 25%;
+    width: 50%;
     display: inline-block;
 }
 

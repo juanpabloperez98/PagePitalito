@@ -27,7 +27,7 @@
                             </div>
                         @endif
 
-                        <form enctype="multipart/form-data" method="POST" id="form" action="#">
+                        <form enctype="multipart/form-data" method="POST" id="form" action="{{ route('deportes.store') }}">
                             @csrf
                             <div class="form-group">
                                 <label for="modality">Nombre Deporte</label>
@@ -39,7 +39,7 @@
                                 <input type="file" class="form-control" id="image" name="image">
                             </div>
                             <div class="form-group">
-                                <label for="in_charge">Persona a cargo</label>
+                                <label for="instructor">Persona a cargo</label>
                                 <select class="form-control" id="instructor" name="instructor">
                                     @php
                                         $instructors = App\Instructor::orderBy('id', 'asc')->get();
@@ -52,15 +52,19 @@
                             
                             <div id="content">
                             </div>
+                            
                             <div class="form-group">
                                 <label for="#">Agregar Horario</label>
                                 <a href="#" data-toggle="modal" data-target="#Mymodal"><span> <img
                                             src="{{ asset('images/icons/add.png') }}" alt="add-icon"> </span></a>
                             </div>
+
                             <button type="submit" class="btn btn-success">
                                 Crear Deporte
                             </button>
                             <input type="hidden" name="totalhorarios" id="totalhorarios">
+                            <div class="form-group" id="hiddenschudeles">
+                            </div>
                         </form>
                         <div class="modal fade" id="Mymodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
@@ -186,49 +190,86 @@
 
 
             // AJax petition
-        $('#form-schedule').submit(function(e) {
-            e.preventDefault();
-            const $this = $(this);
-            const data = $this.serializeArray()
-            var formId = '#form-schedule';
-            $.ajax({
-                url: $(formId).attr('action'),
-                type: $(formId).attr('method'),
-                data: {
-                    "day": data[0].value,
-                    "start": data[1].value,
-                    "finish": data[2].value,
-                    "_token": '{{ csrf_token() }}'
-                }
-                /* data: $this.serialize() */
-                ,
-                dataType: 'json',
-                cache: false,
-                success: function(r) {
-                    // var dataJSON = JSON.parse(r)
-                    console.log(r)
-                    if (r.status == 400) {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Error!',
-                            text: r.message
-                        })
-                    } else {
-                        Swal.fire({
-                            icon: 'success',
-                            title: r.message,
-                            showConfirmButton: false,
-                            timer: 1500
-                        })
-                        $('#ModalHorario').modal('hide')
-                        showHorarios()
+            $('#form-schedule').submit(function(e) {
+                e.preventDefault();
+                const $this = $(this);
+                const data = $this.serializeArray()
+                console.log(data)
+                var formId = '#form-schedule';
+                $.ajax({
+                    url: $(formId).attr('action'),
+                    type: $(formId).attr('method'),
+                    data: {
+                        "day": data[0].value,
+                        "start": data[1].value,
+                        "finish": data[2].value,
+                        "_token": '{{ csrf_token() }}'
                     }
-                },
-                error: function(r) {
-                    console.log(r);
+                    ,
+                    dataType: 'json',
+                    cache: false,
+                    success: function(r) {
+                        console.log(r)
+                        if (r.status == 400) {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error!',
+                                text: r.message
+                            })
+                        } else {
+                            Swal.fire({
+                                icon: 'success',
+                                title: r.message,
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                            $('#ModalHorario').modal('hide')
+                            showHorarios()
+                        }
+                    },
+                    error: function(r) {
+                        console.log(r);
+                    }
+                });
+            })
+
+            lista_schedules = []
+            var i = 0
+            // Add when push in save
+            $('#save').on('click', (e) => {
+                // console.log($('#horarios').find(":selected").attr("id"))
+                // console.log($('#horarios').val())
+                console.log(typeof($('#horarios').find(":selected").attr("id")))
+                
+                var id_selected = parseInt($('#horarios').find(":selected").attr("id"))
+
+                if (lista_schedules.includes(id_selected)){
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error!',
+                        text: "Error ya ha sido agregado el horario!"
+                    })
+                }else{
+                    // Add in content
+                    i++
+                    text =  document.createTextNode($('#horarios').val())
+                    p = document.createElement('p')
+                    p.appendChild(text)
+                    p.setAttribute("id",id_selected)
+                    content = document.getElementById("content")
+                    content.appendChild(p)
+                    lista_schedules.push(id_selected)
+                    // Add in hiddenschudeles
+                    hiddenschudeles = document.getElementById("hiddenschudeles")
+                    input =  document.createElement("input")
+                    input.setAttribute("name","schedule"+i)
+                    input.setAttribute("type","hidden")
+                    input.setAttribute("value",id_selected)
+                    hiddenschudeles.appendChild(input)
+                    total_horarios = document.getElementById("totalhorarios")
+                    total_horarios.setAttribute("value",i)
                 }
-            });
-        })
+            })
 
 
             // var init_profile = () => {

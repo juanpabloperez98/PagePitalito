@@ -8,7 +8,7 @@
 
 @section('content')
     <div class="container">
-        <div class="col-md-8 col-md-offset-2">
+        {{-- <div class="col-md-8 col-md-offset-2">
             <h1>{{ $noticia->title }}</h1>
 
             <div class="panel panel-default">
@@ -30,8 +30,20 @@
                 </div>
             </div>
 
-        </div>
+        </div> --}}
         
+        <div class="card" style="width: 60%">
+            @if ($noticia->path)
+                <img src="{{ url('/imagen/'.$noticia->path) }}" alt="" class="img-responsive">
+            @endif
+            <div class="card-body">
+              <h5 class="card-title">{{ $noticia->title }}</h5>
+                <p class="card-text">
+                    Publicado: <span>{{ $noticia->created_at }}</span>
+                </p>
+                {!! $noticia->body !!}
+            </div>
+          </div>
     </div>
 
 @endsection
