@@ -47,7 +47,7 @@
                                         <tbody>
                                             <tr>
                                                 <th scope="row">1</th>
-                                                <td>Noticia</td>
+                                                <td>Noticias</td>
                                                 <td class="row">
                                                     <div class="col-lg-3 ml-auto">
                                                         <a href="{{ route('noticias.index') }}" class=""><img
@@ -68,7 +68,7 @@
                                     <button class="btn btn-link btn-block text-left collapsed" type="button"
                                         data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
                                         aria-controls="collapseTwo">
-                                        Directorio Artístico y Cultural
+                                        Administración Cultura
                                     </button>
                                 </h2>
                             </div>
@@ -78,12 +78,36 @@
                                         <tbody>
                                             <tr>
                                                 <th scope="row">1</th>
-                                                <td>DAC</td>
+                                                <td>Escuelas de Formación Artística y Cultural</td>
+                                                <td class="row">
+                                                    <div class="col-lg-3 ml-auto">
+                                                        <a href="#" class=""><img
+                                                                src="{{ asset('images/icons/show.png') }}" alt="show"></a>
+                                                        <a href="#" class="ml-2"><img
+                                                                src="{{ asset('images/icons/create.png') }}" alt="create"></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">2</th>
+                                                <td>Directorio Artístico y Cultural</td>
                                                 <td class="row">
                                                     <div class="col-lg-3 ml-auto">
                                                         <a href="{{ route('dac.index') }}" class=""><img
                                                                 src="{{ asset('images/icons/show.png') }}" alt="show"></a>
                                                         <a href="{{ route('dac.create') }}" class="ml-2"><img
+                                                                src="{{ asset('images/icons/create.png') }}" alt="create"></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">3</th>
+                                                <td>Patrimonio Cultural</td>
+                                                <td class="row">
+                                                    <div class="col-lg-3 ml-auto">
+                                                        <a href="#" class=""><img
+                                                                src="{{ asset('images/icons/show.png') }}" alt="show"></a>
+                                                        <a href="#" class="ml-2"><img
                                                                 src="{{ asset('images/icons/create.png') }}" alt="create"></a>
                                                     </div>
                                                 </td>
@@ -99,7 +123,7 @@
                                     <button class="btn btn-link btn-block text-left collapsed" type="button"
                                         data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
                                         aria-controls="collapseThree">
-                                        Escuelas de Formación Deportivas
+                                        Administración Deporte
                                     </button>
                                 </h2>
                             </div>
@@ -110,12 +134,48 @@
                                         <tbody>
                                             <tr>
                                                 <th scope="row">1</th>
-                                                <td>EFD</td>
+                                                <td>Escuelas de Formación Deportiva</td>
                                                 <td class="row">
                                                     <div class="col-lg-3 ml-auto">
                                                         <a href="{{ route('deportes.index') }}" class=""><img
                                                                 src="{{ asset('images/icons/show.png') }}" alt="show"></a>
                                                         <a href="{{ route('deportes.create') }}" class="ml-2"><img
+                                                                src="{{ asset('images/icons/create.png') }}" alt="create"></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">2</th>
+                                                <td>Actividad Física, Laboyano Activo y Saludable</td>
+                                                <td class="row">
+                                                    <div class="col-lg-3 ml-auto">
+                                                        <a href="#" class=""><img
+                                                                src="{{ asset('images/icons/show.png') }}" alt="show"></a>
+                                                        <a href="#" class="ml-2"><img
+                                                                src="{{ asset('images/icons/create.png') }}" alt="create"></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">3</th>
+                                                <td>Deporte Social Comunitario</td>
+                                                <td class="row">
+                                                    <div class="col-lg-3 ml-auto">
+                                                        <a href="#" class=""><img
+                                                                src="{{ asset('images/icons/show.png') }}" alt="show"></a>
+                                                        <a href="#" class="ml-2"><img
+                                                                src="{{ asset('images/icons/create.png') }}" alt="create"></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">4</th>
+                                                <td>Infraestructura Deportiva</td>
+                                                <td class="row">
+                                                    <div class="col-lg-3 ml-auto">
+                                                        <a href="#" class=""><img
+                                                                src="{{ asset('images/icons/show.png') }}" alt="show"></a>
+                                                        <a href="#" class="ml-2"><img
                                                                 src="{{ asset('images/icons/create.png') }}" alt="create"></a>
                                                     </div>
                                                 </td>

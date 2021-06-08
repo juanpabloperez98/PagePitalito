@@ -14,8 +14,8 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <p>
-                        Publicado: <span>Fecha</span> <br> 
-                        Por: <span>Juan pablo perez</span> 
+                        Publicado en: <span>Centro Cultural, Hector Polanía Sánchez</span> <br> 
+                        Por: <span>Instituto de Cultura, Recreación y Deporte</span> 
                     </p>
                 </div>
                 <div class="panel-body">

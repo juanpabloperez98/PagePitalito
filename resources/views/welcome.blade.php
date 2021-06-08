@@ -21,10 +21,10 @@
     </div> --}}
     <div class="row mx-auto" id="video-content">
         <video autoplay="autoplay" loop="loop" id="video_background" preload="auto" muted>
-            <source src="{{ asset('images/videos/video2.mp4') }}" type="video/mp4">
+            <source src="{{ asset('images/videos/video.mp4') }}" type="video/mp4">
         </video>
         <div class="text">
-            <h1>INSTITUTO DE CULTURA RECREACIÓN Y DEPORTE PITALITO HUILA</h1>
+            <h1>INSTITUTO DE CULTURA, RECREACIÓN Y DEPORTE PITALITO HUILA</h1>
             <div id="btn-vermas">
                 <a href="{{ route('vermas') }}" class="btn">VER MÁS</a>
             </div>

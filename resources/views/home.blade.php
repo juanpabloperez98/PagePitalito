@@ -23,7 +23,7 @@
                         <div class="float-right">
                             <a href="{{ route('logout') }}"
                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar
-                                Sesion</a>
+                                Sesión</a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>
@@ -51,7 +51,7 @@
                             </div>
                             <div class="col-lg-6 col-6">
                                 <div class="mt-3">
-                                    <h4 class="d-inline">Nombre:</h4> <span>{{ Auth::user()->first_name }}</span>
+                                    <h4 class="d-inline">Nombres:</h4> <span>{{ Auth::user()->first_name }}</span>
                                 </div>
                                 <div class="mt-3">
                                     <h4 class="d-inline">Apellidos:</h4> <span>{{ Auth::user()->last_name }}</span>

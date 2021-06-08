@@ -9,7 +9,8 @@
     <div class="container">
         <div class="row mx-auto">
             <div class="col-lg-12">
-                <h2>Registros DAC</h2>
+                <h2>Registros Directorio Artístico y Cultural</h2>
+                <h1>De Pitalito Para el Mundo</h1><br>
                 <div class="row mx-auto">
                     <div class="col-lg-6" id="content-form">
                         @if (session('info'))
@@ -73,7 +74,8 @@
                                                     @endif
                                                     <div class="card-body">
                                                         <h5 class="card-title">{{ $dac->name }}</h5>
-                                                        <h5 class="card-title">{{ $dac->subcategory->category->name }}</h5>
+                                                        {{-- <h5 class="card-title">{{ $dac->subcategory->category->name }}</h5> --}}
+                                                        <h5 class="card-title">{{ $dac->cell_phone}}</h5>
                                                         <h6 class="card-subtitle mb-2 text-muted">
                                                             {{ $dac->subcategory->name }}
                                                         </h6>
@@ -93,7 +95,8 @@
                                                     @endif
                                                     <div class="card-body">
                                                         <h5 class="card-title">{{ $dac->name }}</h5>
-                                                        <h5 class="card-title">{{ $dac->subcategory->category->name }}</h5>
+                                                        {{-- <h5 class="card-title">{{ $dac->subcategory->category->name }}</h5> --}}
+                                                        <h5 class="card-title">{{ $dac->cell_phone}}</h5>
                                                         <h6 class="card-subtitle mb-2 text-muted">
                                                             {{ $dac->subcategory->name }}
                                                         </h6>
