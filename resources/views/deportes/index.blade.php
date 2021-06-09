@@ -30,11 +30,12 @@
                         @if ($i == 0)
                             <div class="carousel-item active text-center">
                                 <div class="box-example mx-3">
+                                    <h4>{{ $deportes[$i]->modality }}</h4>
                                     <div class="imagen"><img class="" src="{{ route('imageDeporte', ['filename'=>$deportes[$i]->path]) }}" style="max-width: 100%; height:250px"></div>
                                     <a href="{{ route('deportes.show',$deportes[$i]->id) }}"><h3>{{ $deportes[$i]->name }}</h3></a>
                                 </div>
                                 @can('deportes.all')
-                                    <div class="botones mt-3">
+                                    <div class="botones mt-5">
                                         <a href="{{ route('deportes.edit',$deportes[$i]->id) }}" class="ml-2"><img src="{{ asset('images/icons/edit.png') }}" alt="edit"></a>
                                         <a href="#" class="ml-2"><img src="{{ asset('images/icons/delete.png') }}" alt="delete"></a>
                                     </div>
@@ -43,11 +44,12 @@
                         @else 
                             <div class="carousel-item text-center">
                                 <div class="box-example mx-3">
+                                    <h4>{{ $deportes[$i]->modality }}</h4>
                                     <div class="imagen"><img class="" src="{{ route('imageDeporte', ['filename'=>$deportes[$i]->path]) }}" style="max-width: 100%; height:250px"></div>
                                     <a href="{{ route('deportes.show',$deportes[$i]->id) }}"><h3>{{ $deportes[$i]->name }}</h3></a>
                                 </div>
                                 @can('deportes.all')
-                                    <div class="botones mt-3">
+                                    <div class="botones mt-5">
                                         <a href="{{ route('deportes.edit',$deportes[$i]->id) }}" class="ml-2"><img src="{{ asset('images/icons/edit.png') }}" alt="edit"></a>
                                         <a href="#" class="ml-2"><img src="{{ asset('images/icons/delete.png') }}" alt="delete"></a>
                                     </div>

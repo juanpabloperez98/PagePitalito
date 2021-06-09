@@ -190,9 +190,10 @@ class DeporteController extends Controller
      * @param  \App\Deporte  $deporte
      * @return \Illuminate\Http\Response
      */
-    public function edit(Deporte $deporte)
+    public function edit($id)
     {
         //
+        $deporte = Efd::where("id",$id)->first();
         return view('deportes.edit', compact('deporte'));
     }
 
@@ -208,36 +209,55 @@ class DeporteController extends Controller
         //
 
         $validateData = $this->validate($request, [
-            'name' => 'required|min:5',
+            'modality' => 'required|min:5',
             'image' => 'mimes:jpeg,bmp,png',
-            'in_charge' => 'required|min:5',
-            'profile' => 'required|min:5',
+            'instructor' => 'required',
+            'schedule1' => 'required',
         ]);
 
-        $name = $request->input('name');
-        $in_charge = $request->input('in_charge');
-        $profile = $request->input('profile');
+        $array_schedules = [];
+
+        $total_schedules = intval($request->input('totalhorarios'));
+
+        for ($i = 1; $i <= $total_schedules; $i++){
+            $index = "schedule".$i;
+            $schedule = intval($request->input($index));
+            array_push($array_schedules,$schedule);
+        }
+
+
+        $name = $request->input('modality');
+        $instructor = $request->input('instructor');
         $image = $request->file('image');
 
-        $deporte = Deporte::where('id', '=', $id)->first();
+        $deporte = Efd::find($id);
+        $deporte->modality = $name;
+        $deporte->instructor_id = intval($instructor);
 
-
-        
-        if (count((array)$deporte) >= 1) {
-            // dd($deporte);
-            $deporte->name = $name;
-            $deporte->in_charge = $in_charge;
-            $deporte->profile = $profile;
-
-            if ($image) {
-                $image_path = time() . $image->getClientOriginalName();
-                \Storage::disk('deportes_images')->put($image_path, \File::get($image));
-                $deporte->file = $image_path;
-            }
-
-            $deporte->update();
+        if ($image) {
+            $image_path = time() . $image->getClientOriginalName();
+            \Storage::disk('deportes_images')->put($image_path, \File::get($image));
+            $deporte->path = $image_path;
         }
-        return redirect()->route('deportes.edit', $deporte)
+
+        $deporte->save();
+
+        $new_deporte = Efd::orderBy("id","desc")->first();
+
+        // Eliminar anteriores
+        $schedules = Efd_Schedule::where("efd_id",$new_deporte->id)->get();
+        foreach($schedules as $schedule){
+            $schedule->delete();
+        }
+
+        foreach($array_schedules as $schedule){
+            $efd_schedule = new Efd_Schedule();
+            $efd_schedule->efd_id = $new_deporte->id;
+            $efd_schedule->schedule_id = $schedule;
+            $efd_schedule->save();
+        }
+
+        return redirect()->route('deportes.index')
             ->with('info', 'Deporte editado con exito!!');
     }
 
